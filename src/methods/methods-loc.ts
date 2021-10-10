@@ -1,9 +1,10 @@
-import { App, FileSystemAdapter } from 'obsidian';
+import { App, FileSystemAdapter, Notice } from 'obsidian';
 import type LinkeDataHelperPlugin from '../main';
 import type {
     Graph,
     headings,
     LcshInterface,
+    linksToPrefLabel,
     prefLabelToRelations,
 } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
@@ -35,6 +36,7 @@ export class SkosMethods {
 
     public readStream() {
         let jsonPrefLabel: prefLabelToRelations[] = [];
+        let jsonUriToPrefLabel = {}
         const path = this.getAbsolutePath('lcsh.skos.ndjson');
         //this.pushHeadings = this.pushHeadings.bind(this)
         createReadStream(path)
@@ -55,6 +57,8 @@ export class SkosMethods {
                         if (element['skos:prefLabel']['@language'] === 'en') {
                             prefLabel = element['skos:prefLabel']['@value'];
                         }
+                        const uri: string = element['@id'];
+                        Object.assign(jsonUriToPrefLabel, {[uri]: prefLabel})
                         if (element['skos:altLabel']?.['@language'] === 'en') {
                             altLabel = element['skos:altLabel']['@value'];
                         }
@@ -67,16 +71,21 @@ export class SkosMethods {
                             narrower: narrowerURLs,
                             related: relatedURLs,
                         };
-                        //somehow this object isn't built up
                         jsonPrefLabel.push(currentObj);
                         break;
                     }
                 }
             })
             .on('end', () => {
-                console.log(JSON.stringify(jsonPrefLabel, null, 2));
-                const jsonPath = this.getAbsolutePath('prefToRelations.json');
-                writeFileSync(jsonPath, JSON.stringify(jsonPrefLabel, null, 2));
+                const jsonPrefPath = this.getAbsolutePath(
+                    'prefToRelations.json'
+                );
+                writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                const jsonUriPath = this.getAbsolutePath('uriToPrefLabel.json');
+                writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                new Notice(
+                    'Both JSON files have been written to the "linked-data-helper" plugin folder.'
+                );
             });
     }
 
