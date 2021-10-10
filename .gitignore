@@ -12,3 +12,9 @@ main.js
 
 # obsidian
 data.json
+
+resources/
+build/
+
+*.zip
+.vscode/
