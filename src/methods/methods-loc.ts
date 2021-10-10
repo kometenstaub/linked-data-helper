@@ -4,7 +4,6 @@ import type {
     Graph,
     headings,
     LcshInterface,
-    linksToPrefLabel,
     prefLabelToRelations,
 } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
@@ -36,7 +35,7 @@ export class SkosMethods {
 
     public readStream() {
         let jsonPrefLabel: prefLabelToRelations[] = [];
-        let jsonUriToPrefLabel = {}
+        let jsonUriToPrefLabel = {};
         const path = this.getAbsolutePath('lcsh.skos.ndjson');
         //this.pushHeadings = this.pushHeadings.bind(this)
         createReadStream(path)
@@ -58,19 +57,21 @@ export class SkosMethods {
                             prefLabel = element['skos:prefLabel']['@value'];
                         }
                         const uri: string = element['@id'];
-                        Object.assign(jsonUriToPrefLabel, {[uri]: prefLabel})
+                        Object.assign(jsonUriToPrefLabel, { [uri]: prefLabel });
                         if (element['skos:altLabel']?.['@language'] === 'en') {
                             altLabel = element['skos:altLabel']['@value'];
                         }
                         broaderURLs = this.pushHeadings(element, 'broader');
                         narrowerURLs = this.pushHeadings(element, 'narrower');
                         relatedURLs = this.pushHeadings(element, 'related');
-                        currentObj[prefLabel] = {
-                            altLabel: altLabel,
-                            broader: broaderURLs,
-                            narrower: narrowerURLs,
-                            related: relatedURLs,
-                        };
+                        currentObj = this.onlyReturnFull(
+                            prefLabel,
+                            altLabel,
+                            uri,
+                            broaderURLs,
+                            narrowerURLs,
+                            relatedURLs
+                        );
                         jsonPrefLabel.push(currentObj);
                         break;
                     }
@@ -87,6 +88,151 @@ export class SkosMethods {
                     'Both JSON files have been written to the "linked-data-helper" plugin folder.'
                 );
             });
+    }
+
+    private onlyReturnFull(
+        prefLabel: string,
+        altLabel: string,
+        uri: string,
+        broaderURLs: string[],
+        narrowerURLs: string[],
+        relatedURLs: string[]
+    ): prefLabelToRelations {
+        let currentObj: prefLabelToRelations = {};
+        if (altLabel !== '') {
+            if (broaderURLs.length > 0) {
+                if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            broader: broaderURLs,
+                            narrower: narrowerURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else if (narrowerURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            broader: broaderURLs,
+                            narrower: narrowerURLs,
+                        };
+                    }
+                } else if (relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            broader: broaderURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            broader: broaderURLs,
+                        };
+                    }
+                }
+            } else if (narrowerURLs.length > 0) {
+                if (relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            narrower: narrowerURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            altLabel: altLabel,
+                            narrower: narrowerURLs,
+                        };
+                    }
+                }
+            } else if (relatedURLs.length > 0) {
+                currentObj[prefLabel] = {
+                    uri: uri,
+                    altLabel: altLabel,
+                    related: narrowerURLs,
+                };
+            } else {
+                currentObj[prefLabel] = {
+                    uri: uri,
+                    altLabel: altLabel,
+                };
+            }
+        } else {
+            if (broaderURLs.length > 0) {
+                if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            broader: broaderURLs,
+                            narrower: narrowerURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else if (narrowerURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            broader: broaderURLs,
+                            narrower: narrowerURLs,
+                        };
+                    }
+                } else if (relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            broader: broaderURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            broader: broaderURLs,
+                        };
+                    }
+                }
+            } else if (narrowerURLs.length > 0) {
+                if (relatedURLs.length > 0) {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            narrower: narrowerURLs,
+                            related: relatedURLs,
+                        };
+                    }
+                } else {
+                    {
+                        currentObj[prefLabel] = {
+                            uri: uri,
+                            narrower: narrowerURLs,
+                        };
+                    }
+                }
+            } else if (relatedURLs.length > 0) {
+                currentObj[prefLabel] = {
+                    uri: uri,
+                    related: narrowerURLs,
+                };
+            } else {
+                currentObj[prefLabel] = {
+                    uri: uri,
+                };
+            }
+        }
+        return currentObj;
     }
 
     private pushHeadings(element: Graph, type: string): string[] {

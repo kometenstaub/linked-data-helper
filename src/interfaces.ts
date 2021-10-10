@@ -15,17 +15,15 @@ export interface prefLabelToRelations {
 }
 
 export interface headings {
-    altLabel: string;
-	broader: string[];
-	narrower: string[];
-	related: string[];
+    uri: string;
+    altLabel?: string;
+	broader?: string[];
+	narrower?: string[];
+	related?: string[];
 }
 
 
 
-export interface linksToPrefLabel {
-    [link: string] : string
-}
 
 
 declare module 'obsidian' {
