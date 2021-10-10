@@ -61,14 +61,23 @@ export class SkosMethods {
                         broaderURLs = this.pushHeadings(element, 'broader');
                         narrowerURLs = this.pushHeadings(element, 'narrower');
                         relatedURLs = this.pushHeadings(element, 'related');
+                        currentObj[prefLabel] = {
+                            altLabel: altLabel,
+                            broader: broaderURLs,
+                            narrower: narrowerURLs,
+                            related: relatedURLs,
+                        };
+                        //somehow this object isn't built up
+                        jsonPrefLabel.push(currentObj);
                         break;
                     }
-					currentObj[prefLabel] = {altLabel: altLabel, broader: broaderURLs, narrower: narrowerURLs, related: relatedURLs}
-                    jsonPrefLabel.push(currentObj)
                 }
+            })
+            .on('end', () => {
+                console.log(JSON.stringify(jsonPrefLabel, null, 2));
+                const jsonPath = this.getAbsolutePath('prefToRelations.json');
+                writeFileSync(jsonPath, JSON.stringify(jsonPrefLabel, null, 2));
             });
-    const jsonPath = this.getAbsolutePath('prefToRelations.json')
-    writeFileSync(jsonPath, JSON.stringify(jsonPrefLabel, null, 2))
     }
 
     private pushHeadings(element: Graph, type: string): string[] {
