@@ -121,36 +121,36 @@ export class SkosMethods {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            broader: reducedBroaderURLs,
-                            narrower: reducedNarrowerURLs,
-                            related: reducedRelatedURLs,
+                            aL: altLabel,
+                            bt: reducedBroaderURLs,
+                            nt: reducedNarrowerURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else if (narrowerURLs.length > 0) {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            broader: reducedBroaderURLs,
-                            narrower: reducedNarrowerURLs,
+                            aL: altLabel,
+                            bt: reducedBroaderURLs,
+                            nt: reducedNarrowerURLs,
                         };
                     }
                 } else if (relatedURLs.length > 0) {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            broader: reducedBroaderURLs,
-                            related: reducedRelatedURLs,
+                            aL: altLabel,
+                            bt: reducedBroaderURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            broader: reducedBroaderURLs,
+                            aL: altLabel,
+                            bt: reducedBroaderURLs,
                         };
                     }
                 }
@@ -159,30 +159,30 @@ export class SkosMethods {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            narrower: reducedNarrowerURLs,
-                            related: reducedRelatedURLs,
+                            aL: altLabel,
+                            nt: reducedNarrowerURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            altLabel: altLabel,
-                            narrower: reducedNarrowerURLs,
+                            aL: altLabel,
+                            nt: reducedNarrowerURLs,
                         };
                     }
                 }
             } else if (relatedURLs.length > 0) {
                 currentObj[prefLabel] = {
                     uri: reducedUri,
-                    altLabel: altLabel,
-                    related: narrowerURLs,
+                    aL: altLabel,
+                    rt: narrowerURLs,
                 };
             } else {
                 currentObj[prefLabel] = {
                     uri: reducedUri,
-                    altLabel: altLabel,
+                    aL: altLabel,
                 };
             }
         } else {
@@ -191,32 +191,32 @@ export class SkosMethods {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            broader: reducedBroaderURLs,
-                            narrower: reducedNarrowerURLs,
-                            related: reducedRelatedURLs,
+                            bt: reducedBroaderURLs,
+                            nt: reducedNarrowerURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else if (narrowerURLs.length > 0) {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            broader: reducedBroaderURLs,
-                            narrower: reducedNarrowerURLs,
+                            bt: reducedBroaderURLs,
+                            nt: reducedNarrowerURLs,
                         };
                     }
                 } else if (relatedURLs.length > 0) {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            broader: reducedBroaderURLs,
-                            related: reducedRelatedURLs,
+                            bt: reducedBroaderURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            broader: reducedBroaderURLs,
+                            bt: reducedBroaderURLs,
                         };
                     }
                 }
@@ -225,22 +225,22 @@ export class SkosMethods {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            narrower: reducedNarrowerURLs,
-                            related: reducedRelatedURLs,
+                            nt: reducedNarrowerURLs,
+                            rt: reducedRelatedURLs,
                         };
                     }
                 } else {
                     {
                         currentObj[prefLabel] = {
                             uri: reducedUri,
-                            narrower: reducedNarrowerURLs,
+                            nt: reducedNarrowerURLs,
                         };
                     }
                 }
             } else if (relatedURLs.length > 0) {
                 currentObj[prefLabel] = {
                     uri: reducedUri,
-                    related: narrowerURLs,
+                    rt: narrowerURLs,
                 };
             } else {
                 currentObj[prefLabel] = {

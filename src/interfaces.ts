@@ -16,10 +16,10 @@ export interface prefLabelToRelations {
 
 export interface headings {
     uri: string;
-    altLabel?: string;
-	broader?: string[];
-	narrower?: string[];
-	related?: string[];
+    aL?: string; //altLabel
+	bt?: string[]; //broader
+	nt?: string[]; // narrower
+	rt?: string[]; //related
 }
 
 
