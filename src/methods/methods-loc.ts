@@ -34,7 +34,7 @@ export class SkosMethods {
     }
 
     public readStream() {
-        let jsonPrefLabel: prefLabelToRelations[] = [];
+        let jsonPrefLabel = {};
         let jsonUriToPrefLabel = {};
         const path = this.getAbsolutePath('lcsh.skos.ndjson');
         //this.pushHeadings = this.pushHeadings.bind(this)
@@ -72,7 +72,7 @@ export class SkosMethods {
                             narrowerURLs,
                             relatedURLs
                         );
-                        jsonPrefLabel.push(currentObj);
+                        Object.assign(jsonPrefLabel, currentObj)
                         break;
                     }
                 }
