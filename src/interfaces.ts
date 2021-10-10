@@ -15,7 +15,7 @@ export interface prefLabelToRelations {
 }
 
 export interface headings {
-    vLabel: string;
+    altLabel: string;
 	broader: string[];
 	narrower: string[];
 	related: string[];

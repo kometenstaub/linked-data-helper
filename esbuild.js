@@ -26,7 +26,7 @@ const isProd = process.env.BUILD === 'production';
 			entryPoints: ['src/main.ts'],
 			bundle: true,
 			watch: !isProd,
-			platform: 'browser',
+			platform: 'node',
 			external: ['obsidian'],
 			format: 'cjs',
 			banner: { js: banner },

@@ -6,13 +6,6 @@ import type {
     LcshInterface,
     prefLabelToRelations,
 } from '../interfaces';
-import {
-    BROADER_URL,
-    NARROWER_URL,
-    RELATED_URL,
-    PREF_LABEL,
-    ALT_LABEL,
-} from '../constants';
 import { createReadStream, writeFileSync } from 'fs';
 import { parse } from 'ndjson';
 
@@ -43,9 +36,10 @@ export class SkosMethods {
     public readStream() {
         let jsonPrefLabel: prefLabelToRelations[] = [];
         const path = this.getAbsolutePath('lcsh.skos.ndjson');
+        //this.pushHeadings = this.pushHeadings.bind(this)
         createReadStream(path)
             .pipe(parse())
-            .on('data', function (obj: LcshInterface) {
+            .on('data', (obj: LcshInterface) => {
                 let currentObj: prefLabelToRelations = {};
                 for (let element of obj['@graph']) {
                     let broaderURLs: string[] = [];
@@ -64,13 +58,20 @@ export class SkosMethods {
                         if (element['skos:altLabel']?.['@language'] === 'en') {
                             altLabel = element['skos:altLabel']['@value'];
                         }
+                        broaderURLs = this.pushHeadings(element, 'broader');
+                        narrowerURLs = this.pushHeadings(element, 'narrower');
+                        relatedURLs = this.pushHeadings(element, 'related');
                         break;
                     }
+					currentObj[prefLabel] = {altLabel: altLabel, broader: broaderURLs, narrower: narrowerURLs, related: relatedURLs}
+                    jsonPrefLabel.push(currentObj)
                 }
             });
+    const jsonPath = this.getAbsolutePath('prefToRelations.json')
+    writeFileSync(jsonPath, JSON.stringify(jsonPrefLabel, null, 2))
     }
 
-    pushHeadings(element: Graph, type: string): string[] {
+    private pushHeadings(element: Graph, type: string): string[] {
         let urls = [];
         const headingType: string = `skos:${type}`;
         //@ts-ignore
