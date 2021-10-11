@@ -4,7 +4,6 @@ import type {
     Graph,
     headings,
     LcshInterface,
-    prefLabelToRelations,
 } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
 import { parse } from 'ndjson';
@@ -33,15 +32,38 @@ export class SkosMethods {
         return `${basePath}/${relativePath}`;
     }
 
+    /**
+ * maybe I need to change the approach for the fuzzy suggester and do it like TfTHacker does in Wordnet
+ * That would meand to have a structure like this:
+ *[
+        {
+           "SearchTerm": "'hood",
+           "Term": "'hood",
+           "Definition": "(slang) a neighborhood  "
+        },
+        {
+           "SearchTerm": ".22caliber",
+           "Term": ".22_caliber",
+           "Definition": "of or relating to the bore of a gun (or its ammunition) that measures twenty-two hundredths of a        n inch in diameter; \"a .22 caliber pistol\"  "
+        },
+        {
+           "SearchTerm": ".38caliber",
+           "Term": ".38_caliber",
+           "Definition": "of or relating to the bore of a gun (or its ammunition) that measures thirty-eight hundredths of         an inch in diameter; \"a .38 caliber shell\"  "
+        }
+    ]
+ */
+
     public readStream() {
-        let jsonPrefLabel = {};
+        let jsonPrefLabel: headings[] = [];
         let jsonUriToPrefLabel = {};
         const path = this.getAbsolutePath('lcsh.skos.ndjson');
         //this.pushHeadings = this.pushHeadings.bind(this)
         createReadStream(path)
             .pipe(parse())
             .on('data', (obj: LcshInterface) => {
-                let currentObj: prefLabelToRelations = {};
+                //@ts-ignore
+                let currentObj: headings = {};
                 for (let element of obj['@graph']) {
                     let broaderURLs: string[] = [];
                     let narrowerURLs: string[] = [];
@@ -58,8 +80,10 @@ export class SkosMethods {
                         }
                         const uri: string = element['@id'];
                         //@ts-expect-error
-                        const endUri: string = uri.split('/').last()
-                        Object.assign(jsonUriToPrefLabel, { [endUri]: prefLabel });
+                        const endUri: string = uri.split('/').last();
+                        Object.assign(jsonUriToPrefLabel, {
+                            [endUri]: prefLabel,
+                        });
                         if (element['skos:altLabel']?.['@language'] === 'en') {
                             altLabel = element['skos:altLabel']['@value'];
                         }
@@ -74,7 +98,8 @@ export class SkosMethods {
                             narrowerURLs,
                             relatedURLs
                         );
-                        Object.assign(jsonPrefLabel, currentObj)
+                        jsonPrefLabel.push(currentObj);
+                        //Object.assign(jsonPrefLabel, currentObj)
                         break;
                     }
                 }
@@ -99,27 +124,29 @@ export class SkosMethods {
         broaderURLs: string[],
         narrowerURLs: string[],
         relatedURLs: string[]
-    ): prefLabelToRelations {
-        let currentObj: prefLabelToRelations = {};
+    ): headings {
+        //@ts-ignore
+        let currentObj: headings = {};
         //@ts-expect-error
-        let reducedBroaderURLs : string[] = broaderURLs.map(url => {
-            return url.split('/').last()
-        })
+        let reducedBroaderURLs: string[] = broaderURLs.map((url) => {
+            return url.split('/').last();
+        });
         //@ts-expect-error
-        let reducedNarrowerURLs: string[] = narrowerURLs.map(url => {
-            return url.split('/').last()
-        })
+        let reducedNarrowerURLs: string[] = narrowerURLs.map((url) => {
+            return url.split('/').last();
+        });
         //@ts-expect-error
-        let reducedRelatedURLs: string[] = relatedURLs.map(url => {
-            return url.split('/').last()
-        })
+        let reducedRelatedURLs: string[] = relatedURLs.map((url) => {
+            return url.split('/').last();
+        });
         //@ts-expect-error
-        let reducedUri: string = uri.split('/').last()
+        let reducedUri: string = uri.split('/').last();
         if (altLabel !== '') {
             if (broaderURLs.length > 0) {
                 if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             bt: reducedBroaderURLs,
@@ -129,7 +156,8 @@ export class SkosMethods {
                     }
                 } else if (narrowerURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             bt: reducedBroaderURLs,
@@ -138,7 +166,8 @@ export class SkosMethods {
                     }
                 } else if (relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             bt: reducedBroaderURLs,
@@ -147,7 +176,8 @@ export class SkosMethods {
                     }
                 } else {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             bt: reducedBroaderURLs,
@@ -157,7 +187,8 @@ export class SkosMethods {
             } else if (narrowerURLs.length > 0) {
                 if (relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             nt: reducedNarrowerURLs,
@@ -166,7 +197,8 @@ export class SkosMethods {
                     }
                 } else {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             aL: altLabel,
                             nt: reducedNarrowerURLs,
@@ -174,13 +206,15 @@ export class SkosMethods {
                     }
                 }
             } else if (relatedURLs.length > 0) {
-                currentObj[prefLabel] = {
+                currentObj = {
+                    pL: prefLabel,
                     uri: reducedUri,
                     aL: altLabel,
                     rt: narrowerURLs,
                 };
             } else {
-                currentObj[prefLabel] = {
+                currentObj = {
+                    pL: prefLabel,
                     uri: reducedUri,
                     aL: altLabel,
                 };
@@ -189,7 +223,8 @@ export class SkosMethods {
             if (broaderURLs.length > 0) {
                 if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             bt: reducedBroaderURLs,
                             nt: reducedNarrowerURLs,
@@ -198,7 +233,8 @@ export class SkosMethods {
                     }
                 } else if (narrowerURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             bt: reducedBroaderURLs,
                             nt: reducedNarrowerURLs,
@@ -206,7 +242,8 @@ export class SkosMethods {
                     }
                 } else if (relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             bt: reducedBroaderURLs,
                             rt: reducedRelatedURLs,
@@ -214,7 +251,8 @@ export class SkosMethods {
                     }
                 } else {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             bt: reducedBroaderURLs,
                         };
@@ -223,7 +261,8 @@ export class SkosMethods {
             } else if (narrowerURLs.length > 0) {
                 if (relatedURLs.length > 0) {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             nt: reducedNarrowerURLs,
                             rt: reducedRelatedURLs,
@@ -231,19 +270,22 @@ export class SkosMethods {
                     }
                 } else {
                     {
-                        currentObj[prefLabel] = {
+                        currentObj = {
+                            pL: prefLabel,
                             uri: reducedUri,
                             nt: reducedNarrowerURLs,
                         };
                     }
                 }
             } else if (relatedURLs.length > 0) {
-                currentObj[prefLabel] = {
+                currentObj = {
+                    pL: prefLabel,
                     uri: reducedUri,
                     rt: narrowerURLs,
                 };
             } else {
-                currentObj[prefLabel] = {
+                currentObj = {
+                    pL: prefLabel,
                     uri: reducedUri,
                 };
             }
@@ -269,5 +311,4 @@ export class SkosMethods {
         }
         return urls;
     }
-
 }

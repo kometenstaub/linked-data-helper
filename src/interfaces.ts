@@ -10,11 +10,12 @@ export interface LiDaHeSettings {
 
 
 
-export interface prefLabelToRelations {
-    [prefLabel: string ] : headings
-}
+// export interface prefLabelToRelations {
+//     [prefLabel: string ] : headings
+// }
 
 export interface headings {
+    pL: string;
     uri: string;
     aL?: string; //altLabel
 	bt?: string[]; //broader
