@@ -1,10 +1,6 @@
 import { App, FileSystemAdapter, Notice } from 'obsidian';
 import type LinkeDataHelperPlugin from '../main';
-import type {
-    Graph,
-    headings,
-    LcshInterface,
-} from '../interfaces';
+import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
 import { parse } from 'ndjson';
 
@@ -27,7 +23,7 @@ export class SkosMethods {
             throw new Error('Cannot determine base path.');
         }
         // relative path
-        relativePath = `${this.app.vault.configDir}/plugins/linked-data-helper/${fileName}`;
+        relativePath = `${this.app.vault.configDir}/plugins/linked-data-vocabularies/${fileName}`;
         // absolute path
         return `${basePath}/${relativePath}`;
     }
@@ -54,12 +50,15 @@ export class SkosMethods {
     ]
  */
 
-    public readStream() {
+    public convertLcshSkosNdjson(outputPath?: string) {
         let jsonPrefLabel: headings[] = [];
         let jsonUriToPrefLabel = {};
-        const path = this.getAbsolutePath('lcsh.skos.ndjson');
-        //this.pushHeadings = this.pushHeadings.bind(this)
-        createReadStream(path)
+        const inputPath = this.plugin.settings.lcshInputPath;
+        let newOutputPath = '';
+        if (outputPath) {
+            newOutputPath = outputPath;
+        }
+        createReadStream(inputPath)
             .pipe(parse())
             .on('data', (obj: LcshInterface) => {
                 //@ts-ignore
@@ -105,15 +104,22 @@ export class SkosMethods {
                 }
             })
             .on('end', () => {
-                const jsonPrefPath = this.getAbsolutePath(
-                    'prefToRelations.json'
-                );
+                let jsonPrefPath = '';
+                if (newOutputPath === '') {
+                    jsonPrefPath = this.getAbsolutePath('lcshSuggester.json');
+                } else {
+                    jsonPrefPath = newOutputPath + 'lcshSuggester.json';
+                }
+
                 writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-                const jsonUriPath = this.getAbsolutePath('uriToPrefLabel.json');
+                let jsonUriPath = '';
+                if (newOutputPath === '') {
+                    jsonUriPath = this.getAbsolutePath('uriToPrefLabel.json');
+                } else {
+                    jsonUriPath = newOutputPath + 'uriToPrefLabel.json';
+                }
                 writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                new Notice(
-                    'Both JSON files have been written to the "linked-data-helper" plugin folder.'
-                );
+                new Notice('Both JSON files have been written.');
             });
     }
 

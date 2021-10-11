@@ -1,14 +1,12 @@
-
 /**
  * Represents the data which the Suggest2 Library of Congress API returns
  * {@link https://id.loc.gov/techcenter/searching.html}
  */
 
 export interface LiDaHeSettings {
-
+    lcshInputPath: string;
+    lcshOutputPath: string;
 }
-
-
 
 // export interface prefLabelToRelations {
 //     [prefLabel: string ] : headings
@@ -18,25 +16,20 @@ export interface headings {
     pL: string;
     uri: string;
     aL?: string; //altLabel
-	bt?: string[]; //broader
-	nt?: string[]; // narrower
-	rt?: string[]; //related
+    bt?: string[]; //broader
+    nt?: string[]; // narrower
+    rt?: string[]; //related
 }
-
-
-
-
 
 declare module 'obsidian' {
-	interface App {
-		commands: {
-			addCommand: any;
-			removeCommand: any;
-		};
-        settings: LiDaHeSettings
-	}
+    interface App {
+        commands: {
+            addCommand: any;
+            removeCommand: any;
+        };
+        settings: LiDaHeSettings;
+    }
 }
-
 
 // prettier-ignore
 export interface LcshInterface {
@@ -101,4 +94,3 @@ export interface Skos {
 export enum Language {
     En = "en",
 }
-

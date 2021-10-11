@@ -4,7 +4,10 @@ import { SkosMethods } from './methods/methods-loc';
 import type { LiDaHeSettings } from './interfaces';
 import {} from './methods/methods-loc';
 
-const DEFAULT_SETTINGS: LiDaHeSettings = {};
+const DEFAULT_SETTINGS: LiDaHeSettings = {
+    lcshInputPath: '',
+    lcshOutputPath: '',
+};
 
 export default class LinkeDataHelperPlugin extends Plugin {
     methods_loc = new SkosMethods(this.app, this);
@@ -19,7 +22,7 @@ export default class LinkeDataHelperPlugin extends Plugin {
             id: 'writeJSON',
             name: 'write json',
             callback: () => {
-                this.methods_loc.readStream();
+                this.methods_loc.convertLcshSkosNdjson();
             },
         });
 
