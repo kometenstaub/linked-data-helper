@@ -27,14 +27,36 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             text: 'LCSH Settings',
         });
 
-        containerEl.createDiv({
-            text: `Please download LC Subject Headings (LCSH) (SKOS/RDF only) from https://id.loc.gov/download/ and \
-			unzip it.`,
-        });
-        containerEl.createEl('a', {
-            href: 'https://id.loc.gov/download/',
-            text: 'Click this link to get to the site mentioned above.',
-        });
+        const linkDiv = containerEl.createDiv()
+
+        linkDiv.appendChild(
+            createFragment((frag) => {
+                frag.appendText(
+                    'Please download the '
+                );
+                frag.createEl('em', {
+                    text: 'LC Subject Headings (LCSH) (SKOS/RDF only)'
+                })
+                frag.appendText(' file (in ')
+                frag.createEl('em', {
+                    text: 'ndjson'
+                })
+                frag.appendText(' format) from ')
+                frag.createEl(
+                    'a',
+                    {
+                        text: 'here',
+                        href: 'https://id.loc.gov/download/',
+                    },
+                    (a) => {
+                        a.setAttr('target', '_blank');
+                    }
+                );
+                frag.appendText(' and unzip it.');
+            })
+        );
+        
+        containerEl.createEl('br')
 
         new Setting(containerEl)
             .setName('Path of the extracted zip file')
