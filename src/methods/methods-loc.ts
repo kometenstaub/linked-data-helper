@@ -53,7 +53,14 @@ export class SkosMethods {
     public convertLcshSkosNdjson(outputPath?: string) {
         let jsonPrefLabel: headings[] = [];
         let jsonUriToPrefLabel = {};
-        const inputPath = this.plugin.settings.lcshInputPath;
+        let inputPath = '';
+        if (this.plugin.settings.lcshInputPath) {
+            inputPath = this.plugin.settings.lcshInputPath
+        } else {
+            const text = 'Please specify an input path for LCSH in the settings.'
+            new Notice(text)
+            throw Error(text)
+        }
         let newOutputPath = '';
         if (outputPath) {
             newOutputPath = outputPath;
