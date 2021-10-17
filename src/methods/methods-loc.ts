@@ -52,14 +52,16 @@ export class SkosMethods {
 
     public convertLcshSkosNdjson(outputPath?: string) {
         let jsonPrefLabel: headings[] = [];
+        let subdivisions: headings[] = [];
         let jsonUriToPrefLabel = {};
         let inputPath = '';
         if (this.plugin.settings.lcshInputPath) {
-            inputPath = this.plugin.settings.lcshInputPath
+            inputPath = this.plugin.settings.lcshInputPath;
         } else {
-            const text = 'Please specify an input path for LCSH in the settings.'
-            new Notice(text)
-            throw Error(text)
+            const text =
+                'Please specify an input path for LCSH in the settings.';
+            new Notice(text);
+            throw Error(text);
         }
         let newOutputPath = '';
         if (outputPath) {
@@ -104,7 +106,25 @@ export class SkosMethods {
                             narrowerURLs,
                             relatedURLs
                         );
-                        jsonPrefLabel.push(currentObj);
+                        if (element['skos:note']) {
+                            let note = element['skos:note'];
+                            if (Array.isArray(note)) {
+                                let newNote = '';
+                                for (let el of note) {
+                                    newNote += el;
+                                }
+                                note = newNote;
+                            }
+                            currentObj.note = note;
+                            if (note.includes('Use as a')) {
+                                subdivisions.push(currentObj);
+                            } else {
+                                jsonPrefLabel.push(currentObj);
+                            }
+                        } else {
+                            jsonPrefLabel.push(currentObj);
+                        }
+
                         //Object.assign(jsonPrefLabel, currentObj)
                         break;
                     }
@@ -117,8 +137,8 @@ export class SkosMethods {
                 } else {
                     jsonPrefPath = newOutputPath + 'lcshSuggester.json';
                 }
-
                 writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+
                 let jsonUriPath = '';
                 if (newOutputPath === '') {
                     jsonUriPath = this.getAbsolutePath('uriToPrefLabel.json');
@@ -126,7 +146,17 @@ export class SkosMethods {
                     jsonUriPath = newOutputPath + 'uriToPrefLabel.json';
                 }
                 writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                new Notice('Both JSON files have been written.');
+
+                let jsonSubdivPath = '';
+                if (newOutputPath === '') {
+                    jsonSubdivPath = this.getAbsolutePath(
+                        'subdivSuggester.json'
+                    );
+                } else {
+                    jsonSubdivPath = newOutputPath + 'subdivSuggester.json';
+                }
+                writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
+                new Notice('The three JSON files have been written.');
             });
     }
 

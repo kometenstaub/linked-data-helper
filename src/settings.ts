@@ -92,7 +92,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             );
 
         new Setting(containerEl)
-            .setName('Perform the conversion.')
+            .setName('Perform the conversion')
             .setDesc(
                 'When clicked, it will generate the two JSON files that the \
 			Linked Data Vocabularies plugin needs to work with LCSH.'

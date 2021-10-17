@@ -19,6 +19,7 @@ export interface headings {
     bt?: string[]; //broader
     nt?: string[]; // narrower
     rt?: string[]; //related
+    note?: string;
 }
 
 declare module 'obsidian' {
@@ -63,7 +64,7 @@ export interface Graph {
     "skos:editorial"?:                                              string;
     "skos:inScheme"?:                                               CSCreatorName;
     "skos:narrower"?:                                               CSCreatorName[] | CSCreatorName;
-    "skos:note"?:                                                   string;
+    "skos:note"?:                                                   string | string[];
     "skos:related"?:                                                CSCreatorName[] | CSCreatorName;
     "skosxl:altLabel"?:                                             CSCreatorName;
     "cs:changeReason"?:                                             string;
