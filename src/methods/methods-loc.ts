@@ -141,19 +141,19 @@ export class SkosMethods {
 
                 let jsonUriPath = '';
                 if (newOutputPath === '') {
-                    jsonUriPath = this.getAbsolutePath('uriToPrefLabel.json');
+                    jsonUriPath = this.getAbsolutePath('lcshUriToPrefLabel.json');
                 } else {
-                    jsonUriPath = newOutputPath + 'uriToPrefLabel.json';
+                    jsonUriPath = newOutputPath + 'lcshUriToPrefLabel.json';
                 }
                 writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
 
                 let jsonSubdivPath = '';
                 if (newOutputPath === '') {
                     jsonSubdivPath = this.getAbsolutePath(
-                        'subdivSuggester.json'
+                        'lcshSubdivSuggester.json'
                     );
                 } else {
-                    jsonSubdivPath = newOutputPath + 'subdivSuggester.json';
+                    jsonSubdivPath = newOutputPath + 'lcshSubdivSuggester.json';
                 }
                 writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
                 new Notice('The three JSON files have been written.');
