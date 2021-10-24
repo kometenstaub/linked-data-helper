@@ -35,7 +35,7 @@ declare module 'obsidian' {
             fileName: string,
             extension: string,
             currentFile?: TFile
-        ) => string;
+        ) => Promise<string>;
         config: {
             attachmentFolderPath: string;
         };

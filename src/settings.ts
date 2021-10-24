@@ -1,6 +1,5 @@
 import {
     App,
-    normalizePath,
     Notice,
     PluginSettingTab,
     Setting,
@@ -70,7 +69,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     .setPlaceholder('/home/user/Downloads/lcsh.skos.ndjson')
                     .setValue(this.plugin.settings.lcshInputPath)
                     .onChange(async (value) => {
-                        this.plugin.settings.lcshInputPath = value.trim()
+                        this.plugin.settings.lcshInputPath = value.trim();
                         await this.plugin.saveSettings();
                     })
             );
@@ -113,9 +112,8 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     .setPlaceholder('')
                     .setValue(this.plugin.settings.lcshOutputPath)
                     .onChange(async (value) => {
-                        this.plugin.settings.lcshOutputPath = normalizePath(
-                            value.trim()
-                        );
+                        this.plugin.settings.lcshOutputPath = value.trim(); //normalizePath(
+                        //);
                         await this.plugin.saveSettings();
                     })
             );

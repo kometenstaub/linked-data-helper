@@ -3,6 +3,7 @@ import type LinkeDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
 import { parse } from 'ndjson';
+import { normalize } from 'path';
 
 export class SkosMethods {
     app: App;
@@ -13,7 +14,7 @@ export class SkosMethods {
         this.plugin = plugin;
     }
 
-    getAbsolutePath(fileName: string): string {
+    async getAbsolutePath(fileName: string): Promise<string> {
         let basePath;
         //let relativePath;
         // base path
@@ -24,12 +25,15 @@ export class SkosMethods {
         }
         // relative path
         //relativePath = `${this.app.vault.configDir}/plugins/linked-data-vocabularies/${fileName}`;
-        const attachmentPath = this.app.vault.getAvailablePathForAttachments(
-            fileName,
-            'json'
-        );
+        let attachmentPath =
+            await this.app.vault.getAvailablePathForAttachments(
+                fileName,
+                'json'
+            );
+        // overwrite file
+        attachmentPath = attachmentPath.replace(/(.+?)(?: 1)(\.json)/, '$1$2');
         // absolute path
-        return normalizePath(`${basePath}/${attachmentPath}`);
+        return normalize(`${basePath}/${attachmentPath}`);
     }
 
     public convertLcshSkosNdjson(outputPath?: string) {
@@ -114,36 +118,53 @@ export class SkosMethods {
             })
             .on('end', () => {
                 let jsonPrefPath = '';
+                let jsonUriPath = '';
+                let jsonSubdivPath = '';
+                const { adapter } = this.app.vault;
                 if (newOutputPath === '') {
-                    jsonPrefPath = this.getAbsolutePath('lcshSuggester');
+                    const attachmentFolder = normalizePath(
+                        this.app.vault.config.attachmentFolderPath +
+                            '/' +
+                            'linked-data-vocabularies/'
+                    );
+                    (async () => {
+                        const isDir = await adapter.exists(attachmentFolder);
+                        if (!isDir) {
+                            adapter.mkdir(attachmentFolder);
+                        }
+                    })();
+                    // prettier-ignore
+                    (async () => {
+                        jsonPrefPath = await this.getAbsolutePath(
+                            'linked-data-vocabularies/lcshSuggester'
+                        );
+                        jsonUriPath = await this.getAbsolutePath(
+                            'linked-data-vocabularies/lcshUriToPrefLabel'
+                        );
+                        jsonSubdivPath = await this.getAbsolutePath(
+                            'linked-data-vocabularies/lcshSubdivSuggester'
+                      );
+                        writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                        writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                        writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
+                    console.log(jsonPrefPath, jsonUriPath, jsonSubdivPath);
+                    })();
                 } else {
-                    jsonPrefPath = normalizePath(
+                    jsonPrefPath = normalize(
                         newOutputPath + '/' + 'lcshSuggester.json'
                     );
-                }
-                writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-
-                let jsonUriPath = '';
-                if (newOutputPath === '') {
-                    jsonUriPath = this.getAbsolutePath('lcshUriToPrefLabel');
-                } else {
-                    jsonUriPath = normalizePath(
+                    jsonUriPath = normalize(
                         newOutputPath + '/' + 'lcshUriToPrefLabel.json'
                     );
-                }
-                writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-
-                let jsonSubdivPath = '';
-                if (newOutputPath === '') {
-                    jsonSubdivPath = this.getAbsolutePath(
-                        'lcshSubdivSuggester'
-                    );
-                } else {
-                    jsonSubdivPath = normalizePath(
+                    jsonSubdivPath = normalize(
                         newOutputPath + '/' + 'lcshSubdivSuggester.json'
                     );
+                    writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                    // prettier-ignore
+                    writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                    writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
                 }
-                writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
+
                 new Notice('The three JSON files have been written.');
             });
     }
