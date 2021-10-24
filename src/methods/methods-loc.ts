@@ -147,7 +147,6 @@ export class SkosMethods {
                         writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
                         writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
                         writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
-                    console.log(jsonPrefPath, jsonUriPath, jsonSubdivPath);
                     })();
                 } else {
                     jsonPrefPath = normalize(
