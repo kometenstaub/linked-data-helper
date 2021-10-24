@@ -30,6 +30,16 @@ declare module 'obsidian' {
         };
         settings: LiDaHeSettings;
     }
+    interface Vault {
+        getAvailablePathForAttachments: (
+            fileName: string,
+            extension: string,
+            currentFile?: TFile
+        ) => string;
+        config: {
+            attachmentFolderPath: string;
+        };
+    }
 }
 
 // prettier-ignore

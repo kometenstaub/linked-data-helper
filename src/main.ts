@@ -1,8 +1,7 @@
-import { Command, Editor, MarkdownView, Plugin } from 'obsidian';
+import { Plugin } from 'obsidian';
 import LiDaHeSettingsTab from './settings';
 import { SkosMethods } from './methods/methods-loc';
 import type { LiDaHeSettings } from './interfaces';
-import {} from './methods/methods-loc';
 
 const DEFAULT_SETTINGS: LiDaHeSettings = {
     lcshInputPath: '',
@@ -14,7 +13,7 @@ export default class LinkeDataHelperPlugin extends Plugin {
     settings!: LiDaHeSettings;
 
     async onload() {
-        console.log('loading Linked Data Vocabularies plugin');
+        console.log('loading Linked Data Helper plugin');
 
         await this.loadSettings();
 
@@ -30,7 +29,7 @@ export default class LinkeDataHelperPlugin extends Plugin {
     }
 
     onunload() {
-        console.log('unloading Linked Data Vocabularies plugin');
+        console.log('unloading Linked Data Helper plugin');
     }
 
     async loadSettings() {

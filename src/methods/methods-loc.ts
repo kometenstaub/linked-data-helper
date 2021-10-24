@@ -1,4 +1,4 @@
-import { App, FileSystemAdapter, Notice } from 'obsidian';
+import { App, FileSystemAdapter, normalizePath, Notice } from 'obsidian';
 import type LinkeDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
@@ -15,7 +15,7 @@ export class SkosMethods {
 
     getAbsolutePath(fileName: string): string {
         let basePath;
-        let relativePath;
+        //let relativePath;
         // base path
         if (this.app.vault.adapter instanceof FileSystemAdapter) {
             basePath = this.app.vault.adapter.getBasePath();
@@ -23,32 +23,14 @@ export class SkosMethods {
             throw new Error('Cannot determine base path.');
         }
         // relative path
-        relativePath = `${this.app.vault.configDir}/plugins/linked-data-vocabularies/${fileName}`;
+        //relativePath = `${this.app.vault.configDir}/plugins/linked-data-vocabularies/${fileName}`;
+        const attachmentPath = this.app.vault.getAvailablePathForAttachments(
+            fileName,
+            'json'
+        );
         // absolute path
-        return `${basePath}/${relativePath}`;
+        return normalizePath(`${basePath}/${attachmentPath}`);
     }
-
-    /**
- * maybe I need to change the approach for the fuzzy suggester and do it like TfTHacker does in Wordnet
- * That would meand to have a structure like this:
- *[
-        {
-           "SearchTerm": "'hood",
-           "Term": "'hood",
-           "Definition": "(slang) a neighborhood  "
-        },
-        {
-           "SearchTerm": ".22caliber",
-           "Term": ".22_caliber",
-           "Definition": "of or relating to the bore of a gun (or its ammunition) that measures twenty-two hundredths of a        n inch in diameter; \"a .22 caliber pistol\"  "
-        },
-        {
-           "SearchTerm": ".38caliber",
-           "Term": ".38_caliber",
-           "Definition": "of or relating to the bore of a gun (or its ammunition) that measures thirty-eight hundredths of         an inch in diameter; \"a .38 caliber shell\"  "
-        }
-    ]
- */
 
     public convertLcshSkosNdjson(outputPath?: string) {
         let jsonPrefLabel: headings[] = [];
@@ -133,27 +115,33 @@ export class SkosMethods {
             .on('end', () => {
                 let jsonPrefPath = '';
                 if (newOutputPath === '') {
-                    jsonPrefPath = this.getAbsolutePath('lcshSuggester.json');
+                    jsonPrefPath = this.getAbsolutePath('lcshSuggester');
                 } else {
-                    jsonPrefPath = newOutputPath + 'lcshSuggester.json';
+                    jsonPrefPath = normalizePath(
+                        newOutputPath + '/' + 'lcshSuggester.json'
+                    );
                 }
                 writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
 
                 let jsonUriPath = '';
                 if (newOutputPath === '') {
-                    jsonUriPath = this.getAbsolutePath('lcshUriToPrefLabel.json');
+                    jsonUriPath = this.getAbsolutePath('lcshUriToPrefLabel');
                 } else {
-                    jsonUriPath = newOutputPath + 'lcshUriToPrefLabel.json';
+                    jsonUriPath = normalizePath(
+                        newOutputPath + '/' + 'lcshUriToPrefLabel.json'
+                    );
                 }
                 writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
 
                 let jsonSubdivPath = '';
                 if (newOutputPath === '') {
                     jsonSubdivPath = this.getAbsolutePath(
-                        'lcshSubdivSuggester.json'
+                        'lcshSubdivSuggester'
                     );
                 } else {
-                    jsonSubdivPath = newOutputPath + 'lcshSubdivSuggester.json';
+                    jsonSubdivPath = normalizePath(
+                        newOutputPath + '/' + 'lcshSubdivSuggester.json'
+                    );
                 }
                 writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
                 new Notice('The three JSON files have been written.');

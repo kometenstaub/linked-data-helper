@@ -1,4 +1,10 @@
-import { App, Notice, PluginSettingTab, Setting } from 'obsidian';
+import {
+    App,
+    normalizePath,
+    Notice,
+    PluginSettingTab,
+    Setting,
+} from 'obsidian';
 import type LinkeDataHelperPlugin from './main';
 
 export default class LiDaHeSettingsTab extends PluginSettingTab {
@@ -27,21 +33,19 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             text: 'LCSH Settings',
         });
 
-        const linkDiv = containerEl.createDiv()
+        const linkDiv = containerEl.createDiv();
 
         linkDiv.appendChild(
             createFragment((frag) => {
-                frag.appendText(
-                    'Please download the '
-                );
+                frag.appendText('Please download the ');
                 frag.createEl('em', {
-                    text: 'LC Subject Headings (LCSH) (SKOS/RDF only)'
-                })
-                frag.appendText(' file (in ')
+                    text: 'LC Subject Headings (LCSH) (SKOS/RDF only)',
+                });
+                frag.appendText(' file (in ');
                 frag.createEl('em', {
-                    text: 'ndjson'
-                })
-                frag.appendText(' format) from ')
+                    text: 'ndjson',
+                });
+                frag.appendText(' format) from ');
                 frag.createEl(
                     'a',
                     {
@@ -55,20 +59,18 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                 frag.appendText(' and unzip it.');
             })
         );
-        
-        containerEl.createEl('br')
+
+        containerEl.createEl('br');
 
         new Setting(containerEl)
             .setName('Path of the extracted zip file')
-            .setDesc(
-                'Please input the absolute path of the file you extracted.'
-            )
+            .setDesc('Please input the absolute path to the extracted file.')
             .addText((text) =>
                 text
                     .setPlaceholder('/home/user/Downloads/lcsh.skos.ndjson')
                     .setValue(this.plugin.settings.lcshInputPath)
                     .onChange(async (value) => {
-                        this.plugin.settings.lcshInputPath = value;
+                        this.plugin.settings.lcshInputPath = value.trim()
                         await this.plugin.saveSettings();
                     })
             );
@@ -76,17 +78,44 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
         new Setting(containerEl)
             .setName('Folder where the two generated files should be saved')
             .setDesc(
-                'Leave empty to place them in the folder of the Linked Data Vocabularies plugin.\
-				For that to work, this plugin already has to be installed.\
-				Please make sure to include the trailing slash (MacOS/Linux) or backslash (Windows) if\
-				you do change the output folder.'
+                createFragment((frag) => {
+                    frag.appendText(
+                        "Leave empty to save the files automatically in the subfolder 'linked-data-vocabularies' in your attachments folder."
+                    );
+                    frag.createEl('br');
+                    frag.createEl('b', { text: 'Note: ' });
+                    frag.appendText(
+                        'This will only work when your attachment folder is your vault (default) or when it is a specific folder.'
+                    );
+                    //frag.appendChild(bolded)
+                    //const not = createEl('em', {text: 'not'})
+                    //bolded.appendChild(not)
+                    //bolded.appendText(' work if you have selected ')
+                    //bolded.appendChild(createEl('em', {text: '"Same folder as current file."'}))
+                    frag.createEl('br');
+                    if (
+                        this.app.vault.config.attachmentFolderPath.startsWith(
+                            './'
+                        )
+                    ) {
+                        frag.createEl('b', {
+                            text: 'In your case, you need to specify in which folder the files shall be saved.',
+                        });
+                    } else {
+                        frag.appendText(
+                            "In your case, you don't need to input a path."
+                        );
+                    }
+                })
             )
             .addText((text) =>
                 text
                     .setPlaceholder('')
                     .setValue(this.plugin.settings.lcshOutputPath)
                     .onChange(async (value) => {
-                        this.plugin.settings.lcshOutputPath = value;
+                        this.plugin.settings.lcshOutputPath = normalizePath(
+                            value.trim()
+                        );
                         await this.plugin.saveSettings();
                     })
             );
