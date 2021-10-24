@@ -2,8 +2,8 @@ import { App, FileSystemAdapter, normalizePath, Notice } from 'obsidian';
 import type LinkeDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
-import { parse } from 'ndjson';
 import { normalize } from 'path';
+import split2 from 'split2';
 
 export class SkosMethods {
     app: App;
@@ -54,7 +54,7 @@ export class SkosMethods {
             newOutputPath = outputPath;
         }
         createReadStream(inputPath)
-            .pipe(parse())
+            .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
                 //@ts-ignore
                 let currentObj: headings = {};
