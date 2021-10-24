@@ -58,6 +58,7 @@ export class SkosMethods {
             .on('data', (obj: LcshInterface) => {
                 //@ts-ignore
                 let currentObj: headings = {};
+                const id = obj['@context'].about;
                 for (let element of obj['@graph']) {
                     let broaderURLs: string[] = [];
                     let narrowerURLs: string[] = [];
@@ -69,10 +70,17 @@ export class SkosMethods {
                         element['skos:inScheme']?.['@id'] ===
                         'http://id.loc.gov/authorities/subjects'
                     ) {
+                        let uri = '';
                         if (element['skos:prefLabel']['@language'] === 'en') {
-                            prefLabel = element['skos:prefLabel']['@value'];
+                            uri = element['@id'];
+                            const currentPrefLabel =
+                                element['skos:prefLabel']['@value'];
+                            if (uri === id) {
+                                prefLabel = currentPrefLabel;
+                            } else {
+                                continue;
+                            }
                         }
-                        const uri: string = element['@id'];
                         //@ts-expect-error
                         const endUri: string = uri.split('/').last();
                         Object.assign(jsonUriToPrefLabel, {
@@ -107,6 +115,21 @@ export class SkosMethods {
                             } else {
                                 jsonPrefLabel.push(currentObj);
                             }
+                            //} else if (element['skos:editorial']) {
+                            //  let editorial = element['skos:editorial'];
+                            //  if (Array.isArray(editorial)) {
+                            //      let neweditorial = '';
+                            //      for (let el of editorial) {
+                            //          neweditorial += el;
+                            //      }
+                            //      editorial = neweditorial;
+                            //  }
+                            //  currentObj.note = editorial;
+                            //  if (editorial.startsWith('subdivision')) {
+                            //      subdivisions.push(currentObj)
+                            //  } else {
+                            //      jsonPrefLabel.push(currentObj)
+                            //  }
                         } else {
                             jsonPrefLabel.push(currentObj);
                         }
@@ -178,18 +201,22 @@ export class SkosMethods {
     ): headings {
         //@ts-ignore
         let currentObj: headings = {};
-        //@ts-expect-error
-        let reducedBroaderURLs: string[] = broaderURLs.map((url) => {
-            return url.split('/').last();
-        });
-        //@ts-expect-error
-        let reducedNarrowerURLs: string[] = narrowerURLs.map((url) => {
-            return url.split('/').last();
-        });
-        //@ts-expect-error
-        let reducedRelatedURLs: string[] = relatedURLs.map((url) => {
-            return url.split('/').last();
-        });
+        let reducedBroaderURLs: string[] = [];
+        for (let url of broaderURLs) {
+            //@ts-expect-error
+            reducedBroaderURLs.push(url.split('/').last());
+        }
+        let reducedNarrowerURLs: string[] = [];
+        for (let url of narrowerURLs) {
+            //@ts-expect-error
+            reducedNarrowerURLs.push(url.split('/').last());
+        }
+        let reducedRelatedURLs: string[] = [];
+        for (let url of relatedURLs) {
+            //@ts-expect-error
+            reducedRelatedURLs.push(url.split('/').last());
+        }
+
         //@ts-expect-error
         let reducedUri: string = uri.split('/').last();
         if (altLabel !== '') {
@@ -261,7 +288,7 @@ export class SkosMethods {
                     pL: prefLabel,
                     uri: reducedUri,
                     aL: altLabel,
-                    rt: narrowerURLs,
+                    rt: reducedRelatedURLs,
                 };
             } else {
                 currentObj = {
@@ -332,7 +359,7 @@ export class SkosMethods {
                 currentObj = {
                     pL: prefLabel,
                     uri: reducedUri,
-                    rt: narrowerURLs,
+                    rt: reducedRelatedURLs,
                 };
             } else {
                 currentObj = {
