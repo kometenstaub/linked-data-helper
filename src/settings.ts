@@ -21,7 +21,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
         containerEl.empty();
 
         containerEl.createEl('h2', {
-            text: 'Linked Data Vocabularies Helper Settings',
+            text: 'Linked Data Helper Settings',
         });
 
         containerEl.createEl('h3', {
@@ -55,7 +55,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                         a.setAttr('target', '_blank');
                     }
                 );
-                frag.appendText(' and unzip it.');
+                frag.appendText(' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.)');
             })
         );
 
@@ -75,7 +75,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             );
 
         new Setting(containerEl)
-            .setName('Folder where the two generated files should be saved')
+            .setName('Folder where the three generated JSON files should be saved')
             .setDesc(
                 createFragment((frag) => {
                     frag.appendText(
@@ -86,6 +86,8 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     frag.appendText(
                         'This will only work when your attachment folder is your vault (default) or when it is a specific folder.'
                     );
+                    frag.createEl('br');
+                    frag.appendText('The path must be absolute.')
                     //frag.appendChild(bolded)
                     //const not = createEl('em', {text: 'not'})
                     //bolded.appendChild(not)
@@ -121,7 +123,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
         new Setting(containerEl)
             .setName('Perform the conversion')
             .setDesc(
-                'When clicked, it will generate the two JSON files that the \
+                'When clicked, it will generate the three JSON files that the \
 			Linked Data Vocabularies plugin needs to work with LCSH.'
             )
             .addButton((button) => {
