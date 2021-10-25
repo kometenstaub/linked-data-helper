@@ -184,7 +184,6 @@ export class SkosMethods {
                         newOutputPath + '/' + 'lcshSubdivSuggester.json'
                     );
                     writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-                    console.log(jsonPrefLabel.length);
                     // prettier-ignore
                     writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
                     writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));

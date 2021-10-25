@@ -17,13 +17,6 @@ export default class LinkeDataHelperPlugin extends Plugin {
 
         await this.loadSettings();
 
-        this.addCommand({
-            id: 'writeJSON',
-            name: 'write json',
-            callback: () => {
-                this.methods_loc.convertLcshSkosNdjson();
-            },
-        });
 
         this.addSettingTab(new LiDaHeSettingsTab(this.app, this));
     }
