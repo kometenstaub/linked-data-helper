@@ -1,9 +1,4 @@
-import {
-    App,
-    Notice,
-    PluginSettingTab,
-    Setting,
-} from 'obsidian';
+import { App, Notice, PluginSettingTab, Setting } from 'obsidian';
 import type LinkeDataHelperPlugin from './main';
 
 export default class LiDaHeSettingsTab extends PluginSettingTab {
@@ -55,7 +50,9 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                         a.setAttr('target', '_blank');
                     }
                 );
-                frag.appendText(' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.)');
+                frag.appendText(
+                    ' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.)'
+                );
             })
         );
 
@@ -75,7 +72,9 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             );
 
         new Setting(containerEl)
-            .setName('Folder where the three generated JSON files should be saved')
+            .setName(
+                'Folder where the three generated JSON files should be saved'
+            )
             .setDesc(
                 createFragment((frag) => {
                     frag.appendText(
@@ -87,24 +86,34 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                         'This will only work when your attachment folder is your vault (default) or when it is a specific folder.'
                     );
                     frag.createEl('br');
-                    frag.appendText('The path must be absolute.')
+                    frag.appendText(
+                        'The path must be absolute and in your vault.'
+                    );
                     //frag.appendChild(bolded)
                     //const not = createEl('em', {text: 'not'})
                     //bolded.appendChild(not)
                     //bolded.appendText(' work if you have selected ')
                     //bolded.appendChild(createEl('em', {text: '"Same folder as current file."'}))
                     frag.createEl('br');
-                    if (
-                        this.app.vault.config.attachmentFolderPath.startsWith(
-                            './'
-                        )
-                    ) {
-                        frag.createEl('b', {
-                            text: 'In your case, you need to specify in which folder the files shall be saved.',
-                        });
-                    } else {
-                        frag.appendText(
-                            "In your case, you don't need to input a path."
+
+                    try {
+                        if (
+                            this.app.vault.config.attachmentFolderPath.startsWith(
+                                './'
+                            )
+                        ) {
+                            frag.createEl('b', {
+                                text: 'In your case, you need to specify in which folder the files shall be saved.',
+                            });
+                        } else {
+                            frag.appendText(
+                                "In your case, you don't need to input a path."
+                            );
+                        }
+                    } catch {
+                        // catch error 
+                        new Notice(
+                            "Please check your attachments setting under Files & Links."
                         );
                     }
                 })
