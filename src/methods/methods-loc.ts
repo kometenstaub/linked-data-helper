@@ -66,77 +66,79 @@ export class SkosMethods {
                     let prefLabel: string = '';
                     let altLabel: string = '';
 
-                    if (
-                        element['skos:inScheme']?.['@id'] ===
-                        'http://id.loc.gov/authorities/subjects'
-                    ) {
-                        let uri = '';
-                        if (element['skos:prefLabel']['@language'] === 'en') {
-                            uri = element['@id'];
-                            const currentPrefLabel =
-                                element['skos:prefLabel']['@value'];
-                            if (uri === id) {
-                                prefLabel = currentPrefLabel;
-                            } else {
-                                continue;
-                            }
+                    //if (
+                    //    element['skos:inScheme']?.['@id'] ===
+                    //    'http://id.loc.gov/authorities/subjects'
+                    //) {
+                    let uri = '';
+                    if (element['skos:prefLabel']?.['@language'] === 'en') {
+                        uri = element['@id'];
+                        const currentPrefLabel =
+                            element['skos:prefLabel']['@value'];
+                        if (uri === id) {
+                            prefLabel = currentPrefLabel;
+                        } else {
+                            continue;
                         }
-                        //@ts-expect-error
-                        const endUri: string = uri.split('/').last();
-                        Object.assign(jsonUriToPrefLabel, {
-                            [endUri]: prefLabel,
-                        });
-                        if (element['skos:altLabel']?.['@language'] === 'en') {
-                            altLabel = element['skos:altLabel']['@value'];
+                    } else {
+                        continue;
+                    }
+                    //@ts-expect-error
+                    const endUri: string = uri.split('/').last();
+                    Object.assign(jsonUriToPrefLabel, {
+                        [endUri]: prefLabel,
+                    });
+                    if (element['skos:altLabel']?.['@language'] === 'en') {
+                        altLabel = element['skos:altLabel']['@value'];
+                    }
+                    broaderURLs = this.pushHeadings(element, 'broader');
+                    narrowerURLs = this.pushHeadings(element, 'narrower');
+                    relatedURLs = this.pushHeadings(element, 'related');
+                    currentObj = this.onlyReturnFull(
+                        prefLabel,
+                        altLabel,
+                        uri,
+                        broaderURLs,
+                        narrowerURLs,
+                        relatedURLs
+                    );
+                    if (element['skos:note']) {
+                        let note = element['skos:note'];
+                        if (Array.isArray(note)) {
+                            let newNote = '';
+                            for (let el of note) {
+                                newNote += el;
+                            }
+                            note = newNote;
                         }
-                        broaderURLs = this.pushHeadings(element, 'broader');
-                        narrowerURLs = this.pushHeadings(element, 'narrower');
-                        relatedURLs = this.pushHeadings(element, 'related');
-                        currentObj = this.onlyReturnFull(
-                            prefLabel,
-                            altLabel,
-                            uri,
-                            broaderURLs,
-                            narrowerURLs,
-                            relatedURLs
-                        );
-                        if (element['skos:note']) {
-                            let note = element['skos:note'];
-                            if (Array.isArray(note)) {
-                                let newNote = '';
-                                for (let el of note) {
-                                    newNote += el;
-                                }
-                                note = newNote;
-                            }
-                            currentObj.note = note;
-                            if (note.includes('Use as a')) {
-                                subdivisions.push(currentObj);
-                            } else {
-                                jsonPrefLabel.push(currentObj);
-                            }
-                            //} else if (element['skos:editorial']) {
-                            //  let editorial = element['skos:editorial'];
-                            //  if (Array.isArray(editorial)) {
-                            //      let neweditorial = '';
-                            //      for (let el of editorial) {
-                            //          neweditorial += el;
-                            //      }
-                            //      editorial = neweditorial;
-                            //  }
-                            //  currentObj.note = editorial;
-                            //  if (editorial.startsWith('subdivision')) {
-                            //      subdivisions.push(currentObj)
-                            //  } else {
-                            //      jsonPrefLabel.push(currentObj)
-                            //  }
+                        currentObj.note = note;
+                        if (note.includes('Use as a')) {
+                            subdivisions.push(currentObj);
                         } else {
                             jsonPrefLabel.push(currentObj);
                         }
-
-                        //Object.assign(jsonPrefLabel, currentObj)
-                        break;
+                        //} else if (element['skos:editorial']) {
+                        //  let editorial = element['skos:editorial'];
+                        //  if (Array.isArray(editorial)) {
+                        //      let neweditorial = '';
+                        //      for (let el of editorial) {
+                        //          neweditorial += el;
+                        //      }
+                        //      editorial = neweditorial;
+                        //  }
+                        //  currentObj.note = editorial;
+                        //  if (editorial.startsWith('subdivision')) {
+                        //      subdivisions.push(currentObj)
+                        //  } else {
+                        //      jsonPrefLabel.push(currentObj)
+                        //  }
+                    } else {
+                        jsonPrefLabel.push(currentObj);
                     }
+
+                    //Object.assign(jsonPrefLabel, currentObj)
+                    break;
+                    //}
                 }
             })
             .on('end', () => {
@@ -182,6 +184,7 @@ export class SkosMethods {
                         newOutputPath + '/' + 'lcshSubdivSuggester.json'
                     );
                     writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                    console.log(jsonPrefLabel.length);
                     // prettier-ignore
                     writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
                     writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
