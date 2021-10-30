@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/kometenstaub/linked-data-helper/compare/0.0.1...0.0.2) (2021-10-30)
+
+
+### Bug Fixes
+
+* :bug: make it only installable on desktop ([70518fd](https://github.com/kometenstaub/linked-data-helper/commit/70518fd03c92d7e5ccc42d1501657215588f7393))
+
 ### 0.0.1 (2021-10-30)
 
 
