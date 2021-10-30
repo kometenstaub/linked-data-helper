@@ -33,7 +33,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             createFragment((frag) => {
                 frag.appendText('Please download the ');
                 frag.createEl('em', {
-                    text: 'LC Subject Headings (LCSH) (SKOS/RDF only)',
+                    text: 'LC Subject Headings (LCSH) (MADS/RDF and SKOS/RDF)',
                 });
                 frag.appendText(' file (in ');
                 frag.createEl('em', {
