@@ -6,5 +6,5 @@
 	"description": "Parse Linked data for Linked Data Vocabularies.",
 	"author": "kometenstaub",
 	"authorUrl": "https://github.com/kometenstaub",
-	"isDesktopOnly": false
+	"isDesktopOnly": true
 }
