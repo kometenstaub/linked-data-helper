@@ -1,8 +1,7 @@
 import { App, FileSystemAdapter, normalizePath, Notice } from 'obsidian';
 import type LinkedDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
-import { createReadStream, writeFileSync } from 'fs';
-import { normalize } from 'path';
+import { createReadStream } from 'fs';
 import split2 from 'split2';
 
 export class SkosMethods {
@@ -33,7 +32,7 @@ export class SkosMethods {
         // overwrite file
         attachmentPath = attachmentPath.replace(/(.+?)(?: 1)(\.json)/, '$1$2');
         // absolute path
-        return normalize(`${basePath}/${attachmentPath}`);
+        return normalizePath(attachmentPath);
     }
 
     public convertLcshSkosNdjson(outputPath?: string) {
@@ -174,24 +173,24 @@ export class SkosMethods {
                         jsonSubdivPath = await this.getAbsolutePath(
                             'linked-data-vocabularies/lcshSubdivSuggester'
                       );
-                        writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-                        writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                        writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
+                        adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                        adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                        adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
                     })();
                 } else {
-                    jsonPrefPath = normalize(
+                    jsonPrefPath = normalizePath(
                         newOutputPath + '/' + 'lcshSuggester.json'
                     );
-                    jsonUriPath = normalize(
+                    jsonUriPath = normalizePath(
                         newOutputPath + '/' + 'lcshUriToPrefLabel.json'
                     );
-                    jsonSubdivPath = normalize(
+                    jsonSubdivPath = normalizePath(
                         newOutputPath + '/' + 'lcshSubdivSuggester.json'
                     );
-                    writeFileSync(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                    adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
                     // prettier-ignore
-                    writeFileSync(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                    writeFileSync(jsonSubdivPath, JSON.stringify(subdivisions));
+                    adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                    adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
                 }
 
                 new Notice('The three JSON files have been written.');

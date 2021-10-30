@@ -87,7 +87,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     );
                     frag.createEl('br');
                     frag.appendText(
-                        'The path must be absolute and in your vault.'
+                        'The path must start from your vault root.'
                     );
                     //frag.appendChild(bolded)
                     //const not = createEl('em', {text: 'not'})
