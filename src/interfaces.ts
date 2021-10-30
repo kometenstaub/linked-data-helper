@@ -20,6 +20,7 @@ export interface headings {
     nt?: string[]; // narrower
     rt?: string[]; //related
     note?: string;
+    lcc?: string;
 }
 
 declare module 'obsidian' {
@@ -82,6 +83,8 @@ export interface Graph {
     "cs:creatorName"?:                                              CSCreatorName;
     "cs:subjectOfChange"?:                                          CSCreatorName;
     "skosxl:literalForm"?:                                          Skos;
+
+    "madsrdf:classification"?:                                      string;
 }
 
 // prettier-ignore

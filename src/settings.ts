@@ -1,10 +1,10 @@
 import { App, Notice, PluginSettingTab, Setting } from 'obsidian';
-import type LinkeDataHelperPlugin from './main';
+import type LinkedDataHelperPlugin from './main';
 
 export default class LiDaHeSettingsTab extends PluginSettingTab {
-    plugin: LinkeDataHelperPlugin;
+    plugin: LinkedDataHelperPlugin;
 
-    constructor(app: App, plugin: LinkeDataHelperPlugin) {
+    constructor(app: App, plugin: LinkedDataHelperPlugin) {
         super(app, plugin);
         this.plugin = plugin;
     }

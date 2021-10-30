@@ -8,7 +8,7 @@ const DEFAULT_SETTINGS: LiDaHeSettings = {
     lcshOutputPath: '',
 };
 
-export default class LinkeDataHelperPlugin extends Plugin {
+export default class LinkedDataHelperPlugin extends Plugin {
     methods_loc = new SkosMethods(this.app, this);
     settings!: LiDaHeSettings;
 

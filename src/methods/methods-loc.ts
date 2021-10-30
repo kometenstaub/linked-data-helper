@@ -1,5 +1,5 @@
 import { App, FileSystemAdapter, normalizePath, Notice } from 'obsidian';
-import type LinkeDataHelperPlugin from '../main';
+import type LinkedDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream, writeFileSync } from 'fs';
 import { normalize } from 'path';
@@ -7,9 +7,9 @@ import split2 from 'split2';
 
 export class SkosMethods {
     app: App;
-    plugin: LinkeDataHelperPlugin;
+    plugin: LinkedDataHelperPlugin;
 
-    constructor(app: App, plugin: LinkeDataHelperPlugin) {
+    constructor(app: App, plugin: LinkedDataHelperPlugin) {
         this.app = app;
         this.plugin = plugin;
     }
@@ -65,6 +65,7 @@ export class SkosMethods {
                     let relatedURLs: string[] = [];
                     let prefLabel: string = '';
                     let altLabel: string = '';
+                    let lcc: string = '';
 
                     //if (
                     //    element['skos:inScheme']?.['@id'] ===
@@ -83,6 +84,9 @@ export class SkosMethods {
                     } else {
                         continue;
                     }
+                    if (element['madsrdf:classification']) {
+                        lcc = element['madsrdf:classification']
+                    }
                     //@ts-expect-error
                     const endUri: string = uri.split('/').last();
                     Object.assign(jsonUriToPrefLabel, {
@@ -100,7 +104,8 @@ export class SkosMethods {
                         uri,
                         broaderURLs,
                         narrowerURLs,
-                        relatedURLs
+                        relatedURLs,
+                        lcc
                     );
                     if (element['skos:note']) {
                         let note = element['skos:note'];
@@ -199,7 +204,8 @@ export class SkosMethods {
         uri: string,
         broaderURLs: string[],
         narrowerURLs: string[],
-        relatedURLs: string[]
+        relatedURLs: string[],
+        lcc: string,
     ): headings {
         //@ts-ignore
         let currentObj: headings = {};
@@ -221,155 +227,24 @@ export class SkosMethods {
 
         //@ts-expect-error
         let reducedUri: string = uri.split('/').last();
+        currentObj.pL = prefLabel
+        currentObj.uri = reducedUri
         if (altLabel !== '') {
-            if (broaderURLs.length > 0) {
-                if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            bt: reducedBroaderURLs,
-                            nt: reducedNarrowerURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else if (narrowerURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            bt: reducedBroaderURLs,
-                            nt: reducedNarrowerURLs,
-                        };
-                    }
-                } else if (relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            bt: reducedBroaderURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            bt: reducedBroaderURLs,
-                        };
-                    }
-                }
-            } else if (narrowerURLs.length > 0) {
-                if (relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            nt: reducedNarrowerURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            aL: altLabel,
-                            nt: reducedNarrowerURLs,
-                        };
-                    }
-                }
-            } else if (relatedURLs.length > 0) {
-                currentObj = {
-                    pL: prefLabel,
-                    uri: reducedUri,
-                    aL: altLabel,
-                    rt: reducedRelatedURLs,
-                };
-            } else {
-                currentObj = {
-                    pL: prefLabel,
-                    uri: reducedUri,
-                    aL: altLabel,
-                };
-            }
-        } else {
-            if (broaderURLs.length > 0) {
-                if (narrowerURLs.length > 0 && relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            bt: reducedBroaderURLs,
-                            nt: reducedNarrowerURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else if (narrowerURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            bt: reducedBroaderURLs,
-                            nt: reducedNarrowerURLs,
-                        };
-                    }
-                } else if (relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            bt: reducedBroaderURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            bt: reducedBroaderURLs,
-                        };
-                    }
-                }
-            } else if (narrowerURLs.length > 0) {
-                if (relatedURLs.length > 0) {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            nt: reducedNarrowerURLs,
-                            rt: reducedRelatedURLs,
-                        };
-                    }
-                } else {
-                    {
-                        currentObj = {
-                            pL: prefLabel,
-                            uri: reducedUri,
-                            nt: reducedNarrowerURLs,
-                        };
-                    }
-                }
-            } else if (relatedURLs.length > 0) {
-                currentObj = {
-                    pL: prefLabel,
-                    uri: reducedUri,
-                    rt: reducedRelatedURLs,
-                };
-            } else {
-                currentObj = {
-                    pL: prefLabel,
-                    uri: reducedUri,
-                };
-            }
+            currentObj.aL = altLabel
         }
+        if (broaderURLs.length > 0) {
+            currentObj.bt = reducedBroaderURLs
+        }
+        if (narrowerURLs.length > 0) {
+            currentObj.nt = reducedNarrowerURLs
+        }
+        if (relatedURLs.length > 0) {
+            currentObj.rt = reducedRelatedURLs
+        }
+        if (lcc !== '') {
+            currentObj.lcc = lcc
+        }
+
         return currentObj;
     }
 
