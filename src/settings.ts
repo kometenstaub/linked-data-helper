@@ -51,7 +51,8 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     }
                 );
                 frag.appendText(
-                    ' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.)'
+                    ' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.) \
+                    The unzipped file will be ~2.5GB, therefore it is a good idea to save and unzip it outside of the vault.'
                 );
             })
         );
@@ -111,9 +112,9 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                             );
                         }
                     } catch {
-                        // catch error 
+                        // catch error
                         new Notice(
-                            "Please check your attachments setting under Files & Links."
+                            'Please check your attachments setting under Files & Links.'
                         );
                     }
                 })
@@ -142,7 +143,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     .setButtonText('Start conversion')
                     .onClick(() => {
                         if (this.plugin.settings.lcshInputPath !== '') {
-                            new Notice('The conversion will start now!');
+                            new Notice('The conversion will start now. This may take some time. You will be notified when it is done.');
                             if (this.plugin.settings.lcshOutputPath !== '') {
                                 this.plugin.methods_loc.convertLcshSkosNdjson(
                                     this.plugin.settings.lcshOutputPath
