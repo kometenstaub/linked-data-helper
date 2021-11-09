@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/kometenstaub/linked-data-helper/compare/0.0.2...0.1.0) (2021-11-09)
+
+
+### Bug Fixes
+
+* :bug: LCC works again ([3eabb4c](https://github.com/kometenstaub/linked-data-helper/commit/3eabb4c230c6c7e3c63d9225f5abd023869b0bb2))
+* :bug: skolem IRIs in relations are now resolved ([778b472](https://github.com/kometenstaub/linked-data-helper/commit/778b472b7608da0ad278a040291cf8279d2bf8b7))
+
 ### [0.0.2](https://github.com/kometenstaub/linked-data-helper/compare/0.0.1...0.0.2) (2021-10-30)
 
 
