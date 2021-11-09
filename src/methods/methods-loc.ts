@@ -84,7 +84,14 @@ export class SkosMethods {
                         continue;
                     }
                     if (element['madsrdf:classification']) {
-                        lcc = element['madsrdf:classification']
+                        const skolemIri: string = element['madsrdf:classification']['@id']
+                        for (let againElement of obj['@graph']) {
+                            if (againElement['@id'] === skolemIri) {
+                                //@ts-ignore
+                                lcc = againElement['madsrdf:code']
+                                break;
+                            }
+                        }
                     }
                     //@ts-expect-error
                     const endUri: string = uri.split('/').last();

@@ -84,7 +84,7 @@ export interface Graph {
     "cs:subjectOfChange"?:                                          CSCreatorName;
     "skosxl:literalForm"?:                                          Skos;
 
-    "madsrdf:classification"?:                                      string;
+    "madsrdf:classification"?:                                      CSCreatorName;
 }
 
 // prettier-ignore
