@@ -43,6 +43,20 @@ declare module 'obsidian' {
     }
 }
 
+
+/**
+ * If a relation has a skolem IRI, then it points to an element of the {@link Graph} which
+ * contains a key like this interface
+ */
+export interface relationsPrefLabel {
+    "skos:prefLabel": {
+        "@language": string; // needs to be '@en' to be the right match
+        "@value": string;
+    }
+}
+
+
+
 // prettier-ignore
 export interface LcshInterface {
     "@context": Context;

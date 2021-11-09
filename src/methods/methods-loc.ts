@@ -84,11 +84,12 @@ export class SkosMethods {
                         continue;
                     }
                     if (element['madsrdf:classification']) {
-                        const skolemIri: string = element['madsrdf:classification']['@id']
+                        const skolemIri: string =
+                            element['madsrdf:classification']['@id'];
                         for (let againElement of obj['@graph']) {
                             if (againElement['@id'] === skolemIri) {
                                 //@ts-ignore
-                                lcc = againElement['madsrdf:code']
+                                lcc = againElement['madsrdf:code'];
                                 break;
                             }
                         }
@@ -101,9 +102,14 @@ export class SkosMethods {
                     if (element['skos:altLabel']?.['@language'] === 'en') {
                         altLabel = element['skos:altLabel']['@value'];
                     }
-                    broaderURLs = this.pushHeadings(element, 'broader');
-                    narrowerURLs = this.pushHeadings(element, 'narrower');
-                    relatedURLs = this.pushHeadings(element, 'related');
+                    const graph = obj['@graph'];
+                    broaderURLs = this.pushHeadings(element, graph, 'broader');
+                    narrowerURLs = this.pushHeadings(
+                        element,
+                        graph,
+                        'narrower'
+                    );
+                    relatedURLs = this.pushHeadings(element, graph, 'related');
                     currentObj = this.onlyReturnFull(
                         prefLabel,
                         altLabel,
@@ -211,50 +217,66 @@ export class SkosMethods {
         broaderURLs: string[],
         narrowerURLs: string[],
         relatedURLs: string[],
-        lcc: string,
+        lcc: string
     ): headings {
         //@ts-ignore
         let currentObj: headings = {};
         let reducedBroaderURLs: string[] = [];
         for (let url of broaderURLs) {
-            //@ts-expect-error
-            reducedBroaderURLs.push(url.split('/').last());
+            if (url && url.includes('/')) {
+                //@ts-expect-error
+                reducedBroaderURLs.push(url.split('/').last());
+            } else {
+                reducedBroaderURLs.push(url);
+            }
         }
         let reducedNarrowerURLs: string[] = [];
         for (let url of narrowerURLs) {
-            //@ts-expect-error
-            reducedNarrowerURLs.push(url.split('/').last());
+            if (url && url.includes('/')) {
+                //@ts-expect-error
+                reducedNarrowerURLs.push(url.split('/').last());
+            } else {
+                reducedNarrowerURLs.push(url);
+            }
         }
         let reducedRelatedURLs: string[] = [];
         for (let url of relatedURLs) {
-            //@ts-expect-error
-            reducedRelatedURLs.push(url.split('/').last());
+            if (url && url.includes('/')) {
+                //@ts-expect-error
+                reducedRelatedURLs.push(url.split('/').last());
+            } else {
+                reducedRelatedURLs.push(url);
+            }
         }
 
         //@ts-expect-error
         let reducedUri: string = uri.split('/').last();
-        currentObj.pL = prefLabel
-        currentObj.uri = reducedUri
+        currentObj.pL = prefLabel;
+        currentObj.uri = reducedUri;
         if (altLabel !== '') {
-            currentObj.aL = altLabel
+            currentObj.aL = altLabel;
         }
         if (broaderURLs.length > 0) {
-            currentObj.bt = reducedBroaderURLs
+            currentObj.bt = reducedBroaderURLs;
         }
         if (narrowerURLs.length > 0) {
-            currentObj.nt = reducedNarrowerURLs
+            currentObj.nt = reducedNarrowerURLs;
         }
         if (relatedURLs.length > 0) {
-            currentObj.rt = reducedRelatedURLs
+            currentObj.rt = reducedRelatedURLs;
         }
         if (lcc !== '') {
-            currentObj.lcc = lcc
+            currentObj.lcc = lcc;
         }
 
         return currentObj;
     }
 
-    private pushHeadings(element: Graph, type: string): string[] {
+    private pushHeadings(
+        element: Graph,
+        graph: Graph[],
+        type: string
+    ): string[] {
         let urls = [];
         const headingType: string = `skos:${type}`;
         //@ts-ignore
@@ -262,14 +284,49 @@ export class SkosMethods {
             //@ts-ignore
             if (Array.isArray(element[headingType])) {
                 //@ts-ignore
-                for (let id of element[headingType]) {
-                    urls.push(id['@id']);
+                for (let subElement of element[headingType]) {
+                    const id = subElement['@id'];
+                    if (id.startsWith('_:')) {
+                        const term = getSkolemIriRelation(graph, id);
+                        urls.push(term);
+                    } else {
+                        urls.push(id);
+                    }
                 }
             } else {
                 //@ts-ignore
-                urls.push(element[headingType]['@id']);
+                const id: string = element[headingType]['@id'];
+                if (id.startsWith('_:')) {
+                    const term = getSkolemIriRelation(graph, id);
+                    urls.push(term);
+                } else {
+                    //@ts-ignore
+                    urls.push(id);
+                }
             }
         }
+
         return urls;
     }
+}
+
+/**
+ *
+ * @param graph
+ * @param id
+ * @returns - it always returns a non-empty string, because this function is only called if there is a matching result
+ */
+function getSkolemIriRelation(graph: Graph[], id: string): string {
+    let term: string = '';
+    for (let part of graph) {
+        if (part['@id'] === id) {
+            //@ts-ignore
+            // prettier-ignore
+            if (part['skos:prefLabel']['@language'] === 'en') {
+                term = part['skos:prefLabel']['@value'];
+                break;
+            }
+        }
+    }
+    return term;
 }
