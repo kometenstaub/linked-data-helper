@@ -1,4 +1,4 @@
-import { App, FileSystemAdapter, normalizePath, Notice } from 'obsidian';
+import { App, normalizePath, Notice } from 'obsidian';
 import type LinkedDataHelperPlugin from '../main';
 import type { Graph, headings, LcshInterface } from '../interfaces';
 import { createReadStream } from 'fs';
@@ -34,7 +34,7 @@ export class SkosMethods {
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
                 //@ts-expect-error, it needs to be initialised
-                // and will be populated later
+                // and will be populated later on
                 let currentObj: headings = {};
                 const id = obj['@context'].about;
                 for (let element of obj['@graph']) {
