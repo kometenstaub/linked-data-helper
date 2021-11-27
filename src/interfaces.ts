@@ -3,17 +3,14 @@ export interface LiDaHeSettings {
     lcshOutputPath: string;
 }
 
-// export interface prefLabelToRelations {
-//     [prefLabel: string ] : headings
-// }
 
 export interface headings {
-    pL: string;
+    pL: string; // prefLabel
     uri: string;
-    aL?: string; //altLabel
-    bt?: string[]; //broader
+    aL?: string; // altLabel
+    bt?: string[]; // broader
     nt?: string[]; // narrower
-    rt?: string[]; //related
+    rt?: string[]; // related
     note?: string;
     lcc?: string;
 }
@@ -39,16 +36,6 @@ declare module 'obsidian' {
 }
 
 
-/**
- * If a relation has a skolem IRI, then it points to an element of the {@link Graph} which
- * contains a key like this interface
- */
-export interface relationsPrefLabel {
-    "skos:prefLabel": {
-        "@language": string; // needs to be '@en' to be the right match
-        "@value": string;
-    }
-}
 
 
 
@@ -75,25 +62,25 @@ export interface Graph {
     "@id":                                                          string;
     "http://www.loc.gov/mads/rdf/v1#authoritativeLabel"?:           string;
     "@type":                                                        string;
-    "skos:prefLabel":                                               Skos;
-    "http://www.loc.gov/mads/rdf/v1#hasCloseExternalAuthority"?:    CSCreatorName[];
-    "http://www.loc.gov/mads/rdf/v1#hasNarrowerExternalAuthority"?: CSCreatorName[];
-    "skos:altLabel"?:                                               Skos;
-    "skos:broader"?:                                                CSCreatorName[] | CSCreatorName;
-    "skos:changeNote"?:                                             CSCreatorName[];
+    "skos:prefLabel":                                               LanguageAndValue;
+    "http://www.loc.gov/mads/rdf/v1#hasCloseExternalAuthority"?:    id[];
+    "http://www.loc.gov/mads/rdf/v1#hasNarrowerExternalAuthority"?: id[];
+    "skos:altLabel"?:                                               LanguageAndValue;
+    "skos:broader"?:                                                id[] | id;
+    "skos:changeNote"?:                                             id[];
     "skos:editorial"?:                                              string;
-    "skos:inScheme"?:                                               CSCreatorName;
-    "skos:narrower"?:                                               CSCreatorName[] | CSCreatorName;
+    "skos:inScheme"?:                                               id;
+    "skos:narrower"?:                                               id[] | id;
     "skos:note"?:                                                   string | string[];
-    "skos:related"?:                                                CSCreatorName[] | CSCreatorName;
-    "skosxl:altLabel"?:                                             CSCreatorName;
+    "skos:related"?:                                                id[] | id;
+    "skosxl:altLabel"?:                                             id;
     "cs:changeReason"?:                                             string;
     "cs:createdDate"?:                                              CSCreatedDate;
-    "cs:creatorName"?:                                              CSCreatorName;
-    "cs:subjectOfChange"?:                                          CSCreatorName;
-    "skosxl:literalForm"?:                                          Skos;
+    "cs:creatorName"?:                                              id;
+    "cs:subjectOfChange"?:                                          id;
+    "skosxl:literalForm"?:                                          LanguageAndValue;
 
-    "madsrdf:classification"?:                                      CSCreatorName;
+    "madsrdf:classification"?:                                      id;
 }
 
 // prettier-ignore
@@ -103,12 +90,12 @@ export interface CSCreatedDate {
 }
 
 // prettier-ignore
-export interface CSCreatorName {
+export interface id {
     "@id": string;
 }
 
 // prettier-ignore
-export interface Skos {
+export interface LanguageAndValue {
     "@language": Language;
     "@value":    string;
 }
