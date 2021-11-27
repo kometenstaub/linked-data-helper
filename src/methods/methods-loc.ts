@@ -14,9 +14,9 @@ export class SkosMethods {
     }
 
     public convertLcshSkosNdjson(outputPath?: string) {
-        let jsonPrefLabel: headings[] = [];
-        let subdivisions: headings[] = [];
-        let jsonUriToPrefLabel = {};
+        const jsonPrefLabel: headings[] = [];
+        const subdivisions: headings[] = [];
+        const jsonUriToPrefLabel = {};
         let inputPath = '';
         if (this.plugin.settings.lcshInputPath) {
             inputPath = this.plugin.settings.lcshInputPath;
@@ -37,13 +37,13 @@ export class SkosMethods {
                 // and will be populated later on
                 let currentObj: headings = {};
                 const id = obj['@context'].about;
-                for (let element of obj['@graph']) {
+                for (const element of obj['@graph']) {
                     let broaderURLs: string[] = [];
                     let narrowerURLs: string[] = [];
                     let relatedURLs: string[] = [];
-                    let prefLabel: string = '';
-                    let altLabel: string = '';
-                    let lcc: string = '';
+                    let prefLabel = '';
+                    let altLabel = '';
+                    let lcc = '';
 
 
                     let uri = '';
@@ -62,7 +62,7 @@ export class SkosMethods {
                     if (element['madsrdf:classification']) {
                         const skolemIri: string =
                             element['madsrdf:classification']['@id'];
-                        for (let againElement of obj['@graph']) {
+                        for (const againElement of obj['@graph']) {
                             if (againElement['@id'] === skolemIri) {
                                 const skolemNode = againElement as SkolemGraphNode
                                 lcc = skolemNode['madsrdf:code'];
@@ -99,7 +99,7 @@ export class SkosMethods {
                         let note = element['skos:note'];
                         if (Array.isArray(note)) {
                             let newNote = '';
-                            for (let el of note) {
+                            for (const el of note) {
                                 newNote += el;
                             }
                             note = newNote;
@@ -188,9 +188,9 @@ export class SkosMethods {
     ): headings {
         //@ts-expect-error, the object needs to be initialised,
         // it is populated later on
-        let currentObj: headings = {};
-        let reducedBroaderURLs: string[] = [];
-        for (let url of broaderURLs) {
+        const currentObj: headings = {};
+        const reducedBroaderURLs: string[] = [];
+        for (const url of broaderURLs) {
             if (url && url.includes('/')) {
                 //@ts-expect-error, the URI always has the ID after the last slash
                 reducedBroaderURLs.push(url.split('/').last());
@@ -198,8 +198,8 @@ export class SkosMethods {
                 reducedBroaderURLs.push(url);
             }
         }
-        let reducedNarrowerURLs: string[] = [];
-        for (let url of narrowerURLs) {
+        const reducedNarrowerURLs: string[] = [];
+        for (const url of narrowerURLs) {
             if (url && url.includes('/')) {
                 //@ts-expect-error, the URI always has the ID after the last slash
                 reducedNarrowerURLs.push(url.split('/').last());
@@ -207,8 +207,8 @@ export class SkosMethods {
                 reducedNarrowerURLs.push(url);
             }
         }
-        let reducedRelatedURLs: string[] = [];
-        for (let url of relatedURLs) {
+        const reducedRelatedURLs: string[] = [];
+        for (const url of relatedURLs) {
             if (url && url.includes('/')) {
                 //@ts-expect-error, the URI always has the ID after the last slash
                 reducedRelatedURLs.push(url.split('/').last());
@@ -218,7 +218,7 @@ export class SkosMethods {
         }
 
         //@ts-expect-error, the URI always has the ID after the last slash
-        let reducedUri: string = uri.split('/').last();
+        const reducedUri: string = uri.split('/').last();
         currentObj.pL = prefLabel;
         currentObj.uri = reducedUri;
         if (altLabel !== '') {
@@ -245,7 +245,7 @@ export class SkosMethods {
         graph: Graph[],
         type: 'broader' | 'narrower' | 'related'
     ): string[] {
-        let urls = [];
+        const urls = [];
         const headingType:
             | 'skos:broader'
             | 'skos:narrower'
@@ -253,7 +253,7 @@ export class SkosMethods {
         const relation = element[headingType];
         if (relation !== undefined) {
             if (Array.isArray(relation)) {
-                for (let subElement of relation) {
+                for (const subElement of relation) {
                     const id = subElement['@id'];
                     if (id.startsWith('_:')) {
                         const term = getSkolemIriRelation(graph, id);
@@ -284,8 +284,8 @@ export class SkosMethods {
  * @returns - it always returns a non-empty string, because this function is only called if there is a matching result
  */
 function getSkolemIriRelation(graph: Graph[], id: string): string {
-    let term: string = '';
-    for (let part of graph) {
+    let term = '';
+    for (const part of graph) {
         if (part['@id'] === id) {
             const prefLabel = part['skos:prefLabel'];
             if (prefLabel['@language'] === 'en') {
