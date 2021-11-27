@@ -63,24 +63,24 @@ export interface Graph {
     "http://www.loc.gov/mads/rdf/v1#authoritativeLabel"?:           string;
     "@type":                                                        string;
     "skos:prefLabel":                                               LanguageAndValue;
-    "http://www.loc.gov/mads/rdf/v1#hasCloseExternalAuthority"?:    id[];
-    "http://www.loc.gov/mads/rdf/v1#hasNarrowerExternalAuthority"?: id[];
+    "http://www.loc.gov/mads/rdf/v1#hasCloseExternalAuthority"?:    Id[];
+    "http://www.loc.gov/mads/rdf/v1#hasNarrowerExternalAuthority"?: Id[];
     "skos:altLabel"?:                                               LanguageAndValue;
-    "skos:broader"?:                                                id[] | id;
-    "skos:changeNote"?:                                             id[];
+    "skos:broader"?:                                                Id[] | Id;
+    "skos:changeNote"?:                                             Id[];
     "skos:editorial"?:                                              string;
-    "skos:inScheme"?:                                               id;
-    "skos:narrower"?:                                               id[] | id;
+    "skos:inScheme"?:                                               Id;
+    "skos:narrower"?:                                               Id[] | Id;
     "skos:note"?:                                                   string | string[];
-    "skos:related"?:                                                id[] | id;
-    "skosxl:altLabel"?:                                             id;
+    "skos:related"?:                                                Id[] | Id;
+    "skosxl:altLabel"?:                                             Id;
     "cs:changeReason"?:                                             string;
     "cs:createdDate"?:                                              CSCreatedDate;
-    "cs:creatorName"?:                                              id;
-    "cs:subjectOfChange"?:                                          id;
+    "cs:creatorName"?:                                              Id;
+    "cs:subjectOfChange"?:                                          Id;
     "skosxl:literalForm"?:                                          LanguageAndValue;
 
-    "madsrdf:classification"?:                                      id;
+    "madsrdf:classification"?:                                      Id;
 }
 
 // prettier-ignore
@@ -90,7 +90,7 @@ export interface CSCreatedDate {
 }
 
 // prettier-ignore
-export interface id {
+export interface Id {
     "@id": string;
 }
 
