@@ -1,7 +1,7 @@
 {
 	"id": "linked-data-helper",
 	"name": "Linked Data Helper",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"minAppVersion": "0.12.15",
 	"description": "Parse Linked data for Linked Data Vocabularies.",
 	"author": "kometenstaub",
