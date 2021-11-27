@@ -84,23 +84,30 @@ export interface Graph {
 }
 
 // prettier-ignore
-export interface CSCreatedDate {
+export interface SkolemGraphNode extends Graph {
+    "@id":                                                         string;
+    "madsrdf:code":                                                string;
+}
+
+// prettier-ignore
+interface CSCreatedDate {
     "@type":  string;
     "@value": Date;
 }
 
 // prettier-ignore
-export interface Id {
+interface Id {
     "@id": string;
 }
 
 // prettier-ignore
-export interface LanguageAndValue {
+interface LanguageAndValue {
     "@language": Language;
     "@value":    string;
 }
 
 // prettier-ignore
-export enum Language {
+enum Language {
     En = "en",
 }
+

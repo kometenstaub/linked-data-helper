@@ -1,6 +1,6 @@
 import { App, normalizePath, Notice } from 'obsidian';
 import type LinkedDataHelperPlugin from '../main';
-import type { Graph, headings, LcshInterface } from '../interfaces';
+import type { Graph, headings, LcshInterface, SkolemGraphNode } from '../interfaces';
 import { createReadStream } from 'fs';
 import split2 from 'split2';
 
@@ -64,10 +64,8 @@ export class SkosMethods {
                             element['madsrdf:classification']['@id'];
                         for (let againElement of obj['@graph']) {
                             if (againElement['@id'] === skolemIri) {
-                                //@ts-expect-error, the skolem IRI is a string,
-                                // but I don't want to type it as string, because otherwise I won't
-                                // get type safety for the other properties
-                                lcc = againElement['madsrdf:code'];
+                                const skolemNode = againElement as SkolemGraphNode
+                                lcc = skolemNode['madsrdf:code'];
                                 break;
                             }
                         }
