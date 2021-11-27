@@ -1,8 +1,3 @@
-/**
- * Represents the data which the Suggest2 Library of Congress API returns
- * {@link https://id.loc.gov/techcenter/searching.html}
- */
-
 export interface LiDaHeSettings {
     lcshInputPath: string;
     lcshOutputPath: string;
