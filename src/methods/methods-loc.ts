@@ -13,28 +13,6 @@ export class SkosMethods {
         this.plugin = plugin;
     }
 
-    async getAbsolutePath(fileName: string): Promise<string> {
-        let basePath;
-        //let relativePath;
-        // base path
-        if (this.app.vault.adapter instanceof FileSystemAdapter) {
-            basePath = this.app.vault.adapter.getBasePath();
-        } else {
-            throw new Error('Cannot determine base path.');
-        }
-        // relative path
-        //relativePath = `${this.app.vault.configDir}/plugins/linked-data-vocabularies/${fileName}`;
-        let attachmentPath =
-            await this.app.vault.getAvailablePathForAttachments(
-                fileName,
-                'json'
-            );
-        // overwrite file
-        attachmentPath = attachmentPath.replace(/(.+?)(?: 1)(\.json)/, '$1$2');
-        // absolute path
-        return normalizePath(attachmentPath);
-    }
-
     public convertLcshSkosNdjson(outputPath?: string) {
         let jsonPrefLabel: headings[] = [];
         let subdivisions: headings[] = [];
@@ -55,7 +33,8 @@ export class SkosMethods {
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
-                //@ts-ignore
+                //@ts-expect-error, it needs to be initialised
+                // and will be populated later
                 let currentObj: headings = {};
                 const id = obj['@context'].about;
                 for (let element of obj['@graph']) {
@@ -66,10 +45,7 @@ export class SkosMethods {
                     let altLabel: string = '';
                     let lcc: string = '';
 
-                    //if (
-                    //    element['skos:inScheme']?.['@id'] ===
-                    //    'http://id.loc.gov/authorities/subjects'
-                    //) {
+
                     let uri = '';
                     if (element['skos:prefLabel']?.['@language'] === 'en') {
                         uri = element['@id'];
@@ -88,13 +64,15 @@ export class SkosMethods {
                             element['madsrdf:classification']['@id'];
                         for (let againElement of obj['@graph']) {
                             if (againElement['@id'] === skolemIri) {
-                                //@ts-ignore
+                                //@ts-expect-error, the skolem IRI is a string,
+                                // but I don't want to type it as string, because otherwise I won't
+                                // get type safety for the other properties
                                 lcc = againElement['madsrdf:code'];
                                 break;
                             }
                         }
                     }
-                    //@ts-expect-error
+                    //@ts-expect-error, the URI always has the ID after the last slash
                     const endUri: string = uri.split('/').last();
                     Object.assign(jsonUriToPrefLabel, {
                         [endUri]: prefLabel,
@@ -152,10 +130,7 @@ export class SkosMethods {
                     } else {
                         jsonPrefLabel.push(currentObj);
                     }
-
-                    //Object.assign(jsonPrefLabel, currentObj)
                     break;
-                    //}
                 }
             })
             .on('end', () => {
@@ -177,15 +152,9 @@ export class SkosMethods {
                     })();
                     // prettier-ignore
                     (async () => {
-                        jsonPrefPath = await this.getAbsolutePath(
-                            'linked-data-vocabularies/lcshSuggester'
-                        );
-                        jsonUriPath = await this.getAbsolutePath(
-                            'linked-data-vocabularies/lcshUriToPrefLabel'
-                        );
-                        jsonSubdivPath = await this.getAbsolutePath(
-                            'linked-data-vocabularies/lcshSubdivSuggester'
-                      );
+                        jsonPrefPath = normalizePath(attachmentFolder + '/' + 'lcshSuggester.json');
+                        jsonUriPath = normalizePath(attachmentFolder + '/' + 'lcshUriToPrefLabel.json');
+                        jsonSubdivPath = normalizePath(attachmentFolder + '/' + 'lcshSubdivSuggester.json');
                         adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
                         adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
                         adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
@@ -219,12 +188,13 @@ export class SkosMethods {
         relatedURLs: string[],
         lcc: string
     ): headings {
-        //@ts-ignore
+        //@ts-expect-error, the object needs to be initialised,
+        // it is populated later on
         let currentObj: headings = {};
         let reducedBroaderURLs: string[] = [];
         for (let url of broaderURLs) {
             if (url && url.includes('/')) {
-                //@ts-expect-error
+                //@ts-expect-error, the URI always has the ID after the last slash
                 reducedBroaderURLs.push(url.split('/').last());
             } else {
                 reducedBroaderURLs.push(url);
@@ -233,7 +203,7 @@ export class SkosMethods {
         let reducedNarrowerURLs: string[] = [];
         for (let url of narrowerURLs) {
             if (url && url.includes('/')) {
-                //@ts-expect-error
+                //@ts-expect-error, the URI always has the ID after the last slash
                 reducedNarrowerURLs.push(url.split('/').last());
             } else {
                 reducedNarrowerURLs.push(url);
@@ -242,14 +212,14 @@ export class SkosMethods {
         let reducedRelatedURLs: string[] = [];
         for (let url of relatedURLs) {
             if (url && url.includes('/')) {
-                //@ts-expect-error
+                //@ts-expect-error, the URI always has the ID after the last slash
                 reducedRelatedURLs.push(url.split('/').last());
             } else {
                 reducedRelatedURLs.push(url);
             }
         }
 
-        //@ts-expect-error
+        //@ts-expect-error, the URI always has the ID after the last slash
         let reducedUri: string = uri.split('/').last();
         currentObj.pL = prefLabel;
         currentObj.uri = reducedUri;
@@ -275,16 +245,17 @@ export class SkosMethods {
     private pushHeadings(
         element: Graph,
         graph: Graph[],
-        type: string
+        type: 'broader' | 'narrower' | 'related'
     ): string[] {
         let urls = [];
-        const headingType: string = `skos:${type}`;
-        //@ts-ignore
-        if (element[headingType]) {
-            //@ts-ignore
-            if (Array.isArray(element[headingType])) {
-                //@ts-ignore
-                for (let subElement of element[headingType]) {
+        const headingType:
+            | 'skos:broader'
+            | 'skos:narrower'
+            | 'skos:related' = `skos:${type}`;
+        const relation = element[headingType];
+        if (relation !== undefined) {
+            if (Array.isArray(relation)) {
+                for (let subElement of relation) {
                     const id = subElement['@id'];
                     if (id.startsWith('_:')) {
                         const term = getSkolemIriRelation(graph, id);
@@ -294,13 +265,11 @@ export class SkosMethods {
                     }
                 }
             } else {
-                //@ts-ignore
-                const id: string = element[headingType]['@id'];
+                const id: string = relation['@id'];
                 if (id.startsWith('_:')) {
                     const term = getSkolemIriRelation(graph, id);
                     urls.push(term);
                 } else {
-                    //@ts-ignore
                     urls.push(id);
                 }
             }
@@ -320,10 +289,9 @@ function getSkolemIriRelation(graph: Graph[], id: string): string {
     let term: string = '';
     for (let part of graph) {
         if (part['@id'] === id) {
-            //@ts-ignore
-            // prettier-ignore
-            if (part['skos:prefLabel']['@language'] === 'en') {
-                term = part['skos:prefLabel']['@value'];
+            const prefLabel = part['skos:prefLabel'];
+            if (prefLabel['@language'] === 'en') {
+                term = prefLabel['@value'];
                 break;
             }
         }
