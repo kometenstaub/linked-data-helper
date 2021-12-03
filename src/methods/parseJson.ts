@@ -1,6 +1,4 @@
-import type {Graph} from "../interfaces";
-import type {headings, LcshInterface, SkolemGraphNode, uriToHeading} from "../interfaces";
-
+import type {Graph, headings, LcshInterface, SkolemGraphNode, uriToHeading} from "../interfaces";
 
 
 export function parseJsonHeading (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) {
@@ -41,8 +39,8 @@ export function parseJsonHeading (obj: LcshInterface, jsonPrefLabel: headings[],
                 }
             }
         }
-        //@ts-expect-error, the URI always has the ID after the last slash
-        const endUri: string = uri.split('/').last();
+        const splitUri: string[] = uri.split('/')
+        const endUri = splitUri[splitUri.length - 1]
         Object.assign(jsonUriToPrefLabel, {
             [endUri]: prefLabel,
         });
@@ -118,8 +116,9 @@ function onlyReturnFull(
     const reducedBroaderURLs: string[] = [];
     for (const url of broaderURLs) {
         if (url && url.includes('/')) {
-            //@ts-expect-error, the URI always has the ID after the last slash
-            reducedBroaderURLs.push(url.split('/').last());
+            const splitUrl = url.split('/')
+            const endUri = splitUrl[splitUrl.length - 1]
+            reducedBroaderURLs.push(endUri);
         } else {
             reducedBroaderURLs.push(url);
         }
@@ -127,8 +126,9 @@ function onlyReturnFull(
     const reducedNarrowerURLs: string[] = [];
     for (const url of narrowerURLs) {
         if (url && url.includes('/')) {
-            //@ts-expect-error, the URI always has the ID after the last slash
-            reducedNarrowerURLs.push(url.split('/').last());
+            const splitUrl = url.split('/')
+            const endUri = splitUrl[splitUrl.length - 1]
+            reducedNarrowerURLs.push(endUri);
         } else {
             reducedNarrowerURLs.push(url);
         }
@@ -136,15 +136,16 @@ function onlyReturnFull(
     const reducedRelatedURLs: string[] = [];
     for (const url of relatedURLs) {
         if (url && url.includes('/')) {
-            //@ts-expect-error, the URI always has the ID after the last slash
-            reducedRelatedURLs.push(url.split('/').last());
+            const splitUrl = url.split('/')
+            const endUri = splitUrl[splitUrl.length - 1]
+            reducedRelatedURLs.push(endUri);
         } else {
             reducedRelatedURLs.push(url);
         }
     }
 
-    //@ts-expect-error, the URI always has the ID after the last slash
-    const reducedUri: string = uri.split('/').last();
+    const splitUrl = uri.split('/')
+    const reducedUri: string = splitUrl[splitUrl.length - 1];
     currentObj.pL = prefLabel;
     currentObj.uri = reducedUri;
     if (altLabel !== '') {
@@ -208,7 +209,7 @@ function pushHeadings(
  * @param id
  * @returns - it always returns a non-empty string, because this function is only called if there is a matching result
  */
-export function getSkolemIriRelation(graph: Graph[], id: string): string {
+function getSkolemIriRelation(graph: Graph[], id: string): string {
     let term = '';
     for (const part of graph) {
         if (part['@id'] === id) {
