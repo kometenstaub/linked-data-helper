@@ -35,7 +35,7 @@ export class SkosMethods {
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
-                extracted(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel)
+                parseJsonHeading(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel)
             })
             .on('end', () => {
                 let jsonPrefPath = '';
@@ -86,7 +86,7 @@ export class SkosMethods {
 
 }
 
-const extracted = (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) => {
+const parseJsonHeading = (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) => {
     //@ts-expect-error, it needs to be initialised
     // and will be populated later on
     let currentObj: headings = {};
