@@ -36,7 +36,9 @@ declare module 'obsidian' {
 }
 
 
-
+export interface uriToHeading {
+    [key: string]: string;
+}
 
 
 // prettier-ignore

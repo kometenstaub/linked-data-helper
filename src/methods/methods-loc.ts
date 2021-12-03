@@ -1,6 +1,6 @@
 import {App, normalizePath, Notice} from 'obsidian';
 import type LinkedDataHelperPlugin from '../main';
-import type {Graph, headings, LcshInterface, SkolemGraphNode} from '../interfaces';
+import type {Graph, headings, LcshInterface, SkolemGraphNode, uriToHeading} from '../interfaces';
 import {createReadStream} from 'fs';
 import split2 from 'split2';
 import {getSkolemIriRelation} from "./parseJson";
@@ -32,7 +32,7 @@ export class SkosMethods {
             newOutputPath = outputPath;
         }
 
-        const extracted = (obj: LcshInterface) => {
+        const extracted = (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) => {
             //@ts-expect-error, it needs to be initialised
             // and will be populated later on
             let currentObj: headings = {};
@@ -135,7 +135,7 @@ export class SkosMethods {
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
-                extracted.call(this, obj);
+                extracted.call(this, obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
             })
             .on('end', () => {
                 let jsonPrefPath = '';
