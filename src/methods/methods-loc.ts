@@ -32,110 +32,11 @@ export class SkosMethods {
             newOutputPath = outputPath;
         }
 
-        const extracted = (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) => {
-            //@ts-expect-error, it needs to be initialised
-            // and will be populated later on
-            let currentObj: headings = {};
-            const id = obj['@context'].about;
-            for (const element of obj['@graph']) {
-                let broaderURLs: string[] = [];
-                let narrowerURLs: string[] = [];
-                let relatedURLs: string[] = [];
-                let prefLabel = '';
-                let altLabel = '';
-                let lcc = '';
-
-
-                let uri = '';
-                if (element['skos:prefLabel']?.['@language'] === 'en') {
-                    uri = element['@id'];
-                    const currentPrefLabel =
-                        element['skos:prefLabel']['@value'];
-                    if (uri === id) {
-                        prefLabel = currentPrefLabel;
-                    } else {
-                        continue;
-                    }
-                } else {
-                    continue;
-                }
-                if (element['madsrdf:classification']) {
-                    const skolemIri: string =
-                        element['madsrdf:classification']['@id'];
-                    for (const againElement of obj['@graph']) {
-                        if (againElement['@id'] === skolemIri) {
-                            const skolemNode = againElement as SkolemGraphNode
-                            lcc = skolemNode['madsrdf:code'];
-                            break;
-                        }
-                    }
-                }
-                //@ts-expect-error, the URI always has the ID after the last slash
-                const endUri: string = uri.split('/').last();
-                Object.assign(jsonUriToPrefLabel, {
-                    [endUri]: prefLabel,
-                });
-                if (element['skos:altLabel']?.['@language'] === 'en') {
-                    altLabel = element['skos:altLabel']['@value'];
-                }
-                const graph = obj['@graph'];
-                broaderURLs = this.pushHeadings(element, graph, 'broader');
-                narrowerURLs = this.pushHeadings(
-                    element,
-                    graph,
-                    'narrower'
-                );
-                relatedURLs = this.pushHeadings(element, graph, 'related');
-                currentObj = this.onlyReturnFull(
-                    prefLabel,
-                    altLabel,
-                    uri,
-                    broaderURLs,
-                    narrowerURLs,
-                    relatedURLs,
-                    lcc
-                );
-                if (element['skos:note']) {
-                    let note = element['skos:note'];
-                    if (Array.isArray(note)) {
-                        let newNote = '';
-                        for (const el of note) {
-                            newNote += el;
-                        }
-                        note = newNote;
-                    }
-                    currentObj.note = note;
-                    if (note.includes('Use as a')) {
-                        subdivisions.push(currentObj);
-                    } else {
-                        jsonPrefLabel.push(currentObj);
-                    }
-                    //} else if (element['skos:editorial']) {
-                    //  let editorial = element['skos:editorial'];
-                    //  if (Array.isArray(editorial)) {
-                    //      let neweditorial = '';
-                    //      for (let el of editorial) {
-                    //          neweditorial += el;
-                    //      }
-                    //      editorial = neweditorial;
-                    //  }
-                    //  currentObj.note = editorial;
-                    //  if (editorial.startsWith('subdivision')) {
-                    //      subdivisions.push(currentObj)
-                    //  } else {
-                    //      jsonPrefLabel.push(currentObj)
-                    //  }
-                } else {
-                    jsonPrefLabel.push(currentObj);
-                }
-                break;
-            }
-        }
-
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
-                extracted.call(this, obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+                //extracted.call(this, obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+                extracted(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel)
             })
             .on('end', () => {
                 let jsonPrefPath = '';
@@ -183,93 +84,187 @@ export class SkosMethods {
             });
     }
 
-    private onlyReturnFull(
-        prefLabel: string,
-        altLabel: string,
-        uri: string,
-        broaderURLs: string[],
-        narrowerURLs: string[],
-        relatedURLs: string[],
-        lcc: string
-    ): headings {
-        //@ts-expect-error, the object needs to be initialised,
-        // it is populated later on
-        const currentObj: headings = {};
-        const reducedBroaderURLs: string[] = [];
-        for (const url of broaderURLs) {
-            if (url && url.includes('/')) {
-                //@ts-expect-error, the URI always has the ID after the last slash
-                reducedBroaderURLs.push(url.split('/').last());
-            } else {
-                reducedBroaderURLs.push(url);
-            }
-        }
-        const reducedNarrowerURLs: string[] = [];
-        for (const url of narrowerURLs) {
-            if (url && url.includes('/')) {
-                //@ts-expect-error, the URI always has the ID after the last slash
-                reducedNarrowerURLs.push(url.split('/').last());
-            } else {
-                reducedNarrowerURLs.push(url);
-            }
-        }
-        const reducedRelatedURLs: string[] = [];
-        for (const url of relatedURLs) {
-            if (url && url.includes('/')) {
-                //@ts-expect-error, the URI always has the ID after the last slash
-                reducedRelatedURLs.push(url.split('/').last());
-            } else {
-                reducedRelatedURLs.push(url);
-            }
-        }
 
+}
+
+const extracted = (obj: LcshInterface, jsonPrefLabel: headings[], subdivisions: headings[], jsonUriToPrefLabel: uriToHeading) => {
+    //@ts-expect-error, it needs to be initialised
+    // and will be populated later on
+    let currentObj: headings = {};
+    const id = obj['@context'].about;
+    for (const element of obj['@graph']) {
+        let broaderURLs: string[] = [];
+        let narrowerURLs: string[] = [];
+        let relatedURLs: string[] = [];
+        let prefLabel = '';
+        let altLabel = '';
+        let lcc = '';
+
+
+        let uri = '';
+        if (element['skos:prefLabel']?.['@language'] === 'en') {
+            uri = element['@id'];
+            const currentPrefLabel =
+                element['skos:prefLabel']['@value'];
+            if (uri === id) {
+                prefLabel = currentPrefLabel;
+            } else {
+                continue;
+            }
+        } else {
+            continue;
+        }
+        if (element['madsrdf:classification']) {
+            const skolemIri: string =
+                element['madsrdf:classification']['@id'];
+            for (const againElement of obj['@graph']) {
+                if (againElement['@id'] === skolemIri) {
+                    const skolemNode = againElement as SkolemGraphNode
+                    lcc = skolemNode['madsrdf:code'];
+                    break;
+                }
+            }
+        }
         //@ts-expect-error, the URI always has the ID after the last slash
-        const reducedUri: string = uri.split('/').last();
-        currentObj.pL = prefLabel;
-        currentObj.uri = reducedUri;
-        if (altLabel !== '') {
-            currentObj.aL = altLabel;
+        const endUri: string = uri.split('/').last();
+        Object.assign(jsonUriToPrefLabel, {
+            [endUri]: prefLabel,
+        });
+        if (element['skos:altLabel']?.['@language'] === 'en') {
+            altLabel = element['skos:altLabel']['@value'];
         }
-        if (broaderURLs.length > 0) {
-            currentObj.bt = reducedBroaderURLs;
+        const graph = obj['@graph'];
+        broaderURLs = pushHeadings(element, graph, 'broader');
+        narrowerURLs = pushHeadings(
+            element,
+            graph,
+            'narrower'
+        );
+        relatedURLs = pushHeadings(element, graph, 'related');
+        currentObj = onlyReturnFull(
+            prefLabel,
+            altLabel,
+            uri,
+            broaderURLs,
+            narrowerURLs,
+            relatedURLs,
+            lcc
+        );
+        if (element['skos:note']) {
+            let note = element['skos:note'];
+            if (Array.isArray(note)) {
+                let newNote = '';
+                for (const el of note) {
+                    newNote += el;
+                }
+                note = newNote;
+            }
+            currentObj.note = note;
+            if (note.includes('Use as a')) {
+                subdivisions.push(currentObj);
+            } else {
+                jsonPrefLabel.push(currentObj);
+            }
+            //} else if (element['skos:editorial']) {
+            //  let editorial = element['skos:editorial'];
+            //  if (Array.isArray(editorial)) {
+            //      let neweditorial = '';
+            //      for (let el of editorial) {
+            //          neweditorial += el;
+            //      }
+            //      editorial = neweditorial;
+            //  }
+            //  currentObj.note = editorial;
+            //  if (editorial.startsWith('subdivision')) {
+            //      subdivisions.push(currentObj)
+            //  } else {
+            //      jsonPrefLabel.push(currentObj)
+            //  }
+        } else {
+            jsonPrefLabel.push(currentObj);
         }
-        if (narrowerURLs.length > 0) {
-            currentObj.nt = reducedNarrowerURLs;
-        }
-        if (relatedURLs.length > 0) {
-            currentObj.rt = reducedRelatedURLs;
-        }
-        if (lcc !== '') {
-            currentObj.lcc = lcc;
-        }
+        break;
+    }
+}
 
-        return currentObj;
+function onlyReturnFull(
+    prefLabel: string,
+    altLabel: string,
+    uri: string,
+    broaderURLs: string[],
+    narrowerURLs: string[],
+    relatedURLs: string[],
+    lcc: string
+): headings {
+    //@ts-expect-error, the object needs to be initialised,
+    // it is populated later on
+    const currentObj: headings = {};
+    const reducedBroaderURLs: string[] = [];
+    for (const url of broaderURLs) {
+        if (url && url.includes('/')) {
+            //@ts-expect-error, the URI always has the ID after the last slash
+            reducedBroaderURLs.push(url.split('/').last());
+        } else {
+            reducedBroaderURLs.push(url);
+        }
+    }
+    const reducedNarrowerURLs: string[] = [];
+    for (const url of narrowerURLs) {
+        if (url && url.includes('/')) {
+            //@ts-expect-error, the URI always has the ID after the last slash
+            reducedNarrowerURLs.push(url.split('/').last());
+        } else {
+            reducedNarrowerURLs.push(url);
+        }
+    }
+    const reducedRelatedURLs: string[] = [];
+    for (const url of relatedURLs) {
+        if (url && url.includes('/')) {
+            //@ts-expect-error, the URI always has the ID after the last slash
+            reducedRelatedURLs.push(url.split('/').last());
+        } else {
+            reducedRelatedURLs.push(url);
+        }
     }
 
-    private pushHeadings(
-        element: Graph,
-        graph: Graph[],
-        type: 'broader' | 'narrower' | 'related'
-    ): string[] {
-        const urls = [];
-        const headingType:
-            | 'skos:broader'
-            | 'skos:narrower'
-            | 'skos:related' = `skos:${type}`;
-        const relation = element[headingType];
-        if (relation !== undefined) {
-            if (Array.isArray(relation)) {
-                for (const subElement of relation) {
-                    const id = subElement['@id'];
-                    if (id.startsWith('_:')) {
-                        const term = getSkolemIriRelation(graph, id);
-                        urls.push(term);
-                    } else {
-                        urls.push(id);
-                    }
-                }
-            } else {
-                const id: string = relation['@id'];
+    //@ts-expect-error, the URI always has the ID after the last slash
+    const reducedUri: string = uri.split('/').last();
+    currentObj.pL = prefLabel;
+    currentObj.uri = reducedUri;
+    if (altLabel !== '') {
+        currentObj.aL = altLabel;
+    }
+    if (broaderURLs.length > 0) {
+        currentObj.bt = reducedBroaderURLs;
+    }
+    if (narrowerURLs.length > 0) {
+        currentObj.nt = reducedNarrowerURLs;
+    }
+    if (relatedURLs.length > 0) {
+        currentObj.rt = reducedRelatedURLs;
+    }
+    if (lcc !== '') {
+        currentObj.lcc = lcc;
+    }
+
+    return currentObj;
+}
+
+function pushHeadings(
+    element: Graph,
+    graph: Graph[],
+    type: 'broader' | 'narrower' | 'related'
+): string[] {
+    const urls = [];
+    const headingType:
+        | 'skos:broader'
+        | 'skos:narrower'
+        | 'skos:related' = `skos:${type}`;
+    const relation = element[headingType];
+    if (relation !== undefined) {
+        if (Array.isArray(relation)) {
+            for (const subElement of relation) {
+                const id = subElement['@id'];
                 if (id.startsWith('_:')) {
                     const term = getSkolemIriRelation(graph, id);
                     urls.push(term);
@@ -277,9 +272,16 @@ export class SkosMethods {
                     urls.push(id);
                 }
             }
+        } else {
+            const id: string = relation['@id'];
+            if (id.startsWith('_:')) {
+                const term = getSkolemIriRelation(graph, id);
+                urls.push(term);
+            } else {
+                urls.push(id);
+            }
         }
-
-        return urls;
     }
-}
 
+    return urls;
+}
