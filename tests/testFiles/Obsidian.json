@@ -1,0 +1,321 @@
+{
+    "@context": {
+        "cs": "http://purl.org/vocab/changeset/schema#",
+        "identifiers": "http://id.loc.gov/vocabulary/identifiers/",
+        "lcc": "http://id.loc.gov/ontologies/lcc#",
+        "madsrdf": "http://www.loc.gov/mads/rdf/v1#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdfs1": "http://www.w3.org/1999/02/22-rdf-schema#",
+        "ri": "http://id.loc.gov/ontologies/RecordInfo#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "about": "http://id.loc.gov/authorities/subjects/sh85093752"
+    },
+    "@graph": [
+        {
+            "@id": "http://d-nb.info/gnd/4172330-2",
+            "madsrdf:authoritativeLabel": "\"Obsidian\" "
+        },
+        {
+            "@id": "http://data.bnf.fr/ark:/12148/cb119834052",
+            "madsrdf:authoritativeLabel": "\"Obsidienne\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/1042970",
+            "madsrdf:authoritativeLabel": "\"Obsidian\" "
+        },
+        {
+            "@id": "http://www.wikidata.org/entity/Q53754",
+            "madsrdf:authoritativeLabel": "\"obsidian\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85093752",
+            "@type": [
+                "madsrdf:Authority",
+                "madsrdf:Topic",
+                "skos:Concept"
+            ],
+            "identifiers:lccn": "sh 85093752",
+            "madsrdf:adminMetadata": [
+                {
+                    "@id": "_:N00621eca1a774c18b066ee95071ccd6c"
+                },
+                {
+                    "@id": "_:N57db087103c3479fb9fad6d805841eb2"
+                }
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Obsidian"
+            },
+            "madsrdf:classification": {
+                "@id": "_:N525d686229d1463ea7c9f1f88ec8c661"
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Ndfa6b7cd37f24f30add414545276e014"
+                    }
+                ]
+            },
+            "madsrdf:hasBroaderAuthority": {
+                "@id": "_:N1a1bef68e7d34db78d373676963f94c7"
+            },
+            "madsrdf:hasCloseExternalAuthority": [
+                {
+                    "@id": "http://data.bnf.fr/ark:/12148/cb119834052"
+                },
+                {
+                    "@id": "http://www.wikidata.org/entity/Q53754"
+                },
+                {
+                    "@id": "http://id.worldcat.org/fast/1042970"
+                },
+                {
+                    "@id": "http://d-nb.info/gnd/4172330-2"
+                }
+            ],
+            "madsrdf:hasVariant": [
+                {
+                    "@id": "_:N68910d8cc7d94a18a1274dfb56deab0f"
+                },
+                {
+                    "@id": "_:Nc5f4dde546f24bd09af4cd8c25c2771c"
+                }
+            ],
+            "madsrdf:isMemberOfMADSCollection": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSH_General"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_SubdivideGeographically"
+                }
+            ],
+            "madsrdf:isMemberOfMADSScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "owl:sameAs": [
+                {
+                    "@id": "info:lc/authorities/sh85093752"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/sh85093752#concept"
+                }
+            ],
+            "skos:altLabel": [
+                {
+                    "@language": "en",
+                    "@value": "Hyalopsite"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Iceland agate"
+                }
+            ],
+            "skos:broader": {
+                "@id": "_:N04c560457e1d43a4aa23e39bdf2bf2ca"
+            },
+            "skos:changeNote": [
+                {
+                    "@id": "_:N1ded8bc6d9514e6db82710417838f262"
+                },
+                {
+                    "@id": "_:N0ff93cda65144bf3ab38f8b13de84c6e"
+                }
+            ],
+            "skos:inScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Obsidian"
+            },
+            "skosxl:altLabel": [
+                {
+                    "@id": "_:N569eff7139a14c889420b552360dd2e3"
+                },
+                {
+                    "@id": "_:N5e7e2f60fb7b4239bee43f6147fbacdf"
+                }
+            ]
+        },
+        {
+            "@id": "_:N68910d8cc7d94a18a1274dfb56deab0f",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nf5038c94c89940fd9647ce9e80065402"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Hyalopsite"
+            }
+        },
+        {
+            "@id": "_:Nf5038c94c89940fd9647ce9e80065402",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Hyalopsite"
+            }
+        },
+        {
+            "@id": "_:N00621eca1a774c18b066ee95071ccd6c",
+            "@type": "ri:RecordInfo",
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "1986-02-11T00:00:00"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "ri:recordStatus": "new"
+        },
+        {
+            "@id": "_:N57db087103c3479fb9fad6d805841eb2",
+            "@type": "ri:RecordInfo",
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "1988-06-10T10:57:14"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "ri:recordStatus": "revised"
+        },
+        {
+            "@id": "_:N1ded8bc6d9514e6db82710417838f262",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "revised",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "1988-06-10T10:57:14"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85093752"
+            }
+        },
+        {
+            "@id": "_:Nc5f4dde546f24bd09af4cd8c25c2771c",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nfefde4e048824799b0bafb0df92c4106"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Iceland agate"
+            }
+        },
+        {
+            "@id": "_:Nfefde4e048824799b0bafb0df92c4106",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Iceland agate"
+            }
+        },
+        {
+            "@id": "_:N0ff93cda65144bf3ab38f8b13de84c6e",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "new",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "1986-02-11T00:00:00"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85093752"
+            }
+        },
+        {
+            "@id": "_:N1a1bef68e7d34db78d373676963f94c7",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Authority"
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Volcanic ash, tuff, etc."
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N5b97a8f1ae934ee195dda6fa21e7ff52"
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "_:N5b97a8f1ae934ee195dda6fa21e7ff52",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Volcanic ash, tuff, etc."
+            }
+        },
+        {
+            "@id": "_:N04c560457e1d43a4aa23e39bdf2bf2ca",
+            "@type": "skos:Concept",
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Volcanic ash, tuff, etc."
+            }
+        },
+        {
+            "@id": "_:Ndfa6b7cd37f24f30add414545276e014",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Obsidian"
+            }
+        },
+        {
+            "@id": "_:N525d686229d1463ea7c9f1f88ec8c661",
+            "@type": "lcc:ClassNumber",
+            "madsrdf:code": "QE462.O28",
+            "madsrdf:hasExactExternalAuthority": {
+                "@id": "http://id.loc.gov/authorities/classification/QE462.O28"
+            }
+        },
+        {
+            "@id": "_:N569eff7139a14c889420b552360dd2e3",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Hyalopsite"
+            }
+        },
+        {
+            "@id": "_:N5e7e2f60fb7b4239bee43f6147fbacdf",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Iceland agate"
+            }
+        }
+    ]
+}

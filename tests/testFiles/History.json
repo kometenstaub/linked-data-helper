@@ -1,0 +1,576 @@
+{
+    "@context": {
+        "cs": "http://purl.org/vocab/changeset/schema#",
+        "identifiers": "http://id.loc.gov/vocabulary/identifiers/",
+        "lcc": "http://id.loc.gov/ontologies/lcc#",
+        "madsrdf": "http://www.loc.gov/mads/rdf/v1#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdfs1": "http://www.w3.org/1999/02/22-rdf-schema#",
+        "ri": "http://id.loc.gov/ontologies/RecordInfo#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "about": "http://id.loc.gov/authorities/subjects/sh85061227"
+    },
+    "@graph": [
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85061212",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Authority"
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "History"
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Ncc27f8ef4ef14f0ca67612543a630f55"
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "_:Ncc27f8ef4ef14f0ca67612543a630f55",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "History"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85061227",
+            "@type": [
+                "skos:Concept",
+                "madsrdf:Authority",
+                "madsrdf:ComplexSubject"
+            ],
+            "identifiers:lccn": "sh 85061227",
+            "madsrdf:adminMetadata": [
+                {
+                    "@id": "_:Neb12258cd56e4f94b6f5f77c2381d654"
+                },
+                {
+                    "@id": "_:N7aa26d740810484981b9468521d5425b"
+                }
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "History--Sources"
+            },
+            "madsrdf:classification": {
+                "@id": "_:N258da067e7974995a5e07d73a79a951a"
+            },
+            "madsrdf:componentList": {
+                "@list": [
+                    {
+                        "@id": "http://id.loc.gov/authorities/subjects/sh85061212"
+                    },
+                    {
+                        "@id": "http://id.loc.gov/authorities/subjects/sh2002012007"
+                    }
+                ]
+            },
+            "madsrdf:editorialNote": "subdivision [History--Sources] under names of countries, cities, etc., and individual corporate bodies, and under classes of persons, ethnic groups, and topical headings that are not inherently historical; and subdivision [Sources] under historical topics, e.g. [Renaissance--Sources]",
+            "madsrdf:hasCloseExternalAuthority": [
+                {
+                    "@id": "http://www.wikidata.org/entity/Q5369651"
+                },
+                {
+                    "@id": "http://d-nb.info/gnd/4135952-5"
+                },
+                {
+                    "@id": "http://data.bnf.fr/ark:/12148/cb133188651"
+                }
+            ],
+            "madsrdf:hasNarrowerAuthority": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85006913"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85022719"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85135408"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003003039"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85038194"
+                }
+            ],
+            "madsrdf:hasSource": [
+                {
+                    "@id": "_:N90cfe19364fb4039b0fe5f9f3dbaa705"
+                },
+                {
+                    "@id": "_:Nc50324f867234f508a991fb297da76ca"
+                }
+            ],
+            "madsrdf:hasVariant": [
+                {
+                    "@id": "_:N9c495aae731b4ca29ee4e6e2d47604b1"
+                },
+                {
+                    "@id": "_:N22af91545ae7489ba3c7d5f22a79c2b9"
+                },
+                {
+                    "@id": "_:Nbe1b11f05f15481ebd1714a10e71b3d5"
+                },
+                {
+                    "@id": "_:Ne1238c6b51c14ac58d345719b14c662d"
+                },
+                {
+                    "@id": "_:N4c57c6b1d8324185bc4412180c629c6b"
+                }
+            ],
+            "madsrdf:isMemberOfMADSCollection": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSH_General"
+                }
+            ],
+            "madsrdf:isMemberOfMADSScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "madsrdf:note": "Here are entered collections of documents, records, etc. upon which narrative history is based.",
+            "owl:sameAs": [
+                {
+                    "@id": "http://id.loc.gov/authorities/sh85061227#concept"
+                },
+                {
+                    "@id": "info:lc/authorities/sh85061227"
+                }
+            ],
+            "skos:altLabel": [
+                {
+                    "@language": "en",
+                    "@value": "Historical sources"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Primary sources (Historical sources)"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Sources, Historical"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Historical source material"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Source material, Historical"
+                }
+            ],
+            "skos:changeNote": [
+                {
+                    "@id": "_:Nd4bc386341fe4ac4bf878ff217ca4a0e"
+                },
+                {
+                    "@id": "_:Nc075ffded33948ceab97022e1ed35c2c"
+                }
+            ],
+            "skos:editorial": "subdivision [History--Sources] under names of countries, cities, etc., and individual corporate bodies, and under classes of persons, ethnic groups, and topical headings that are not inherently historical; and subdivision [Sources] under historical topics, e.g. [Renaissance--Sources]",
+            "skos:inScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "skos:narrower": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85038194"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85135408"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85006913"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003003039"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh85022719"
+                }
+            ],
+            "skos:note": "Here are entered collections of documents, records, etc. upon which narrative history is based.",
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "History--Sources"
+            },
+            "skosxl:altLabel": [
+                {
+                    "@id": "_:N14f428072b5440a7b7046fdb7e590291"
+                },
+                {
+                    "@id": "_:Nff30ba1ffad245ea84f9bbbbefc6b95b"
+                },
+                {
+                    "@id": "_:N7405e85da6924ac79f00251713876a0c"
+                },
+                {
+                    "@id": "_:N1f9316b0ddd04574a839994cf0ca7514"
+                },
+                {
+                    "@id": "_:Nbe7e7d87b9e94c2dbf765215f6f7bf80"
+                }
+            ]
+        },
+        {
+            "@id": "_:N14f428072b5440a7b7046fdb7e590291",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Source material, Historical"
+            }
+        },
+        {
+            "@id": "_:N9c495aae731b4ca29ee4e6e2d47604b1",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N00059c5a2aea400cbdd7c88a7ce43eec"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Sources, Historical"
+            }
+        },
+        {
+            "@id": "_:N00059c5a2aea400cbdd7c88a7ce43eec",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Sources, Historical"
+            }
+        },
+        {
+            "@id": "_:Neb12258cd56e4f94b6f5f77c2381d654",
+            "@type": "ri:RecordInfo",
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-07-15T00:00:00"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "ri:recordStatus": "new"
+        },
+        {
+            "@id": "_:N22af91545ae7489ba3c7d5f22a79c2b9",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nb2ee6448a0534b2a993f5d5ebc2ba1b0"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Source material, Historical"
+            }
+        },
+        {
+            "@id": "_:Nb2ee6448a0534b2a993f5d5ebc2ba1b0",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Source material, Historical"
+            }
+        },
+        {
+            "@id": "_:Nbe1b11f05f15481ebd1714a10e71b3d5",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Ne3c1ed90fb184a578c75372636260c53"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Primary sources (Historical sources)"
+            }
+        },
+        {
+            "@id": "_:Ne3c1ed90fb184a578c75372636260c53",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Primary sources (Historical sources)"
+            }
+        },
+        {
+            "@id": "_:Ne1238c6b51c14ac58d345719b14c662d",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N9bc2bd55cd60463095f6e69e3764c8b7"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Historical sources"
+            }
+        },
+        {
+            "@id": "_:N9bc2bd55cd60463095f6e69e3764c8b7",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Historical sources"
+            }
+        },
+        {
+            "@id": "_:Nff30ba1ffad245ea84f9bbbbefc6b95b",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Primary sources (Historical sources)"
+            }
+        },
+        {
+            "@id": "_:N90cfe19364fb4039b0fe5f9f3dbaa705",
+            "@type": "madsrdf:Source",
+            "madsrdf:citationNote": {
+                "@language": "en",
+                "@value": "(titles: primary sources)"
+            },
+            "madsrdf:citationSource": "LC database, July 15, 2005",
+            "madsrdf:citationStatus": "found"
+        },
+        {
+            "@id": "_:N7405e85da6924ac79f00251713876a0c",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Historical source material"
+            }
+        },
+        {
+            "@id": "_:Nc50324f867234f508a991fb297da76ca",
+            "@type": "madsrdf:Source",
+            "madsrdf:citationNote": {
+                "@language": "en",
+                "@value": "(primary source: original works in various media formats such as photographs, drawings, letters, diaries, documents, books, films, posters, play scripts, speeches, songs, sheet music, and first-person accounts that are recorded at the time of an event.)"
+            },
+            "madsrdf:citationSource": "LC Learning page glossary, July 15, 2005",
+            "madsrdf:citationStatus": "found"
+        },
+        {
+            "@id": "_:N1f9316b0ddd04574a839994cf0ca7514",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Historical sources"
+            }
+        },
+        {
+            "@id": "_:N258da067e7974995a5e07d73a79a951a",
+            "@type": "lcc:ClassNumber",
+            "madsrdf:code": "D5-D5.5",
+            "madsrdf:hasExactExternalAuthority": {
+                "@id": "http://id.loc.gov/authorities/classification/D5-D5.5"
+            }
+        },
+        {
+            "@id": "_:Nbe7e7d87b9e94c2dbf765215f6f7bf80",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Sources, Historical"
+            }
+        },
+        {
+            "@id": "_:N4c57c6b1d8324185bc4412180c629c6b",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nfe8248c0d9684da6bd372134d811c5f6"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Historical source material"
+            }
+        },
+        {
+            "@id": "_:Nfe8248c0d9684da6bd372134d811c5f6",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Historical source material"
+            }
+        },
+        {
+            "@id": "_:Nd4bc386341fe4ac4bf878ff217ca4a0e",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "new",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-07-15T00:00:00"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85061227"
+            }
+        },
+        {
+            "@id": "_:N7aa26d740810484981b9468521d5425b",
+            "@type": "ri:RecordInfo",
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-07-29T12:53:29"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "ri:recordStatus": "revised"
+        },
+        {
+            "@id": "_:Nc075ffded33948ceab97022e1ed35c2c",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "revised",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-07-29T12:53:29"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85061227"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85022719",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Charters"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Charters"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003003039",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Biographical sources"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Biographical sources"
+            }
+        },
+        {
+            "@id": "http://data.bnf.fr/ark:/12148/cb133188651",
+            "madsrdf:authoritativeLabel": "\"Histoire -- Sources\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85135408",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Time capsules"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Time capsules"
+            }
+        },
+        {
+            "@id": "http://www.wikidata.org/entity/Q5369651",
+            "madsrdf:authoritativeLabel": "\"historical source\" "
+        },
+        {
+            "@id": "http://d-nb.info/gnd/4135952-5",
+            "madsrdf:authoritativeLabel": "\"Quelle\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2002012007",
+            "@type": [
+                "madsrdf:GenreForm",
+                "madsrdf:Authority"
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Sources"
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N758ecd6ce89c4e219f3ba7e040def656"
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "_:N758ecd6ce89c4e219f3ba7e040def656",
+            "@type": "madsrdf:GenreFormElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Sources"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85006913",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archives"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archives"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85038194",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Diplomatics"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Diplomatics"
+            }
+        }
+    ]
+}

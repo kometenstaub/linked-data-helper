@@ -1,0 +1,732 @@
+{
+    "@context": {
+        "cs": "http://purl.org/vocab/changeset/schema#",
+        "identifiers": "http://id.loc.gov/vocabulary/identifiers/",
+        "madsrdf": "http://www.loc.gov/mads/rdf/v1#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdfs1": "http://www.w3.org/1999/02/22-rdf-schema#",
+        "ri": "http://id.loc.gov/ontologies/RecordInfo#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "about": "http://id.loc.gov/authorities/subjects/sh2004001262"
+    },
+    "@graph": [
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85006507",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Authority",
+                "skos:Concept"
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeology"
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N27195e559bed49918ccef84f2ef1d614"
+                    }
+                ]
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archaeology"
+            }
+        },
+        {
+            "@id": "_:N27195e559bed49918ccef84f2ef1d614",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/1201796",
+            "madsrdf:authoritativeLabel": "\"Archaeological site location\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2004001262",
+            "@type": [
+                "skos:Concept",
+                "madsrdf:Topic",
+                "madsrdf:Authority"
+            ],
+            "identifiers:lccn": "sh2004001262",
+            "madsrdf:adminMetadata": [
+                {
+                    "@id": "_:N2e45e5d4587c4b8fbf46a8cc333bb5f2"
+                },
+                {
+                    "@id": "_:N30e2a5ba58a94bccac81e8f6187443d5"
+                }
+            ],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeological site location"
+            },
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nf9f4e6a074974f32a54810f3401361af"
+                    }
+                ]
+            },
+            "madsrdf:hasBroaderAuthority": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
+            },
+            "madsrdf:hasCloseExternalAuthority": {
+                "@id": "http://id.worldcat.org/fast/1201796"
+            },
+            "madsrdf:hasSource": [
+                {
+                    "@id": "_:Nff27b2f5e45a4bf0a8db7d0b71f996d5"
+                },
+                {
+                    "@id": "_:N50f66cd5cda34558bc6b5fa09795da94"
+                },
+                {
+                    "@id": "_:N4e1b6117e96d40d694429badf6c704c1"
+                }
+            ],
+            "madsrdf:hasVariant": [
+                {
+                    "@id": "_:Neaf0e1c11a0a4f50a2de5c1e0dd3e520"
+                },
+                {
+                    "@id": "_:N194d57de11c6411b8bb579e329a50527"
+                },
+                {
+                    "@id": "_:Nfcd611018ab54d1aae2e844f56771d40"
+                },
+                {
+                    "@id": "_:Nc90d0033ef3c42c6ab92ac6a9623a66c"
+                },
+                {
+                    "@id": "_:Ncefb3f93c8354a989cfc69b94fdbec56"
+                },
+                {
+                    "@id": "_:N69dcc8dfab26403ea4a4c0ff00c57d79"
+                },
+                {
+                    "@id": "_:N4ae83cb783224b8a91edd5e6f4ac2988"
+                },
+                {
+                    "@id": "_:N8301c0cf5b03425e8d4e4cde911f8929"
+                },
+                {
+                    "@id": "_:Nc6704b6843454b5280f58211edaa1b6f"
+                }
+            ],
+            "madsrdf:isMemberOfMADSCollection": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSH_General"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_SubdivideGeographically"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings"
+                }
+            ],
+            "madsrdf:isMemberOfMADSScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "owl:sameAs": [
+                {
+                    "@id": "http://id.loc.gov/authorities/sh2004001262#concept"
+                },
+                {
+                    "@id": "info:lc/authorities/sh2004001262"
+                }
+            ],
+            "skos:altLabel": [
+                {
+                    "@language": "en",
+                    "@value": "Site location, Archaeological"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Archaeological site distribution"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Location of archaeological sites"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Site distribution, Archaeological"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Antiquities--Location"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Archaeological site locations"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Geographical distribution of archaeological sites"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Antiquities--Geographical distribution"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Distribution of archaeological sites"
+                }
+            ],
+            "skos:broader": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
+            },
+            "skos:changeNote": [
+                {
+                    "@id": "_:N46c17e6c3fbf4cdfa1d7f11b09341645"
+                },
+                {
+                    "@id": "_:Nea7495aba74e4f48a92551a14821eebd"
+                }
+            ],
+            "skos:inScheme": {
+                "@id": "http://id.loc.gov/authorities/subjects"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archaeological site location"
+            },
+            "skosxl:altLabel": [
+                {
+                    "@id": "_:N59a287d9402b4e5ca19f6588688a8a74"
+                },
+                {
+                    "@id": "_:N5afa4b32ca1947979ce860dc9ce1b862"
+                },
+                {
+                    "@id": "_:Ne13279a6da02487e8010a7044c8822e0"
+                },
+                {
+                    "@id": "_:Na73202335fbf4579b64b49f86f8d300f"
+                },
+                {
+                    "@id": "_:N80ed7baa669740bebdc0c18227bbf3ba"
+                },
+                {
+                    "@id": "_:Nec5d519f34824208b022ce1f90fed7fb"
+                },
+                {
+                    "@id": "_:N29c6478b2bbb43458f97eb5ff95156e2"
+                },
+                {
+                    "@id": "_:Nf811e9b4ccd44b77b9b085edfdb397dc"
+                },
+                {
+                    "@id": "_:N4563268c0eb646f9870ab5592a5ea072"
+                }
+            ]
+        },
+        {
+            "@id": "_:Neaf0e1c11a0a4f50a2de5c1e0dd3e520",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Ne0580cc8b11145e8a9b8c0fbf502f19f"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Site location, Archaeological"
+            }
+        },
+        {
+            "@id": "_:Ne0580cc8b11145e8a9b8c0fbf502f19f",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Site location, Archaeological"
+            }
+        },
+        {
+            "@id": "_:N59a287d9402b4e5ca19f6588688a8a74",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Archaeological site locations"
+            }
+        },
+        {
+            "@id": "_:N194d57de11c6411b8bb579e329a50527",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N1721ffea4bf44dda99e744a094621a9c"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Archaeological site locations"
+            }
+        },
+        {
+            "@id": "_:N1721ffea4bf44dda99e744a094621a9c",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Archaeological site locations"
+            }
+        },
+        {
+            "@id": "_:N2e45e5d4587c4b8fbf46a8cc333bb5f2",
+            "@type": "ri:RecordInfo",
+            "ri:languageOfCataloging": {
+                "@id": "http://id.loc.gov/vocabulary/iso639-2/eng"
+            },
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2004-12-01T00:00:00"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+            },
+            "ri:recordStatus": "new"
+        },
+        {
+            "@id": "_:Nfcd611018ab54d1aae2e844f56771d40",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N4f26bec9105c407aa84b80391e8904e2"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Location of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:N4f26bec9105c407aa84b80391e8904e2",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Location of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:Nc90d0033ef3c42c6ab92ac6a9623a66c",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N7ee3e1c7bff14a538cef6963d73bace0"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Geographical distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:N7ee3e1c7bff14a538cef6963d73bace0",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Geographical distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:N5afa4b32ca1947979ce860dc9ce1b862",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Location of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:Ne13279a6da02487e8010a7044c8822e0",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Antiquities--Geographical distribution"
+            }
+        },
+        {
+            "@id": "_:Na73202335fbf4579b64b49f86f8d300f",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Geographical distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:Nff27b2f5e45a4bf0a8db7d0b71f996d5",
+            "@type": "madsrdf:Source",
+            "madsrdf:citationNote": {
+                "@language": "en",
+                "@value": "p. 5 (locations where archaeological sites are likely to be present and locations where they are likely to be absent; locations of archaeological sites)"
+            },
+            "madsrdf:citationSource": "Leathwick, J.R. Predictive models of archaeological site distributions in New Zealand, c2000:",
+            "madsrdf:citationStatus": "found"
+        },
+        {
+            "@id": "_:N46c17e6c3fbf4cdfa1d7f11b09341645",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "revised",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-01-14T12:24:36"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
+            }
+        },
+        {
+            "@id": "_:N80ed7baa669740bebdc0c18227bbf3ba",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Antiquities--Location"
+            }
+        },
+        {
+            "@id": "_:Nec5d519f34824208b022ce1f90fed7fb",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Archaeological site distribution"
+            }
+        },
+        {
+            "@id": "_:N50f66cd5cda34558bc6b5fa09795da94",
+            "@type": "madsrdf:Source",
+            "madsrdf:citationNote": {
+                "@language": "en",
+                "@value": "(Environmental factors in archaeological site locations; The Middle Palaeolithic geography of Southern France : resources and site location; Predicting archaeological sites from environmental variables; Archaeological chart of Mexico showing location of principal ruins; Archeological investigations of the original Charles Corneau House and barn location, Lincoln Home National Historic Site, Springfield, Illinois)"
+            },
+            "madsrdf:citationSource": "LC database, Aug. 12, 2004",
+            "madsrdf:citationStatus": "found"
+        },
+        {
+            "@id": "_:Ncefb3f93c8354a989cfc69b94fdbec56",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Nd131d9a75a194930af7083f9251f5bb5"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Archaeological site distribution"
+            }
+        },
+        {
+            "@id": "_:Nd131d9a75a194930af7083f9251f5bb5",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Archaeological site distribution"
+            }
+        },
+        {
+            "@id": "_:N69dcc8dfab26403ea4a4c0ff00c57d79",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:Ndbb0af9ef67844528846d60f7090abf0"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Site distribution, Archaeological"
+            }
+        },
+        {
+            "@id": "_:Ndbb0af9ef67844528846d60f7090abf0",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Site distribution, Archaeological"
+            }
+        },
+        {
+            "@id": "_:N29c6478b2bbb43458f97eb5ff95156e2",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Site distribution, Archaeological"
+            }
+        },
+        {
+            "@id": "_:N4ae83cb783224b8a91edd5e6f4ac2988",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N46d3d0a7d85e44f79dc13cd31794506a"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:N46d3d0a7d85e44f79dc13cd31794506a",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:Nea7495aba74e4f48a92551a14821eebd",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "new",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2004-12-01T00:00:00"
+            },
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+            },
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
+            }
+        },
+        {
+            "@id": "_:Nf811e9b4ccd44b77b9b085edfdb397dc",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Site location, Archaeological"
+            }
+        },
+        {
+            "@id": "_:N4e1b6117e96d40d694429badf6c704c1",
+            "@type": "madsrdf:Source",
+            "madsrdf:citationNote": {
+                "@language": "en",
+                "@value": "abstr. (Statistical modelling of the difference between the environments where archaeological sites are known to occur and random sites was used to create maps and GIS coverages depicting the relative likelihood of any 100 x 100 m area of New Zealand containing an archaeological site. Coverages were developed separately for pa, middens, and pits as well as for all sites.)"
+            },
+            "madsrdf:citationSource": "Work cat.: Arnold, G. Predicting archaeological sites in New Zealand, c2004:",
+            "madsrdf:citationStatus": "found"
+        },
+        {
+            "@id": "_:N4563268c0eb646f9870ab5592a5ea072",
+            "@type": "skosxl:Label",
+            "skosxl:literalForm": {
+                "@language": "en",
+                "@value": "Distribution of archaeological sites"
+            }
+        },
+        {
+            "@id": "_:N30e2a5ba58a94bccac81e8f6187443d5",
+            "@type": "ri:RecordInfo",
+            "ri:languageOfCataloging": {
+                "@id": "http://id.loc.gov/vocabulary/iso639-2/eng"
+            },
+            "ri:recordChangeDate": {
+                "@type": "xsd:dateTime",
+                "@value": "2005-01-14T12:24:36"
+            },
+            "ri:recordContentSource": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+            },
+            "ri:recordStatus": "revised"
+        },
+        {
+            "@id": "_:N8301c0cf5b03425e8d4e4cde911f8929",
+            "@type": [
+                "madsrdf:ComplexSubject",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:componentList": {
+                "@list": [
+                    {
+                        "@id": "_:N072f6a97003b46088640b9f02a5287f7"
+                    },
+                    {
+                        "@id": "_:N18eafab402ff4b85891c80b03d44b898"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Antiquities--Location"
+            }
+        },
+        {
+            "@id": "_:N072f6a97003b46088640b9f02a5287f7",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N889ae22ea84b47fc8b8c6141a72c4925"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Antiquities"
+            }
+        },
+        {
+            "@id": "_:N889ae22ea84b47fc8b8c6141a72c4925",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Antiquities"
+            }
+        },
+        {
+            "@id": "_:N18eafab402ff4b85891c80b03d44b898",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N999e0de5d2f04f478d4062f3aebff43a"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Location"
+            }
+        },
+        {
+            "@id": "_:N999e0de5d2f04f478d4062f3aebff43a",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Location"
+            }
+        },
+        {
+            "@id": "_:Nc6704b6843454b5280f58211edaa1b6f",
+            "@type": [
+                "madsrdf:ComplexSubject",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:componentList": {
+                "@list": [
+                    {
+                        "@id": "_:Ndeb1ca0aa8d2432c8ffe3c707f932afd"
+                    },
+                    {
+                        "@id": "_:N40c73a1dd7184e64ad33a9543e98f861"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Antiquities--Geographical distribution"
+            }
+        },
+        {
+            "@id": "_:Ndeb1ca0aa8d2432c8ffe3c707f932afd",
+            "@type": [
+                "madsrdf:Topic",
+                "madsrdf:Variant"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N36984e0741aa46788e03d4a0ec4143bc"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Antiquities"
+            }
+        },
+        {
+            "@id": "_:N36984e0741aa46788e03d4a0ec4143bc",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Antiquities"
+            }
+        },
+        {
+            "@id": "_:N40c73a1dd7184e64ad33a9543e98f861",
+            "@type": [
+                "madsrdf:Variant",
+                "madsrdf:Topic"
+            ],
+            "madsrdf:elementList": {
+                "@list": [
+                    {
+                        "@id": "_:N9e0bf59effb74c90b1f5a5d1cf248c8b"
+                    }
+                ]
+            },
+            "madsrdf:variantLabel": {
+                "@language": "en",
+                "@value": "Geographical distribution"
+            }
+        },
+        {
+            "@id": "_:N9e0bf59effb74c90b1f5a5d1cf248c8b",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Geographical distribution"
+            }
+        },
+        {
+            "@id": "_:Nf9f4e6a074974f32a54810f3401361af",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Archaeological site location"
+            }
+        }
+    ]
+}
