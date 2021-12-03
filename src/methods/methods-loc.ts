@@ -1,8 +1,9 @@
-import { App, normalizePath, Notice } from 'obsidian';
+import {App, normalizePath, Notice} from 'obsidian';
 import type LinkedDataHelperPlugin from '../main';
-import type { Graph, headings, LcshInterface, SkolemGraphNode } from '../interfaces';
-import { createReadStream } from 'fs';
+import type {Graph, headings, LcshInterface, SkolemGraphNode} from '../interfaces';
+import {createReadStream} from 'fs';
 import split2 from 'split2';
+import {getSkolemIriRelation} from "./parseJson";
 
 export class SkosMethods {
     app: App;
@@ -31,7 +32,7 @@ export class SkosMethods {
             newOutputPath = outputPath;
         }
 
-        function extracted(obj: LcshInterface) {
+        const extracted = (obj: LcshInterface) => {
             //@ts-expect-error, it needs to be initialised
             // and will be populated later on
             let currentObj: headings = {};
@@ -282,22 +283,3 @@ export class SkosMethods {
     }
 }
 
-/**
- *
- * @param graph
- * @param id
- * @returns - it always returns a non-empty string, because this function is only called if there is a matching result
- */
-function getSkolemIriRelation(graph: Graph[], id: string): string {
-    let term = '';
-    for (const part of graph) {
-        if (part['@id'] === id) {
-            const prefLabel = part['skos:prefLabel'];
-            if (prefLabel['@language'] === 'en') {
-                term = prefLabel['@value'];
-                break;
-            }
-        }
-    }
-    return term;
-}
