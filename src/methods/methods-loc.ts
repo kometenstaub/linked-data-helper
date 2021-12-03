@@ -35,7 +35,6 @@ export class SkosMethods {
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
             .on('data', (obj: LcshInterface) => {
-                //extracted.call(this, obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
                 extracted(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel)
             })
             .on('end', () => {
