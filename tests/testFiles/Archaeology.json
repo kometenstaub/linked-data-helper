@@ -2,6 +2,7 @@
     "@context": {
         "cs": "http://purl.org/vocab/changeset/schema#",
         "identifiers": "http://id.loc.gov/vocabulary/identifiers/",
+        "lcc": "http://id.loc.gov/ontologies/lcc#",
         "madsrdf": "http://www.loc.gov/mads/rdf/v1#",
         "owl": "http://www.w3.org/2002/07/owl#",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -11,117 +12,856 @@
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "skosxl": "http://www.w3.org/2008/05/skos-xl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "about": "http://id.loc.gov/authorities/subjects/sh2004001262"
+        "about": "http://id.loc.gov/authorities/subjects/sh85006507"
     },
     "@graph": [
         {
-            "@id": "http://id.loc.gov/authorities/subjects/sh85006507",
-            "@type": [
-                "madsrdf:Topic",
-                "madsrdf:Authority",
-                "skos:Concept"
-            ],
+            "@id": "http://id.worldcat.org/fast/812989",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Sources\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85061115",
+            "@type": "madsrdf:Authority",
             "madsrdf:authoritativeLabel": {
                 "@language": "en",
-                "@value": "Archaeology"
+                "@value": "Historic sites"
             },
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N27195e559bed49918ccef84f2ef1d614"
-                    }
-                ]
+            "skos:prefLabel": { "@language": "en", "@value": "Historic sites" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh95000887",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Steppe archaeology"
             },
             "skos:prefLabel": {
                 "@language": "en",
-                "@value": "Archaeology"
+                "@value": "Steppe archaeology"
             }
         },
         {
-            "@id": "_:N27195e559bed49918ccef84f2ef1d614",
+            "@id": "http://id.worldcat.org/fast/812958",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Graphic methods\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2009004421",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Forensic archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Forensic archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812987",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Social aspects\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812985",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Research grants\" "
+        },
+        {
+            "@id": "http://d-nb.info/gnd/4002827-6",
+            "madsrdf:authoritativeLabel": "\"Arch\u00e4ologie\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812972",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Moral and ethical aspects\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85066643",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Insect forms in art and archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Insect forms in art and archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812982",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Research\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85065024",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Indians--Antiquities"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Indians--Antiquities"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85010480",
+            "@type": ["madsrdf:Topic", "skos:Concept", "madsrdf:Authority"],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Auxiliary sciences of history"
+            },
+            "madsrdf:elementList": {
+                "@list": [{ "@id": "_:N827ebdb322a14866802ff85824728572" }]
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Auxiliary sciences of history"
+            }
+        },
+        {
+            "@id": "_:N827ebdb322a14866802ff85824728572",
             "@type": "madsrdf:TopicElement",
             "madsrdf:elementValue": {
                 "@language": "en",
-                "@value": "Archaeology"
+                "@value": "Auxiliary sciences of history"
             }
         },
         {
-            "@id": "http://id.worldcat.org/fast/1201796",
-            "madsrdf:authoritativeLabel": "\"Archaeological site location\" "
+            "@id": "http://id.loc.gov/authorities/subjects/sh85097895",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Parapsychology and archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Parapsychology and archaeology"
+            }
         },
         {
-            "@id": "http://id.loc.gov/authorities/subjects/sh2004001262",
-            "@type": [
-                "skos:Concept",
-                "madsrdf:Topic",
-                "madsrdf:Authority"
-            ],
-            "identifiers:lccn": "sh2004001262",
+            "@id": "http://id.loc.gov/authorities/subjects/sh89000928",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Urban archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Urban archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812967",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Mathematical models\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85027024",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Cliff-dwellings"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Cliff-dwellings" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh95000886",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Forest archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Forest archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812968",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Mathematics\" "
+        },
+        {
+            "@id": "http://data.bnf.fr/ark:/12148/cb13318444z",
+            "madsrdf:authoritativeLabel": "\"Arch\u00e9ologie\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812964",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Library resources\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85101308",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Photography in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Photography in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003009064",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Semiotics and archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Semiotics and archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812939",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Antiquities\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh89002313",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Imaging systems in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Imaging systems in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812946",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Computer programs\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812941",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Authorship\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003003476",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Anthracology"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Anthracology" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812959",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Historiography\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85102008",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Picture-writing"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Picture-writing" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85114683",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Rock paintings"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Rock paintings" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812951",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Documentation\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh94001190",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Landscape archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Landscape archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812973",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Museums\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812942",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Classification\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85127907",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Stele (Archaeology)"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Stele (Archaeology)"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812954",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Experiments\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85144346",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Volunteer workers in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Volunteer workers in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812996",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching (Middle school)\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812949",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Costs\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85065958",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Industries, Primitive"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Industries, Primitive"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003011000",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "National socialism and archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "National socialism and archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2013000143",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Ice patch archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Ice patch archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812998",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching (Secondary)\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812953",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Equipment and supplies\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812965",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Management\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812966",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Maps\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812952",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Environmental aspects\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812974",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Periodicals\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/1351719",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Private collections\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85006703",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Architecture, Ancient"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Architecture, Ancient"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85093255",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Numismatics"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Numismatics" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812955",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Field work\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2012004636",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Three-dimensional imaging in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Three-dimensional imaging in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003004186",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Island archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Island archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh99002344",
+            "@type": ["madsrdf:Authority", "skos:Concept", "madsrdf:Topic"],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Antiquities"
+            },
+            "madsrdf:elementList": {
+                "@list": [{ "@id": "_:N4344331745b34923b3985b82490594f5" }]
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Antiquities" }
+        },
+        {
+            "@id": "_:N4344331745b34923b3985b82490594f5",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Antiquities"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812961",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Information services\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85005581",
+            "@type": ["skos:Concept", "madsrdf:Topic", "madsrdf:Authority"],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Anthropology"
+            },
+            "madsrdf:elementList": {
+                "@list": [{ "@id": "_:N5b2f6a01a94f473d9187967690eaf8b5" }]
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Anthropology" }
+        },
+        {
+            "@id": "_:N5b2f6a01a94f473d9187967690eaf8b5",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": {
+                "@language": "en",
+                "@value": "Anthropology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85109300",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Pyramids"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Pyramids" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh00007440",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Virtual reality in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Virtual reality in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85053066",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Garden archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Garden archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85065824",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Industrial archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Industrial archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812980",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Reference books\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812944",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Comparative method\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/813000",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Technological innovations\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh87000460",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Coastal archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Coastal archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85116926",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Salvage archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Salvage archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812940",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Audio-visual aids\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh99005024",
+            "@type": ["madsrdf:Authority", "skos:Concept", "madsrdf:Topic"],
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "History"
+            },
+            "madsrdf:elementList": {
+                "@list": [{ "@id": "_:N3bd1e4fc828e431eaeeec4e15f94a99f" }]
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "History" }
+        },
+        {
+            "@id": "_:N3bd1e4fc828e431eaeeec4e15f94a99f",
+            "@type": "madsrdf:TopicElement",
+            "madsrdf:elementValue": { "@language": "en", "@value": "History" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85079786",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Magnetometry in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Magnetometry in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2021005077",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Classification--Books--Archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Classification--Books--Archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85072567",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Kitchen-middens"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Kitchen-middens" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812992",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching--Activity programs\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85060817",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Hill figures"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Hill figures" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85087721",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Mounds"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Mounds" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh93006952",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Feminist archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Feminist archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh86001404",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Music archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Music archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85006507",
+            "@type": ["madsrdf:Topic", "madsrdf:Authority", "skos:Concept"],
+            "identifiers:lccn": "sh 85006507",
             "madsrdf:adminMetadata": [
-                {
-                    "@id": "_:N2e45e5d4587c4b8fbf46a8cc333bb5f2"
-                },
-                {
-                    "@id": "_:N30e2a5ba58a94bccac81e8f6187443d5"
-                }
+                { "@id": "_:Nb5f6785c586340d3884a857cbf1280a0" },
+                { "@id": "_:N157c9bf7078745548874f65b551a5d2a" }
             ],
             "madsrdf:authoritativeLabel": {
                 "@language": "en",
-                "@value": "Archaeological site location"
+                "@value": "Archaeology"
             },
+            "madsrdf:classification": {
+                "@id": "_:N79c340ac92074cfe94481d6760ebbdf7"
+            },
+            "madsrdf:editorialNote": "subdivision [Antiquities] under names of countries, cities, etc., and under individual ethnic groups, e.g. [Egypt--Antiquities; Mayas--Antiquities]",
             "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:Nf9f4e6a074974f32a54810f3401361af"
-                    }
-                ]
+                "@list": [{ "@id": "_:Nbbd38ab0f77e4b08a998ed3d81a1a5d9" }]
             },
-            "madsrdf:hasBroaderAuthority": {
-                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
-            },
-            "madsrdf:hasCloseExternalAuthority": {
-                "@id": "http://id.worldcat.org/fast/1201796"
-            },
-            "madsrdf:hasSource": [
-                {
-                    "@id": "_:Nff27b2f5e45a4bf0a8db7d0b71f996d5"
-                },
-                {
-                    "@id": "_:N50f66cd5cda34558bc6b5fa09795da94"
-                },
-                {
-                    "@id": "_:N4e1b6117e96d40d694429badf6c704c1"
-                }
+            "madsrdf:hasBroaderAuthority": [
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85010480" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh99005024" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85005581" }
             ],
-            "madsrdf:hasVariant": [
-                {
-                    "@id": "_:Neaf0e1c11a0a4f50a2de5c1e0dd3e520"
-                },
-                {
-                    "@id": "_:N194d57de11c6411b8bb579e329a50527"
-                },
-                {
-                    "@id": "_:Nfcd611018ab54d1aae2e844f56771d40"
-                },
-                {
-                    "@id": "_:Nc90d0033ef3c42c6ab92ac6a9623a66c"
-                },
-                {
-                    "@id": "_:Ncefb3f93c8354a989cfc69b94fdbec56"
-                },
-                {
-                    "@id": "_:N69dcc8dfab26403ea4a4c0ff00c57d79"
-                },
-                {
-                    "@id": "_:N4ae83cb783224b8a91edd5e6f4ac2988"
-                },
-                {
-                    "@id": "_:N8301c0cf5b03425e8d4e4cde911f8929"
-                },
-                {
-                    "@id": "_:Nc6704b6843454b5280f58211edaa1b6f"
-                }
+            "madsrdf:hasCloseExternalAuthority": [
+                { "@id": "http://d-nb.info/gnd/4002827-6" },
+                { "@id": "http://vocab.getty.edu/aat/300054328" },
+                { "@id": "http://www.wikidata.org/entity/Q23498" },
+                { "@id": "http://www.yso.fi/onto/yso/p1265" },
+                { "@id": "http://d-nb.info/gnd/4164039-1" },
+                { "@id": "http://id.worldcat.org/fast/812938" },
+                { "@id": "http://data.bnf.fr/ark:/12148/cb13318444z" }
             ],
+            "madsrdf:hasNarrowerAuthority": [
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2005001576"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85048843" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85018080" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85093255" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2009004421"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003009064"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003003476"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2015002234"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012004636"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2009004470"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85072567" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh87000460" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003011000"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85097895" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85046105" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85066643" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh89000928" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85050977" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85126691" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003004186"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh93006952" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh95000886" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065958" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003009199"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85006703" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2021005077"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85027024" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85114683" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85060817" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85087721" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85004685" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2009002956"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013000143"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85107780" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85079786" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh94008300" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85127907" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85001256" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2007006623"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065824" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012000959"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85134099" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh91002758" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85061115" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012004635"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2006000287"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85116926" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85093636" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013001302"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065024" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh94001190" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85006853" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85139611" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85101308" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85102008" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85053066" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh95000887" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85144346" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh89002313" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85109300" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
+                },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013001303"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85034228" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh00007440" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85126368" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh86001404" }
+            ],
+            "madsrdf:hasNarrowerExternalAuthority": [
+                { "@id": "http://id.worldcat.org/fast/812961" },
+                { "@id": "http://id.worldcat.org/fast/812940" },
+                { "@id": "http://id.worldcat.org/fast/812967" },
+                { "@id": "http://id.worldcat.org/fast/812972" },
+                { "@id": "http://id.worldcat.org/fast/812997" },
+                { "@id": "http://id.worldcat.org/fast/812949" },
+                { "@id": "http://id.worldcat.org/fast/812945" },
+                { "@id": "http://id.worldcat.org/fast/812954" },
+                { "@id": "http://id.worldcat.org/fast/812951" },
+                { "@id": "http://id.worldcat.org/fast/813001" },
+                { "@id": "http://id.worldcat.org/fast/812957" },
+                { "@id": "http://id.worldcat.org/fast/812966" },
+                { "@id": "http://id.worldcat.org/fast/812939" },
+                { "@id": "http://id.worldcat.org/fast/812982" },
+                { "@id": "http://id.worldcat.org/fast/812974" },
+                { "@id": "http://id.worldcat.org/fast/812943" },
+                { "@id": "http://id.worldcat.org/fast/812944" },
+                { "@id": "http://id.worldcat.org/fast/813000" },
+                { "@id": "http://id.worldcat.org/fast/812965" },
+                { "@id": "http://id.worldcat.org/fast/812992" },
+                { "@id": "http://id.worldcat.org/fast/812999" },
+                { "@id": "http://id.worldcat.org/fast/812955" },
+                { "@id": "http://id.worldcat.org/fast/812941" },
+                { "@id": "http://id.worldcat.org/fast/812987" },
+                { "@id": "http://id.worldcat.org/fast/812985" },
+                { "@id": "http://id.worldcat.org/fast/812980" },
+                { "@id": "http://id.worldcat.org/fast/812994" },
+                { "@id": "http://id.worldcat.org/fast/812964" },
+                { "@id": "http://id.worldcat.org/fast/812996" },
+                { "@id": "http://id.worldcat.org/fast/812986" },
+                { "@id": "http://id.worldcat.org/fast/812968" },
+                { "@id": "http://id.worldcat.org/fast/812953" },
+                { "@id": "http://id.worldcat.org/fast/812948" },
+                { "@id": "http://id.worldcat.org/fast/812952" },
+                { "@id": "http://id.worldcat.org/fast/812993" },
+                { "@id": "http://id.worldcat.org/fast/1941257" },
+                { "@id": "http://id.worldcat.org/fast/812946" },
+                { "@id": "http://id.worldcat.org/fast/812990" },
+                { "@id": "http://id.worldcat.org/fast/812973" },
+                { "@id": "http://id.worldcat.org/fast/812942" },
+                { "@id": "http://id.worldcat.org/fast/812959" },
+                { "@id": "http://id.worldcat.org/fast/812958" },
+                { "@id": "http://id.worldcat.org/fast/812956" },
+                { "@id": "http://id.worldcat.org/fast/812989" },
+                { "@id": "http://id.worldcat.org/fast/812947" },
+                { "@id": "http://id.worldcat.org/fast/812998" },
+                { "@id": "http://id.worldcat.org/fast/813002" },
+                { "@id": "http://id.worldcat.org/fast/812977" },
+                { "@id": "http://id.worldcat.org/fast/812991" },
+                { "@id": "http://id.worldcat.org/fast/1351719" },
+                { "@id": "http://id.worldcat.org/fast/812984" },
+                { "@id": "http://id.worldcat.org/fast/812979" }
+            ],
+            "madsrdf:hasReciprocalAuthority": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh99002344"
+            },
+            "madsrdf:hasVariant": {
+                "@id": "_:N6931f01415854f4b8fea00f456c779ca"
+            },
             "madsrdf:isMemberOfMADSCollection": [
                 {
                     "@id": "http://id.loc.gov/authorities/subjects/collection_LCSH_General"
@@ -136,597 +876,639 @@
             "madsrdf:isMemberOfMADSScheme": {
                 "@id": "http://id.loc.gov/authorities/subjects"
             },
+            "madsrdf:note": "Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]",
             "owl:sameAs": [
-                {
-                    "@id": "http://id.loc.gov/authorities/sh2004001262#concept"
-                },
-                {
-                    "@id": "info:lc/authorities/sh2004001262"
-                }
+                { "@id": "info:lc/authorities/sh85006507" },
+                { "@id": "http://id.loc.gov/authorities/sh85006507#concept" }
             ],
-            "skos:altLabel": [
-                {
-                    "@language": "en",
-                    "@value": "Site location, Archaeological"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Archaeological site distribution"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Location of archaeological sites"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Site distribution, Archaeological"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Antiquities--Location"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Archaeological site locations"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Geographical distribution of archaeological sites"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Antiquities--Geographical distribution"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Distribution of archaeological sites"
-                }
+            "skos:altLabel": { "@language": "en", "@value": "Archeology" },
+            "skos:broader": [
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85010480" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85005581" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh99005024" }
             ],
-            "skos:broader": {
-                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
-            },
             "skos:changeNote": [
-                {
-                    "@id": "_:N46c17e6c3fbf4cdfa1d7f11b09341645"
-                },
-                {
-                    "@id": "_:Nea7495aba74e4f48a92551a14821eebd"
-                }
+                { "@id": "_:Na73c3e7d27594825822b48069460096c" },
+                { "@id": "_:Na02a8deef7984abda6d890a61dfae904" }
             ],
+            "skos:editorial": "subdivision [Antiquities] under names of countries, cities, etc., and under individual ethnic groups, e.g. [Egypt--Antiquities; Mayas--Antiquities]",
             "skos:inScheme": {
                 "@id": "http://id.loc.gov/authorities/subjects"
             },
-            "skos:prefLabel": {
-                "@language": "en",
-                "@value": "Archaeological site location"
-            },
-            "skosxl:altLabel": [
+            "skos:narrower": [
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85004685" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85060817" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85087721" },
                 {
-                    "@id": "_:N59a287d9402b4e5ca19f6588688a8a74"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2021005077"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85027024" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85097895" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85006703" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065824" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2015002234"
                 },
                 {
-                    "@id": "_:N5afa4b32ca1947979ce860dc9ce1b862"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2007006623"
                 },
                 {
-                    "@id": "_:Ne13279a6da02487e8010a7044c8822e0"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003003476"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85127907" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003004186"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh93006952" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85107780" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85018080" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh95000886" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2009004421"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh89000928" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85066643" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85050977" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85126691" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85046105" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013000143"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh87000460" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013001303"
                 },
                 {
-                    "@id": "_:Na73202335fbf4579b64b49f86f8d300f"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003011000"
                 },
                 {
-                    "@id": "_:N80ed7baa669740bebdc0c18227bbf3ba"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2009004470"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85072567" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh89002313" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85109300" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85144346" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003009064"
                 },
                 {
-                    "@id": "_:Nec5d519f34824208b022ce1f90fed7fb"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2005001576"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh86001404" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85048843" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85053066" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85126368" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85034228" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012004636"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85134099" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh91002758" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012000959"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85061115" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85139611" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85093255" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85101308" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85102008" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh94001190" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2013001302"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065024" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85006853" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh00007440" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2012004635"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85093636" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2006000287"
+                },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85116926" },
+                {
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
                 },
                 {
-                    "@id": "_:N29c6478b2bbb43458f97eb5ff95156e2"
+                    "@id": "http://id.loc.gov/authorities/subjects/sh2003009199"
                 },
-                {
-                    "@id": "_:Nf811e9b4ccd44b77b9b085edfdb397dc"
-                },
-                {
-                    "@id": "_:N4563268c0eb646f9870ab5592a5ea072"
-                }
-            ]
-        },
-        {
-            "@id": "_:Neaf0e1c11a0a4f50a2de5c1e0dd3e520",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85065958" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh95000887" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85079786" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85001256" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh85114683" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh94008300" },
+                { "@id": "http://id.loc.gov/authorities/subjects/sh2009002956" }
             ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:Ne0580cc8b11145e8a9b8c0fbf502f19f"
-                    }
-                ]
+            "skos:note": "Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]",
+            "skos:prefLabel": { "@language": "en", "@value": "Archaeology" },
+            "skos:related": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh99002344"
             },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Site location, Archaeological"
-            }
+            "skosxl:altLabel": { "@id": "_:N4e6e2cb16f114a028fe1c394fe9ae4f4" }
         },
         {
-            "@id": "_:Ne0580cc8b11145e8a9b8c0fbf502f19f",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Site location, Archaeological"
-            }
-        },
-        {
-            "@id": "_:N59a287d9402b4e5ca19f6588688a8a74",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Archaeological site locations"
-            }
-        },
-        {
-            "@id": "_:N194d57de11c6411b8bb579e329a50527",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N1721ffea4bf44dda99e744a094621a9c"
-                    }
-                ]
-            },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Archaeological site locations"
-            }
-        },
-        {
-            "@id": "_:N1721ffea4bf44dda99e744a094621a9c",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Archaeological site locations"
-            }
-        },
-        {
-            "@id": "_:N2e45e5d4587c4b8fbf46a8cc333bb5f2",
+            "@id": "_:Nb5f6785c586340d3884a857cbf1280a0",
             "@type": "ri:RecordInfo",
-            "ri:languageOfCataloging": {
-                "@id": "http://id.loc.gov/vocabulary/iso639-2/eng"
-            },
             "ri:recordChangeDate": {
                 "@type": "xsd:dateTime",
-                "@value": "2004-12-01T00:00:00"
+                "@value": "1986-02-11T00:00:00"
             },
             "ri:recordContentSource": {
-                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
             },
             "ri:recordStatus": "new"
         },
         {
-            "@id": "_:Nfcd611018ab54d1aae2e844f56771d40",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N4f26bec9105c407aa84b80391e8904e2"
-                    }
-                ]
-            },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Location of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:N4f26bec9105c407aa84b80391e8904e2",
+            "@id": "_:Nbbd38ab0f77e4b08a998ed3d81a1a5d9",
             "@type": "madsrdf:TopicElement",
             "madsrdf:elementValue": {
                 "@language": "en",
-                "@value": "Location of archaeological sites"
+                "@value": "Archaeology"
             }
         },
         {
-            "@id": "_:Nc90d0033ef3c42c6ab92ac6a9623a66c",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N7ee3e1c7bff14a538cef6963d73bace0"
-                    }
-                ]
-            },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Geographical distribution of archaeological sites"
-            }
+            "@id": "_:N79c340ac92074cfe94481d6760ebbdf7",
+            "@type": "lcc:ClassNumber",
+            "madsrdf:code": "CC"
         },
         {
-            "@id": "_:N7ee3e1c7bff14a538cef6963d73bace0",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Geographical distribution of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:N5afa4b32ca1947979ce860dc9ce1b862",
+            "@id": "_:N4e6e2cb16f114a028fe1c394fe9ae4f4",
             "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Location of archaeological sites"
-            }
+            "skosxl:literalForm": { "@language": "en", "@value": "Archeology" }
         },
         {
-            "@id": "_:Ne13279a6da02487e8010a7044c8822e0",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Antiquities--Geographical distribution"
-            }
-        },
-        {
-            "@id": "_:Na73202335fbf4579b64b49f86f8d300f",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Geographical distribution of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:Nff27b2f5e45a4bf0a8db7d0b71f996d5",
-            "@type": "madsrdf:Source",
-            "madsrdf:citationNote": {
-                "@language": "en",
-                "@value": "p. 5 (locations where archaeological sites are likely to be present and locations where they are likely to be absent; locations of archaeological sites)"
-            },
-            "madsrdf:citationSource": "Leathwick, J.R. Predictive models of archaeological site distributions in New Zealand, c2000:",
-            "madsrdf:citationStatus": "found"
-        },
-        {
-            "@id": "_:N46c17e6c3fbf4cdfa1d7f11b09341645",
+            "@id": "_:Na73c3e7d27594825822b48069460096c",
             "@type": "cs:ChangeSet",
             "cs:changeReason": "revised",
             "cs:createdDate": {
                 "@type": "xsd:dateTime",
-                "@value": "2005-01-14T12:24:36"
+                "@value": "1996-09-10T15:07:45"
             },
             "cs:creatorName": {
-                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
             },
             "cs:subjectOfChange": {
-                "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
+                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
             }
         },
         {
-            "@id": "_:N80ed7baa669740bebdc0c18227bbf3ba",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Antiquities--Location"
-            }
-        },
-        {
-            "@id": "_:Nec5d519f34824208b022ce1f90fed7fb",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Archaeological site distribution"
-            }
-        },
-        {
-            "@id": "_:N50f66cd5cda34558bc6b5fa09795da94",
-            "@type": "madsrdf:Source",
-            "madsrdf:citationNote": {
-                "@language": "en",
-                "@value": "(Environmental factors in archaeological site locations; The Middle Palaeolithic geography of Southern France : resources and site location; Predicting archaeological sites from environmental variables; Archaeological chart of Mexico showing location of principal ruins; Archeological investigations of the original Charles Corneau House and barn location, Lincoln Home National Historic Site, Springfield, Illinois)"
-            },
-            "madsrdf:citationSource": "LC database, Aug. 12, 2004",
-            "madsrdf:citationStatus": "found"
-        },
-        {
-            "@id": "_:Ncefb3f93c8354a989cfc69b94fdbec56",
-            "@type": [
-                "madsrdf:Topic",
-                "madsrdf:Variant"
-            ],
+            "@id": "_:N6931f01415854f4b8fea00f456c779ca",
+            "@type": ["madsrdf:Topic", "madsrdf:Variant"],
             "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:Nd131d9a75a194930af7083f9251f5bb5"
-                    }
-                ]
+                "@list": [{ "@id": "_:Nae98b7e08ffd4d54ac0f67e1ccff1145" }]
             },
             "madsrdf:variantLabel": {
                 "@language": "en",
-                "@value": "Archaeological site distribution"
+                "@value": "Archeology"
             }
         },
         {
-            "@id": "_:Nd131d9a75a194930af7083f9251f5bb5",
+            "@id": "_:Nae98b7e08ffd4d54ac0f67e1ccff1145",
             "@type": "madsrdf:TopicElement",
             "madsrdf:elementValue": {
                 "@language": "en",
-                "@value": "Archaeological site distribution"
+                "@value": "Archeology"
             }
         },
         {
-            "@id": "_:N69dcc8dfab26403ea4a4c0ff00c57d79",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:Ndbb0af9ef67844528846d60f7090abf0"
-                    }
-                ]
-            },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Site distribution, Archaeological"
-            }
-        },
-        {
-            "@id": "_:Ndbb0af9ef67844528846d60f7090abf0",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Site distribution, Archaeological"
-            }
-        },
-        {
-            "@id": "_:N29c6478b2bbb43458f97eb5ff95156e2",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Site distribution, Archaeological"
-            }
-        },
-        {
-            "@id": "_:N4ae83cb783224b8a91edd5e6f4ac2988",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N46d3d0a7d85e44f79dc13cd31794506a"
-                    }
-                ]
-            },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Distribution of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:N46d3d0a7d85e44f79dc13cd31794506a",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Distribution of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:Nea7495aba74e4f48a92551a14821eebd",
-            "@type": "cs:ChangeSet",
-            "cs:changeReason": "new",
-            "cs:createdDate": {
-                "@type": "xsd:dateTime",
-                "@value": "2004-12-01T00:00:00"
-            },
-            "cs:creatorName": {
-                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
-            },
-            "cs:subjectOfChange": {
-                "@id": "http://id.loc.gov/authorities/subjects/sh2004001262"
-            }
-        },
-        {
-            "@id": "_:Nf811e9b4ccd44b77b9b085edfdb397dc",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Site location, Archaeological"
-            }
-        },
-        {
-            "@id": "_:N4e1b6117e96d40d694429badf6c704c1",
-            "@type": "madsrdf:Source",
-            "madsrdf:citationNote": {
-                "@language": "en",
-                "@value": "abstr. (Statistical modelling of the difference between the environments where archaeological sites are known to occur and random sites was used to create maps and GIS coverages depicting the relative likelihood of any 100 x 100 m area of New Zealand containing an archaeological site. Coverages were developed separately for pa, middens, and pits as well as for all sites.)"
-            },
-            "madsrdf:citationSource": "Work cat.: Arnold, G. Predicting archaeological sites in New Zealand, c2004:",
-            "madsrdf:citationStatus": "found"
-        },
-        {
-            "@id": "_:N4563268c0eb646f9870ab5592a5ea072",
-            "@type": "skosxl:Label",
-            "skosxl:literalForm": {
-                "@language": "en",
-                "@value": "Distribution of archaeological sites"
-            }
-        },
-        {
-            "@id": "_:N30e2a5ba58a94bccac81e8f6187443d5",
+            "@id": "_:N157c9bf7078745548874f65b551a5d2a",
             "@type": "ri:RecordInfo",
-            "ri:languageOfCataloging": {
-                "@id": "http://id.loc.gov/vocabulary/iso639-2/eng"
-            },
             "ri:recordChangeDate": {
                 "@type": "xsd:dateTime",
-                "@value": "2005-01-14T12:24:36"
+                "@value": "1996-09-10T15:07:45"
             },
             "ri:recordContentSource": {
-                "@id": "http://id.loc.gov/vocabulary/organizations/wau"
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
             },
             "ri:recordStatus": "revised"
         },
         {
-            "@id": "_:N8301c0cf5b03425e8d4e4cde911f8929",
-            "@type": [
-                "madsrdf:ComplexSubject",
-                "madsrdf:Variant"
-            ],
-            "madsrdf:componentList": {
-                "@list": [
-                    {
-                        "@id": "_:N072f6a97003b46088640b9f02a5287f7"
-                    },
-                    {
-                        "@id": "_:N18eafab402ff4b85891c80b03d44b898"
-                    }
-                ]
+            "@id": "_:Na02a8deef7984abda6d890a61dfae904",
+            "@type": "cs:ChangeSet",
+            "cs:changeReason": "new",
+            "cs:createdDate": {
+                "@type": "xsd:dateTime",
+                "@value": "1986-02-11T00:00:00"
             },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Antiquities--Location"
-            }
-        },
-        {
-            "@id": "_:N072f6a97003b46088640b9f02a5287f7",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N889ae22ea84b47fc8b8c6141a72c4925"
-                    }
-                ]
+            "cs:creatorName": {
+                "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
             },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Antiquities"
+            "cs:subjectOfChange": {
+                "@id": "http://id.loc.gov/authorities/subjects/sh85006507"
             }
         },
         {
-            "@id": "_:N889ae22ea84b47fc8b8c6141a72c4925",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Antiquities"
-            }
+            "@id": "http://vocab.getty.edu/aat/300054328",
+            "madsrdf:authoritativeLabel": "\"archaeology\" "
         },
         {
-            "@id": "_:N18eafab402ff4b85891c80b03d44b898",
-            "@type": [
-                "madsrdf:Topic",
-                "madsrdf:Variant"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N999e0de5d2f04f478d4062f3aebff43a"
-                    }
-                ]
+            "@id": "http://id.loc.gov/authorities/subjects/sh85126691",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Spindle-whorls"
             },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Location"
-            }
+            "skos:prefLabel": { "@language": "en", "@value": "Spindle-whorls" }
         },
         {
-            "@id": "_:N999e0de5d2f04f478d4062f3aebff43a",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85034228",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
                 "@language": "en",
-                "@value": "Location"
-            }
-        },
-        {
-            "@id": "_:Nc6704b6843454b5280f58211edaa1b6f",
-            "@type": [
-                "madsrdf:ComplexSubject",
-                "madsrdf:Variant"
-            ],
-            "madsrdf:componentList": {
-                "@list": [
-                    {
-                        "@id": "_:Ndeb1ca0aa8d2432c8ffe3c707f932afd"
-                    },
-                    {
-                        "@id": "_:N40c73a1dd7184e64ad33a9543e98f861"
-                    }
-                ]
+                "@value": "Cromlechs"
             },
-            "madsrdf:variantLabel": {
-                "@language": "en",
-                "@value": "Antiquities--Geographical distribution"
-            }
+            "skos:prefLabel": { "@language": "en", "@value": "Cromlechs" }
         },
         {
-            "@id": "_:Ndeb1ca0aa8d2432c8ffe3c707f932afd",
-            "@type": [
-                "madsrdf:Topic",
-                "madsrdf:Variant"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N36984e0741aa46788e03d4a0ec4143bc"
-                    }
-                ]
+            "@id": "http://id.worldcat.org/fast/812999",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Technique\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh94008300",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Motion pictures in archaeology"
             },
-            "madsrdf:variantLabel": {
+            "skos:prefLabel": {
                 "@language": "en",
-                "@value": "Antiquities"
+                "@value": "Motion pictures in archaeology"
             }
         },
         {
-            "@id": "_:N36984e0741aa46788e03d4a0ec4143bc",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
-                "@language": "en",
-                "@value": "Antiquities"
-            }
+            "@id": "http://id.worldcat.org/fast/812986",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Simulation methods\" "
         },
         {
-            "@id": "_:N40c73a1dd7184e64ad33a9543e98f861",
-            "@type": [
-                "madsrdf:Variant",
-                "madsrdf:Topic"
-            ],
-            "madsrdf:elementList": {
-                "@list": [
-                    {
-                        "@id": "_:N9e0bf59effb74c90b1f5a5d1cf248c8b"
-                    }
-                ]
+            "@id": "http://id.loc.gov/authorities/subjects/sh2003009199",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Communication in archaeology"
             },
-            "madsrdf:variantLabel": {
+            "skos:prefLabel": {
                 "@language": "en",
-                "@value": "Geographical distribution"
+                "@value": "Communication in archaeology"
             }
         },
         {
-            "@id": "_:N9e0bf59effb74c90b1f5a5d1cf248c8b",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85093636",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
                 "@language": "en",
-                "@value": "Geographical distribution"
+                "@value": "Obelisks"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Obelisks" }
+        },
+        {
+            "@id": "http://d-nb.info/gnd/4164039-1",
+            "madsrdf:authoritativeLabel": "\"Klassische Arch\u00e4ologie\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812943",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Classification--Data processing\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812984",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Research--Methodology\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85018080",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Burial"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Burial" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2015002234",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Architecture and archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Architecture and archaeology"
             }
         },
         {
-            "@id": "_:Nf9f4e6a074974f32a54810f3401361af",
-            "@type": "madsrdf:TopicElement",
-            "madsrdf:elementValue": {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2007006623",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeological assemblages"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archaeological assemblages"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85001256",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Aerial photography in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Aerial photography in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2012000959",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Community archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Community archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812979",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Publishing\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85004685",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Amulets"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Amulets" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812990",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Statistical methods\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812997",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching (Preschool)\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85050977",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Fortification, Prehistoric"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Fortification, Prehistoric"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2009004470",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Space archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Space archaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2012004635",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Optical radar in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Optical radar in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812977",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Political aspects\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812993",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching (Elementary)\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812945",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Computer network resources\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812991",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85139611",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Underwater archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Underwater archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812956",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Forecasting\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2005001576",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Pseudoarchaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Pseudoarchaeology"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85107780",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Protohistory"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Protohistory" }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85134099",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Terremare"
+            },
+            "skos:prefLabel": { "@language": "en", "@value": "Terremare" }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812994",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Study and teaching (Higher)\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85046105",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Excavations (Archaeology)"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Excavations (Archaeology)"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2009002956",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Military archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Military archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812948",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Conservation and restoration\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2013001302",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeological significance"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archaeological significance"
+            }
+        },
+        {
+            "@id": "http://www.yso.fi/onto/yso/p1265",
+            "madsrdf:authoritativeLabel": "\"arkeologia\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85048843",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Fishing, Prehistoric"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Fishing, Prehistoric"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85006853",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Architecture, Primitive"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Architecture, Primitive"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2006000287",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Medical archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Medical archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/813002",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Vocational guidance\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh91002758",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Scanning electron microscopy in archaeology"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Scanning electron microscopy in archaeology"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812957",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Government policy\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812947",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Computer simulation\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh85126368",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Specchie (Archaeology)"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Specchie (Archaeology)"
+            }
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2013001303",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeological integrity"
+            },
+            "skos:prefLabel": {
+                "@language": "en",
+                "@value": "Archaeological integrity"
+            }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/812938",
+            "madsrdf:authoritativeLabel": "\"Archaeology\" "
+        },
+        {
+            "@id": "http://www.wikidata.org/entity/Q23498",
+            "madsrdf:authoritativeLabel": "\"archaeology\" "
+        },
+        {
+            "@id": "http://id.loc.gov/authorities/subjects/sh2004001262",
+            "@type": "madsrdf:Authority",
+            "madsrdf:authoritativeLabel": {
+                "@language": "en",
+                "@value": "Archaeological site location"
+            },
+            "skos:prefLabel": {
                 "@language": "en",
                 "@value": "Archaeological site location"
             }
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/1941257",
+            "madsrdf:authoritativeLabel": "\"Archaeology--Fieldwork\" "
+        },
+        {
+            "@id": "http://id.worldcat.org/fast/813001",
+            "madsrdf:authoritativeLabel": "\"Archaeology--U.S. states\" "
         }
     ]
 }
