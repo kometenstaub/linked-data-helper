@@ -9,6 +9,16 @@ function readJson(fileName: string): LcshInterface {
     return JSON.parse(currentFile);
 }
 
+function snapshotJsonParsing(filename: string) {
+    const obj = readJson(filename);
+    const jsonPrefLabel: headings[] = [];
+    const subdivisions: headings[] = [];
+    const jsonUriToPrefLabel = {};
+    parseJsonHeading(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    expect(jsonPrefLabel).toMatchSnapshot();
+    expect(subdivisions).toMatchSnapshot();
+    expect(jsonUriToPrefLabel).toMatchSnapshot();
+}
 test('History URI is correct', () => {
     const obj = readJson('History.json');
     expect(obj['@context'].about).toBe(
@@ -16,19 +26,18 @@ test('History URI is correct', () => {
     );
 });
 
-test('Snapshot of JSON parsing logic', () => {
-    const obj = readJson('History.json');
-    const jsonPrefLabel: headings[] = [];
-    const subdivisions: headings[] = [];
-    const jsonUriToPrefLabel = {};
-    const result = parseJsonHeading(
-        obj,
-        jsonPrefLabel,
-        subdivisions,
-        jsonUriToPrefLabel
-    );
-    expect(result).toMatchSnapshot();
-    //expect(
-    //    obj['@context'].about
-    //).toBe("http://id.loc.gov/authorities/subjects/sh85061227");
+test('Snapshot of JSON parsing logic History.json', () => {
+    snapshotJsonParsing('History.json');
+});
+
+test('Snapshot of JSON parsing logic History-subdiv.json', () => {
+    snapshotJsonParsing('Archaeology.json');
+});
+
+test('Snapshot of JSON parsing logic Archaeology.json', () => {
+    snapshotJsonParsing('Archaeology.json');
+});
+
+test('Snapshot of JSON parsing logic Obsidian.json', () => {
+    snapshotJsonParsing('Obsidian.json');
 });
