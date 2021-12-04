@@ -8,7 +8,8 @@
 		"build": "cross-env BUILD=production node esbuild.js",
 		"release": "standard-version",
 		"lint": "npx eslint src/",
-		"test": "jest"
+		"test": "jest",
+		"format": "npx prettier --write src/"
 	},
 	"standard-version": {
 		"t": ""
