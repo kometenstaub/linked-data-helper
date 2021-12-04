@@ -10,7 +10,7 @@ function readJson(fileName: string): LcshInterface {
     return JSON.parse(currentFile);
 }
 
-function snapshotJsonParsing(filename: string, snapshot: boolean) {
+function jsonParsing(filename: string, snapshot: boolean) {
     const obj = readJson(filename);
     const jsonPrefLabel: headings[] = [];
     const subdivisions: headings[] = [];
@@ -45,25 +45,25 @@ test('History URI is correct', () => {
  */
 
 test('Snapshot of JSON parsing logic History.json', () => {
-    snapshotJsonParsing('History.json', true);
+    jsonParsing('History.json', true);
 });
 
 test('Snapshot of JSON parsing logic History-subdiv.json', () => {
-    snapshotJsonParsing('Archaeology.json', true);
+    jsonParsing('Archaeology.json', true);
 });
 
 test('Snapshot of JSON parsing logic Archaeology.json', () => {
-    snapshotJsonParsing('Archaeology.json', true);
+    jsonParsing('Archaeology.json', true);
 });
 
 test('Snapshot of JSON parsing logic Obsidian.json', () => {
-    snapshotJsonParsing('Obsidian.json', true);
+    jsonParsing('Obsidian.json', true);
 });
 
 /**
  * more unit tests
  */
 
-//test('Archaeology properties of JSON objects', () => {
-//    snapshotJsonParsing('Archaeology.json', false);
-//});
+test('Archaeology properties of JSON objects', () => {
+    jsonParsing('Archaeology.json', false);
+});
