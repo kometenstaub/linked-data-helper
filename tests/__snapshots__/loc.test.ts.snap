@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot of JSON parsing logic Archaeology.json 1`] = `
+Array [
+  Object {
+    "aL": "Archeology",
+    "bt": Array [
+      "sh85005581",
+      "sh85010480",
+      "sh85061212",
+    ],
+    "lcc": "CC",
+    "note": "Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]",
+    "nt": Array [
+      "sh95000886",
+      "sh2009004421",
+      "sh85116926",
+      "sh85101308",
+      "sh85079786",
+      "sh85065824",
+      "sh85027024",
+      "sh85048843",
+      "sh85097895",
+      "sh00007440",
+      "sh85072567",
+      "sh85018080",
+      "sh85093636",
+      "sh95000887",
+      "sh85087721",
+      "sh85127907",
+      "sh85109300",
+      "sh85107780",
+      "sh85034228",
+      "sh85001256",
+      "sh85061115",
+      "sh91002758",
+      "sh2015002234",
+      "sh85126368",
+      "sh2003009064",
+      "sh2003003476",
+      "sh2012004635",
+      "sh2013001303",
+      "sh85126691",
+      "sh2021006222",
+      "sh85066643",
+      "sh85004685",
+      "sh2009002956",
+      "sh2007006623",
+      "sh94001190",
+      "sh85134099",
+      "sh2005001576",
+      "sh85102008",
+      "sh85114683",
+      "sh2012000959",
+      "sh85060817",
+      "sh2012004636",
+      "sh94008300",
+      "sh85065024",
+      "sh85006853",
+      "sh2003004186",
+      "sh85065958",
+      "sh89002313",
+      "sh89000928",
+      "sh2013000143",
+      "sh2003011000",
+      "sh85050977",
+      "sh2004001262",
+      "sh85053066",
+      "sh93006952",
+      "sh85046105",
+      "sh2021005077",
+      "sh2003009199",
+      "sh2006000287",
+      "sh85093255",
+      "sh85006703",
+      "sh87000460",
+      "sh85139611",
+      "sh85144346",
+      "sh86001404",
+      "sh2013001302",
+      "sh2009004470",
+    ],
+    "pL": "Archaeology",
+    "rt": Array [
+      "sh85005757",
+    ],
+    "uri": "sh85006507",
+  },
+]
+`;
+
+exports[`Snapshot of JSON parsing logic Archaeology.json 2`] = `Array []`;
+
+exports[`Snapshot of JSON parsing logic Archaeology.json 3`] = `
+Object {
+  "sh85006507": "Archaeology",
+}
+`;
+
+exports[`Snapshot of JSON parsing logic History.json 1`] = `
+Array [
+  Object {
+    "lcc": "D5-D5.5",
+    "note": "Here are entered collections of documents, records, etc. upon which narrative history is based.",
+    "nt": Array [
+      "sh85038194",
+      "sh85135408",
+      "sh85006913",
+      "sh2003003039",
+      "sh85022719",
+    ],
+    "pL": "History--Sources",
+    "uri": "sh85061227",
+  },
+]
+`;
+
+exports[`Snapshot of JSON parsing logic History.json 2`] = `Array []`;
+
+exports[`Snapshot of JSON parsing logic History.json 3`] = `
+Object {
+  "sh85061227": "History--Sources",
+}
+`;
+
+exports[`Snapshot of JSON parsing logic History-subdiv.json 1`] = `
+Array [
+  Object {
+    "aL": "Archeology",
+    "bt": Array [
+      "sh85005581",
+      "sh85010480",
+      "sh85061212",
+    ],
+    "lcc": "CC",
+    "note": "Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]",
+    "nt": Array [
+      "sh95000886",
+      "sh2009004421",
+      "sh85116926",
+      "sh85101308",
+      "sh85079786",
+      "sh85065824",
+      "sh85027024",
+      "sh85048843",
+      "sh85097895",
+      "sh00007440",
+      "sh85072567",
+      "sh85018080",
+      "sh85093636",
+      "sh95000887",
+      "sh85087721",
+      "sh85127907",
+      "sh85109300",
+      "sh85107780",
+      "sh85034228",
+      "sh85001256",
+      "sh85061115",
+      "sh91002758",
+      "sh2015002234",
+      "sh85126368",
+      "sh2003009064",
+      "sh2003003476",
+      "sh2012004635",
+      "sh2013001303",
+      "sh85126691",
+      "sh2021006222",
+      "sh85066643",
+      "sh85004685",
+      "sh2009002956",
+      "sh2007006623",
+      "sh94001190",
+      "sh85134099",
+      "sh2005001576",
+      "sh85102008",
+      "sh85114683",
+      "sh2012000959",
+      "sh85060817",
+      "sh2012004636",
+      "sh94008300",
+      "sh85065024",
+      "sh85006853",
+      "sh2003004186",
+      "sh85065958",
+      "sh89002313",
+      "sh89000928",
+      "sh2013000143",
+      "sh2003011000",
+      "sh85050977",
+      "sh2004001262",
+      "sh85053066",
+      "sh93006952",
+      "sh85046105",
+      "sh2021005077",
+      "sh2003009199",
+      "sh2006000287",
+      "sh85093255",
+      "sh85006703",
+      "sh87000460",
+      "sh85139611",
+      "sh85144346",
+      "sh86001404",
+      "sh2013001302",
+      "sh2009004470",
+    ],
+    "pL": "Archaeology",
+    "rt": Array [
+      "sh85005757",
+    ],
+    "uri": "sh85006507",
+  },
+]
+`;
+
+exports[`Snapshot of JSON parsing logic History-subdiv.json 2`] = `Array []`;
+
+exports[`Snapshot of JSON parsing logic History-subdiv.json 3`] = `
+Object {
+  "sh85006507": "Archaeology",
+}
+`;
+
+exports[`Snapshot of JSON parsing logic Obsidian.json 1`] = `
+Array [
+  Object {
+    "bt": Array [
+      "Volcanic ash, tuff, etc.",
+    ],
+    "lcc": "QE462.O28",
+    "pL": "Obsidian",
+    "uri": "sh85093752",
+  },
+]
+`;
+
+exports[`Snapshot of JSON parsing logic Obsidian.json 2`] = `Array []`;
+
+exports[`Snapshot of JSON parsing logic Obsidian.json 3`] = `
+Object {
+  "sh85093752": "Obsidian",
+}
+`;
