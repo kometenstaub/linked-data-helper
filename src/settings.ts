@@ -143,7 +143,9 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                     .setButtonText('Start conversion')
                     .onClick(() => {
                         if (this.plugin.settings.lcshInputPath !== '') {
-                            new Notice('The conversion will start now. This may take some time. You will be notified when it is done.');
+                            new Notice(
+                                'The conversion will start now. This may take some time. You will be notified when it is done.'
+                            );
                             if (this.plugin.settings.lcshOutputPath !== '') {
                                 this.plugin.methods_loc.convertLcshSkosNdjson(
                                     this.plugin.settings.lcshOutputPath

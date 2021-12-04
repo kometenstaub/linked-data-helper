@@ -3,7 +3,6 @@ export interface LiDaHeSettings {
     lcshOutputPath: string;
 }
 
-
 export interface headings {
     pL: string; // prefLabel
     uri: string;
@@ -35,11 +34,9 @@ declare module 'obsidian' {
     }
 }
 
-
 export interface uriToHeading {
     [key: string]: string;
 }
-
 
 // prettier-ignore
 export interface LcshInterface {
@@ -112,4 +109,3 @@ interface LanguageAndValue {
 enum Language {
     En = "en",
 }
-

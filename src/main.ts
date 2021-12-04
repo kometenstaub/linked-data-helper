@@ -17,7 +17,6 @@ export default class LinkedDataHelperPlugin extends Plugin {
 
         await this.loadSettings();
 
-
         this.addSettingTab(new LiDaHeSettingsTab(this.app, this));
     }
 
