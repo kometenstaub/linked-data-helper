@@ -109,6 +109,31 @@ function splitUri(url: string): string {
     return splitUrl[splitUrl.length - 1];
 }
 
+
+function reduceUrls(broaderURLs: string[], narrowerURLs: string[], relatedURLs: string[]) {
+    const reducedBroaderURLs: string[] = [];
+    const reducedNarrowerURLs: string[] = [];
+    const reducedRelatedURLs: string[] = [];
+    const intermediateObj = {
+        broader: [reducedBroaderURLs, broaderURLs],
+        narrower: [reducedNarrowerURLs, narrowerURLs],
+        related: [reducedRelatedURLs, relatedURLs],
+    };
+
+    // populate the reduced URL arrays with the end of the URLs
+    for (const value of Object.values(intermediateObj)) {
+        for (const url of value[1]) {
+            if (url && url.includes('/')) {
+                const endUri = splitUri(url);
+                value[0].push(endUri);
+            } else {
+                value[0].push(url);
+            }
+        }
+    }
+    return {reducedBroaderURLs, reducedNarrowerURLs, reducedRelatedURLs};
+}
+
 /**
  * Returns only the properties that are present
  * and only uses the ID instead of the full URI for the uri property
@@ -122,30 +147,14 @@ function onlyReturnFull(
     relatedURLs: string[],
     lcc: string
 ): headings {
-    const reducedBroaderURLs: string[] = [];
-    const reducedNarrowerURLs: string[] = [];
-    const reducedRelatedURLs: string[] = [];
-    const intermediateObj = {
-        broader: [reducedBroaderURLs, broaderURLs],
-        narrower: [reducedNarrowerURLs, narrowerURLs],
-        related: [reducedRelatedURLs, relatedURLs],
-    };
-
     //@ts-expect-error, The object needs to be initialised,
     // it is populated later on and is what will be returned by the function
     const currentObj: headings = {};
-
-    // populate the reduced URL arrays with the end of the URLs
-    for (const value of Object.values(intermediateObj)) {
-        for (const url of value[1]) {
-            if (url && url.includes('/')) {
-                const endUri = splitUri(url);
-                value[0].push(endUri);
-            } else {
-                value[0].push(url);
-            }
-        }
-    }
+    const {
+        reducedBroaderURLs,
+        reducedNarrowerURLs,
+        reducedRelatedURLs
+    } = reduceUrls(broaderURLs, narrowerURLs, relatedURLs);
 
     currentObj.pL = prefLabel;
     currentObj.uri = splitUri(uri);
