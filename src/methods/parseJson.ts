@@ -1,10 +1,5 @@
-import type {
-    Graph,
-    headings,
-    LcshInterface,
-    SkolemGraphNode,
-    uriToHeading,
-} from '../interfaces';
+import type {Graph, headings, LcshInterface, SkolemGraphNode, uriToHeading,} from '../interfaces';
+
 
 export function parseJsonHeading(
     obj: LcshInterface,
@@ -104,6 +99,12 @@ export function parseJsonHeading(
     }
 }
 
+function splitUri(url: string): string {
+    const splitUrl = url.split('/');
+    return splitUrl[splitUrl.length - 1]
+}
+
+
 function onlyReturnFull(
     prefLabel: string,
     altLabel: string,
@@ -119,8 +120,7 @@ function onlyReturnFull(
     const reducedBroaderURLs: string[] = [];
     for (const url of broaderURLs) {
         if (url && url.includes('/')) {
-            const splitUrl = url.split('/');
-            const endUri = splitUrl[splitUrl.length - 1];
+            const endUri = splitUri(url)
             reducedBroaderURLs.push(endUri);
         } else {
             reducedBroaderURLs.push(url);
@@ -129,8 +129,7 @@ function onlyReturnFull(
     const reducedNarrowerURLs: string[] = [];
     for (const url of narrowerURLs) {
         if (url && url.includes('/')) {
-            const splitUrl = url.split('/');
-            const endUri = splitUrl[splitUrl.length - 1];
+            const endUri = splitUri(url)
             reducedNarrowerURLs.push(endUri);
         } else {
             reducedNarrowerURLs.push(url);
@@ -139,16 +138,14 @@ function onlyReturnFull(
     const reducedRelatedURLs: string[] = [];
     for (const url of relatedURLs) {
         if (url && url.includes('/')) {
-            const splitUrl = url.split('/');
-            const endUri = splitUrl[splitUrl.length - 1];
+            const endUri = splitUri(url)
             reducedRelatedURLs.push(endUri);
         } else {
             reducedRelatedURLs.push(url);
         }
     }
 
-    const splitUrl = uri.split('/');
-    const reducedUri: string = splitUrl[splitUrl.length - 1];
+    const reducedUri: string = splitUri(uri)
     currentObj.pL = prefLabel;
     currentObj.uri = reducedUri;
     if (altLabel !== '') {
