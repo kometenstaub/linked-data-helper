@@ -55,9 +55,9 @@ export function parseJsonHeading(
             altLabel = element['skos:altLabel']['@value'];
         }
         const graph = obj['@graph'];
-        broaderURLs = pushHeadings(element, graph, 'broader');
-        narrowerURLs = pushHeadings(element, graph, 'narrower');
-        relatedURLs = pushHeadings(element, graph, 'related');
+        broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'broader');
+        narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'narrower');
+        relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'related');
         currentObj = onlyReturnFull(
             prefLabel,
             altLabel,
@@ -109,6 +109,10 @@ function splitUri(url: string): string {
     return splitUrl[splitUrl.length - 1];
 }
 
+/**
+ * Returns only the properties that are present
+ * and only uses the ID instead of the full URI for the uri property
+ */
 function onlyReturnFull(
     prefLabel: string,
     altLabel: string,
@@ -127,7 +131,7 @@ function onlyReturnFull(
         related: [reducedRelatedURLs, relatedURLs],
     };
 
-    //@ts-expect-error, the object needs to be initialised,
+    //@ts-expect-error, The object needs to be initialised,
     // it is populated later on and is what will be returned by the function
     const currentObj: headings = {};
 
@@ -164,7 +168,17 @@ function onlyReturnFull(
     return currentObj;
 }
 
-function pushHeadings(
+/**
+ * Gets the URIs (or name, in case of Skolem IRIs) of the relation headings.
+ * @param element - The current node
+ * @param graph - The full graph with all the nodes
+ * @param type - The current relation type
+ * @returns The full (unreduced) URIs of the relation headings
+ *
+ * @remarks - It turns individual headings into an Array and resolves Skolem IRIs.
+ *
+ */
+function makeArrayAndResolveSkolemIris(
     element: Graph,
     graph: Graph[],
     type: 'broader' | 'narrower' | 'related'
@@ -180,7 +194,7 @@ function pushHeadings(
             for (const subElement of relation) {
                 const id = subElement['@id'];
                 if (id.startsWith('_:')) {
-                    const term = getSkolemIriRelation(graph, id);
+                    const term = getHeadingForSkolemIri(graph, id);
                     urls.push(term);
                 } else {
                     urls.push(id);
@@ -189,7 +203,7 @@ function pushHeadings(
         } else {
             const id: string = relation['@id'];
             if (id.startsWith('_:')) {
-                const term = getSkolemIriRelation(graph, id);
+                const term = getHeadingForSkolemIri(graph, id);
                 urls.push(term);
             } else {
                 urls.push(id);
@@ -201,12 +215,12 @@ function pushHeadings(
 }
 
 /**
- *
- * @param graph
- * @param id
- * @returns - it always returns a non-empty string, because this function is only called if there is a matching result
+ * Resolves the heading to the given Skolem IRI
+ * @param graph - All nodes of the graph
+ * @param id - The Skolem IRI that maps to an ID on a node on {@param graph}
+ * @returns - It always returns a non-empty string, because this function is only called if there is a matching result
  */
-function getSkolemIriRelation(graph: Graph[], id: string): string {
+function getHeadingForSkolemIri(graph: Graph[], id: string): string {
     let term = '';
     for (const part of graph) {
         if (part['@id'] === id) {
