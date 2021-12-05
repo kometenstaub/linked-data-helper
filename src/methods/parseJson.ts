@@ -56,6 +56,7 @@ export function parseJsonHeading(
         }
         const graph = obj['@graph'];
         broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'broader');
+        // prettier-ignore
         narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'narrower');
         relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'related');
         currentObj = onlyReturnFull(
