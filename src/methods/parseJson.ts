@@ -46,8 +46,7 @@ export function parseJsonHeading(
                 }
             }
         }
-        const splitUri: string[] = uri.split('/');
-        const endUri = splitUri[splitUri.length - 1];
+        const endUri = splitUri(uri)
         Object.assign(jsonUriToPrefLabel, {
             [endUri]: prefLabel,
         });
