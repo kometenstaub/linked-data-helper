@@ -46,7 +46,7 @@ export function parseJsonHeading(
                 }
             }
         }
-        const endUri = splitUri(uri)
+        const endUri = splitUri(uri);
         Object.assign(jsonUriToPrefLabel, {
             [endUri]: prefLabel,
         });
@@ -109,8 +109,11 @@ function splitUri(url: string): string {
     return splitUrl[splitUrl.length - 1];
 }
 
-
-function reduceUrls(broaderURLs: string[], narrowerURLs: string[], relatedURLs: string[]) {
+function reduceUrls(
+    broaderURLs: string[],
+    narrowerURLs: string[],
+    relatedURLs: string[]
+) {
     const reducedBroaderURLs: string[] = [];
     const reducedNarrowerURLs: string[] = [];
     const reducedRelatedURLs: string[] = [];
@@ -123,15 +126,17 @@ function reduceUrls(broaderURLs: string[], narrowerURLs: string[], relatedURLs: 
     // populate the reduced URL arrays with the end of the URLs
     for (const value of Object.values(intermediateObj)) {
         for (const url of value[1]) {
+            // normal URI
             if (url && url.includes('/')) {
                 const endUri = splitUri(url);
                 value[0].push(endUri);
             } else {
+                // heading name because of Skolem IRI
                 value[0].push(url);
             }
         }
     }
-    return {reducedBroaderURLs, reducedNarrowerURLs, reducedRelatedURLs};
+    return { reducedBroaderURLs, reducedNarrowerURLs, reducedRelatedURLs };
 }
 
 /**
@@ -150,11 +155,8 @@ function onlyReturnFull(
     //@ts-expect-error, The object needs to be initialised,
     // it is populated later on and is what will be returned by the function
     const currentObj: headings = {};
-    const {
-        reducedBroaderURLs,
-        reducedNarrowerURLs,
-        reducedRelatedURLs
-    } = reduceUrls(broaderURLs, narrowerURLs, relatedURLs);
+    const { reducedBroaderURLs, reducedNarrowerURLs, reducedRelatedURLs } =
+        reduceUrls(broaderURLs, narrowerURLs, relatedURLs);
 
     currentObj.pL = prefLabel;
     currentObj.uri = splitUri(uri);
