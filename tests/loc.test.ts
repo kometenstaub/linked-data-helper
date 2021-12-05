@@ -54,6 +54,7 @@ function testValues(
             'Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]'
         );
         expect(uri).toBe('sh85006507');
+        expect(rt).toStrictEqual(['sh85005757'])
 
         expect(subdivisions).toStrictEqual([]);
 
