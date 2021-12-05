@@ -1,5 +1,10 @@
-import type {Graph, headings, LcshInterface, SkolemGraphNode, uriToHeading,} from '../interfaces';
-
+import type {
+    Graph,
+    headings,
+    LcshInterface,
+    SkolemGraphNode,
+    uriToHeading,
+} from '../interfaces';
 
 export function parseJsonHeading(
     obj: LcshInterface,
@@ -101,9 +106,8 @@ export function parseJsonHeading(
 
 function splitUri(url: string): string {
     const splitUrl = url.split('/');
-    return splitUrl[splitUrl.length - 1]
+    return splitUrl[splitUrl.length - 1];
 }
-
 
 function onlyReturnFull(
     prefLabel: string,
@@ -114,40 +118,33 @@ function onlyReturnFull(
     relatedURLs: string[],
     lcc: string
 ): headings {
-    //@ts-expect-error, the object needs to be initialised,
-    // it is populated later on
-    const currentObj: headings = {};
     const reducedBroaderURLs: string[] = [];
-    for (const url of broaderURLs) {
-        if (url && url.includes('/')) {
-            const endUri = splitUri(url)
-            reducedBroaderURLs.push(endUri);
-        } else {
-            reducedBroaderURLs.push(url);
-        }
-    }
     const reducedNarrowerURLs: string[] = [];
-    for (const url of narrowerURLs) {
-        if (url && url.includes('/')) {
-            const endUri = splitUri(url)
-            reducedNarrowerURLs.push(endUri);
-        } else {
-            reducedNarrowerURLs.push(url);
-        }
-    }
     const reducedRelatedURLs: string[] = [];
-    for (const url of relatedURLs) {
-        if (url && url.includes('/')) {
-            const endUri = splitUri(url)
-            reducedRelatedURLs.push(endUri);
-        } else {
-            reducedRelatedURLs.push(url);
+    const intermediateObj = {
+        broader: [reducedBroaderURLs, broaderURLs],
+        narrower: [reducedNarrowerURLs, narrowerURLs],
+        related: [reducedRelatedURLs, relatedURLs],
+    };
+
+    //@ts-expect-error, the object needs to be initialised,
+    // it is populated later on and is what will be returned by the function
+    const currentObj: headings = {};
+
+    // populate the reduced URL arrays with the end of the URLs
+    for (const value of Object.values(intermediateObj)) {
+        for (const url of value[1]) {
+            if (url && url.includes('/')) {
+                const endUri = splitUri(url);
+                value[0].push(endUri);
+            } else {
+                value[0].push(url);
+            }
         }
     }
 
-    const reducedUri: string = splitUri(uri)
     currentObj.pL = prefLabel;
-    currentObj.uri = reducedUri;
+    currentObj.uri = splitUri(uri);
     if (altLabel !== '') {
         currentObj.aL = altLabel;
     }
