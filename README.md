@@ -1,7 +1,6 @@
 # Linked Data Helper
 
 [![Test Linked Data Helper](https://github.com/kometenstaub/linked-data-helper/actions/workflows/test.yml/badge.svg)](https://github.com/kometenstaub/linked-data-helper/actions/workflows/test.yml)
-
 [![Build obsidian plugin](https://github.com/kometenstaub/linked-data-helper/actions/workflows/releases.yml/badge.svg)](https://github.com/kometenstaub/linked-data-helper/actions/workflows/releases.yml)
 
 This plugin is needed for generating the data that the [Linked Data Vocabularies](https://github.com/kometenstaub/obsidian-linked-data-vocabularies) Obsidian plugin relies on.
@@ -13,8 +12,6 @@ By default, if possible, the generated files will be stored in the attachments f
 In that case, you will have to input another path. You can also input an alternative output path, if you so wish.
 
 After the conversion is done, this plugin can be disabled until you want to update the data or add another dataset.
-
-</br>
 
 ## Credits
 
