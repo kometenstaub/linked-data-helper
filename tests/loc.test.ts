@@ -9,12 +9,17 @@ function readJson(fileName: string): LcshInterface {
     return JSON.parse(currentFile);
 }
 
-function jsonParsing(filename: string, snapshot: boolean) {
+function jsonOutput(filename: string) {
     const obj = readJson(filename);
     const jsonPrefLabel: headings[] = [];
     const subdivisions: headings[] = [];
     const jsonUriToPrefLabel: uriToHeading = {};
     parseJsonHeading(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    return {jsonPrefLabel, subdivisions, jsonUriToPrefLabel};
+}
+
+function jsonParsing(filename: string, snapshot: boolean) {
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} = jsonOutput(filename);
     if (snapshot) {
         matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
     } else {
