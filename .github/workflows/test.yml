@@ -18,8 +18,11 @@ jobs:
         uses: actions/setup-node@v2.5.0
         with:
           node-version: '14.16.0' # You might need to adjust this value to your own version
+      - name: npm install
+        id: npm-install
+        run: |
+          npm install
       - name: Test
         id: test
         run: |
-          npm install
           npm run test
