@@ -1,6 +1,6 @@
-import {readFileSync} from 'fs';
-import {parseJsonHeading} from '../src/methods/parseJson';
-import type {headings, LcshInterface, uriToHeading} from '../src/interfaces';
+import { readFileSync } from 'fs';
+import { parseJsonHeading } from '../src/methods/parseJson';
+import type { headings, LcshInterface, uriToHeading } from '../src/interfaces';
 
 function readJson(fileName: string): LcshInterface {
     const currentFile = readFileSync(`tests/testFiles/${fileName}`, {
@@ -59,7 +59,7 @@ function testValues(
         );
         expect(uri).toBe('sh99005024');
 
-        expect(jsonUriToPrefLabel).toStrictEqual({sh99005024: 'History'});
+        expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: 'History' });
     } else if (fileName === 'Obsidian.json') {
         //@ts-expect-error, the object will not be undefined
         expect(bt[0]).toBe('Volcanic ash, tuff, etc.');
@@ -81,43 +81,28 @@ test('History URI is correct', () => {
  */
 
 test('Snapshot of JSON parsing logic History.json', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('History.json');
-    if (true) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History.json');
-    }
+    matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
 });
 
 test('Snapshot of JSON parsing logic History-subdiv.json', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
-        jsonOutput('History-subdiv.json');
-    if (true) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History-subdiv.json');
-    }
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } = jsonOutput(
+        'History-subdiv.json'
+    );
+    matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
 });
 
 test('Snapshot of JSON parsing logic Archaeology.json', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Archaeology.json');
-    if (true) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Archaeology.json');
-    }
+    matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
 });
 
 test('Snapshot of JSON parsing logic Obsidian.json', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Obsidian.json');
-    if (true) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Obsidian.json');
-    }
+    matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
 });
 
 /**
@@ -127,7 +112,7 @@ test('Snapshot of JSON parsing logic Obsidian.json', () => {
 test('multiple Archaeology properties of JSON objects', () => {
     const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Archaeology.json');
-    const {pL, aL, bt, nt, rt, note, lcc, uri} = getProperties(
+    const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
         jsonPrefLabel,
         subdivisions
     );
@@ -140,25 +125,28 @@ test('multiple Archaeology properties of JSON objects', () => {
     expect(uri).toBe('sh85006507');
     expect(rt).toStrictEqual(['sh85005757']);
     expect(subdivisions).toStrictEqual([]);
-    expect(jsonUriToPrefLabel).toStrictEqual({sh85006507: 'Archaeology'});
+    expect(jsonUriToPrefLabel).toStrictEqual({ sh85006507: 'Archaeology' });
 });
 
 test('multiple History-subdiv properties of JSON objects', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
-        jsonOutput('History-subdiv.json');
-    if (false) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History-subdiv.json');
-    }
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } = jsonOutput(
+        'History-subdiv.json'
+    );
+    testValues(
+        jsonPrefLabel,
+        subdivisions,
+        jsonUriToPrefLabel,
+        'History-subdiv.json'
+    );
 });
 
 test('broader term Obsidian to not be the ID but the real name', () => {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Obsidian.json');
-    if (false) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Obsidian.json');
-    }
+    testValues(
+        jsonPrefLabel,
+        subdivisions,
+        jsonUriToPrefLabel,
+        'Obsidian.json'
+    );
 });
