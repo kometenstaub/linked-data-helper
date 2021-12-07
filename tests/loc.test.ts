@@ -15,11 +15,12 @@ function jsonOutput(filename: string) {
     const subdivisions: headings[] = [];
     const jsonUriToPrefLabel: uriToHeading = {};
     parseJsonHeading(obj, jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    return {jsonPrefLabel, subdivisions, jsonUriToPrefLabel};
+    return { jsonPrefLabel, subdivisions, jsonUriToPrefLabel };
 }
 
 function jsonParsing(filename: string, snapshot: boolean) {
-    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} = jsonOutput(filename);
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
+        jsonOutput(filename);
     if (snapshot) {
         matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
     } else {
@@ -42,11 +43,11 @@ function getProperties(jsonPrefLabel: headings[], subdivisions: headings[]) {
     const heading = jsonPrefLabel[0];
     const subdivs = subdivisions[0];
     if (heading !== undefined) {
-        ({pL, aL, bt, nt, rt, note, lcc, uri} = heading);
+        ({ pL, aL, bt, nt, rt, note, lcc, uri } = heading);
     } else {
-        ({pL, aL, bt, nt, rt, note, lcc, uri} = subdivs);
+        ({ pL, aL, bt, nt, rt, note, lcc, uri } = subdivs);
     }
-    return {pL, aL, bt, nt, rt, note, lcc, uri};
+    return { pL, aL, bt, nt, rt, note, lcc, uri };
 }
 
 function testValues(
@@ -55,7 +56,10 @@ function testValues(
     jsonUriToPrefLabel: uriToHeading,
     fileName: string
 ) {
-    const {pL, aL, bt, nt, rt, note, lcc, uri} = getProperties(jsonPrefLabel, subdivisions);
+    const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
+        jsonPrefLabel,
+        subdivisions
+    );
     if (fileName === 'Archaeology.json') {
         expect(pL).toBe('Archaeology');
         expect(aL).toBe('Archeology');
@@ -120,7 +124,14 @@ test('Snapshot of JSON parsing logic Obsidian.json', () => {
  */
 
 test('multiple Archaeology properties of JSON objects', () => {
-    jsonParsing('Archaeology.json', false);
+    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
+        jsonOutput('Archaeology.json');
+    testValues(
+        jsonPrefLabel,
+        subdivisions,
+        jsonUriToPrefLabel,
+        'Archaeology.json'
+    );
 });
 
 test('multiple History-subdiv properties of JSON objects', () => {
