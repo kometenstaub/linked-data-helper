@@ -37,20 +37,25 @@ function matchSnapshot(
     expect(jsonUriToPrefLabel).toMatchSnapshot();
 }
 
+function getProperties(jsonPrefLabel: headings[], subdivisions: headings[]) {
+    let pL, aL, bt, nt, rt, note, lcc, uri;
+    const heading = jsonPrefLabel[0];
+    const subdivs = subdivisions[0];
+    if (heading !== undefined) {
+        ({pL, aL, bt, nt, rt, note, lcc, uri} = heading);
+    } else {
+        ({pL, aL, bt, nt, rt, note, lcc, uri} = subdivs);
+    }
+    return {pL, aL, bt, nt, rt, note, lcc, uri};
+}
+
 function testValues(
     jsonPrefLabel: headings[],
     subdivisions: headings[],
     jsonUriToPrefLabel: uriToHeading,
     fileName: string
 ) {
-    let pL, aL, bt, nt, rt, note, lcc, uri;
-    const heading = jsonPrefLabel[0];
-    const subdivs = subdivisions[0];
-    if (heading !== undefined) {
-        ({ pL, aL, bt, nt, rt, note, lcc, uri } = heading);
-    } else {
-        ({ pL, aL, bt, nt, rt, note, lcc, uri } = subdivs);
-    }
+    const {pL, aL, bt, nt, rt, note, lcc, uri} = getProperties(jsonPrefLabel, subdivisions);
     if (fileName === 'Archaeology.json') {
         expect(pL).toBe('Archaeology');
         expect(aL).toBe('Archeology');
