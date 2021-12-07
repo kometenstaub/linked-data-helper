@@ -1,4 +1,4 @@
-name: Build obsidian plugin
+name: Test Linked Data Helper
 
 on:
   push:
