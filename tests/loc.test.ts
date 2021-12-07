@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-import { parseJsonHeading } from '../src/methods/parseJson';
-import type { headings, LcshInterface, uriToHeading } from '../src/interfaces';
+import {readFileSync} from 'fs';
+import {parseJsonHeading} from '../src/methods/parseJson';
+import type {headings, LcshInterface, uriToHeading} from '../src/interfaces';
 
 function readJson(fileName: string): LcshInterface {
     const currentFile = readFileSync(`tests/testFiles/${fileName}`, {
@@ -60,20 +60,7 @@ function testValues(
         jsonPrefLabel,
         subdivisions
     );
-    if (fileName === 'Archaeology.json') {
-        expect(pL).toBe('Archaeology');
-        expect(aL).toBe('Archeology');
-        expect(lcc).toBe('CC');
-        expect(note).toBe(
-            'Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]'
-        );
-        expect(uri).toBe('sh85006507');
-        expect(rt).toStrictEqual(['sh85005757']);
-
-        expect(subdivisions).toStrictEqual([]);
-
-        expect(jsonUriToPrefLabel).toStrictEqual({ sh85006507: 'Archaeology' });
-    } else if (fileName === 'History-subdiv.json') {
+    if (fileName === 'History-subdiv.json') {
         expect(pL).toBe('History');
         expect(aL).toBe('Frontier troubles');
         expect(lcc).toStrictEqual(undefined);
@@ -82,7 +69,7 @@ function testValues(
         );
         expect(uri).toBe('sh99005024');
 
-        expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: 'History' });
+        expect(jsonUriToPrefLabel).toStrictEqual({sh99005024: 'History'});
     } else if (fileName === 'Obsidian.json') {
         //@ts-expect-error, the object will not be undefined
         expect(bt[0]).toBe('Volcanic ash, tuff, etc.');
@@ -126,12 +113,20 @@ test('Snapshot of JSON parsing logic Obsidian.json', () => {
 test('multiple Archaeology properties of JSON objects', () => {
     const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Archaeology.json');
-    testValues(
+    const {pL, aL, bt, nt, rt, note, lcc, uri} = getProperties(
         jsonPrefLabel,
-        subdivisions,
-        jsonUriToPrefLabel,
-        'Archaeology.json'
+        subdivisions
     );
+    expect(pL).toBe('Archaeology');
+    expect(aL).toBe('Archeology');
+    expect(lcc).toBe('CC');
+    expect(note).toBe(
+        'Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]'
+    );
+    expect(uri).toBe('sh85006507');
+    expect(rt).toStrictEqual(['sh85005757']);
+    expect(subdivisions).toStrictEqual([]);
+    expect(jsonUriToPrefLabel).toStrictEqual({sh85006507: 'Archaeology'});
 });
 
 test('multiple History-subdiv properties of JSON objects', () => {
