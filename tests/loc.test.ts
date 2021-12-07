@@ -39,33 +39,6 @@ function getProperties(jsonPrefLabel: headings[], subdivisions: headings[]) {
     }
     return { pL, aL, bt, nt, rt, note, lcc, uri };
 }
-
-function testValues(
-    jsonPrefLabel: headings[],
-    subdivisions: headings[],
-    jsonUriToPrefLabel: uriToHeading,
-    fileName: string
-) {
-    const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
-        jsonPrefLabel,
-        subdivisions
-    );
-    if (fileName === 'History-subdiv.json') {
-        expect(pL).toBe('History');
-        expect(aL).toBe('Frontier troubles');
-        expect(lcc).toStrictEqual(undefined);
-        expect(note).toBe(
-            'Use as a topical subdivision under names of countries, cities, etc., and individual corporate bodies, uniform titles of sacred works, and under classes of persons, ethnic groups, and topical headings.'
-        );
-        expect(uri).toBe('sh99005024');
-
-        expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: 'History' });
-    } else if (fileName === 'Obsidian.json') {
-        //@ts-expect-error, the object will not be undefined
-        expect(bt[0]).toBe('Volcanic ash, tuff, etc.');
-    }
-}
-
 /**
  * unit test
  */
@@ -132,21 +105,27 @@ test('multiple History-subdiv properties of JSON objects', () => {
     const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } = jsonOutput(
         'History-subdiv.json'
     );
-    testValues(
+    const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
         jsonPrefLabel,
-        subdivisions,
-        jsonUriToPrefLabel,
-        'History-subdiv.json'
+        subdivisions
     );
+    expect(pL).toBe('History');
+    expect(aL).toBe('Frontier troubles');
+    expect(lcc).toStrictEqual(undefined);
+    expect(note).toBe(
+        'Use as a topical subdivision under names of countries, cities, etc., and individual corporate bodies, uniform titles of sacred works, and under classes of persons, ethnic groups, and topical headings.'
+    );
+    expect(uri).toBe('sh99005024');
+    expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: 'History' });
 });
 
 test('broader term Obsidian to not be the ID but the real name', () => {
     const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Obsidian.json');
-    testValues(
+    const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
         jsonPrefLabel,
-        subdivisions,
-        jsonUriToPrefLabel,
-        'Obsidian.json'
+        subdivisions
     );
+    //@ts-expect-error, the object will not be undefined
+    expect(bt[0]).toBe('Volcanic ash, tuff, etc.');
 });
