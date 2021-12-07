@@ -89,7 +89,8 @@ test('multiple Archaeology properties of JSON objects', () => {
         jsonPrefLabel,
         subdivisions
     );
-    expect(pL).toBe('Archaeology');
+    const expectedPL = 'Archaeology';
+    expect(pL).toBe(expectedPL);
     expect(aL).toBe('Archeology');
     expect(lcc).toBe('CC');
     expect(note).toBe(
@@ -100,7 +101,7 @@ test('multiple Archaeology properties of JSON objects', () => {
     expect((nt as string[]).length).toEqual(67)
     expect(rt).toStrictEqual(['sh85005757']);
     expect(subdivisions).toStrictEqual([]);
-    expect(jsonUriToPrefLabel).toStrictEqual({ sh85006507: 'Archaeology' });
+    expect(jsonUriToPrefLabel).toStrictEqual({ sh85006507: expectedPL });
 });
 
 test('multiple History-subdiv properties of JSON objects', () => {
@@ -111,14 +112,15 @@ test('multiple History-subdiv properties of JSON objects', () => {
         jsonPrefLabel,
         subdivisions
     );
-    expect(pL).toBe('History');
+    const expectedPL = 'History';
+    expect(pL).toBe(expectedPL);
     expect(aL).toBe('Frontier troubles');
     expect(lcc).toStrictEqual(undefined);
     expect(note).toBe(
         'Use as a topical subdivision under names of countries, cities, etc., and individual corporate bodies, uniform titles of sacred works, and under classes of persons, ethnic groups, and topical headings.'
     );
     expect(uri).toBe('sh99005024');
-    expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: 'History' });
+    expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: expectedPL });
 });
 
 test('broader term Obsidian to not be the ID but the real name', () => {
