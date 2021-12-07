@@ -25,6 +25,7 @@ jobs:
       id: build
       run: | 
         npm install
+        npm run test
         npm run build --if-present
         mkdir ${{ env.PLUGIN_NAME }}
         cp build/main.js build/manifest.json ${{ env.PLUGIN_NAME }}
