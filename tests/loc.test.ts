@@ -18,16 +18,6 @@ function jsonOutput(filename: string) {
     return { jsonPrefLabel, subdivisions, jsonUriToPrefLabel };
 }
 
-function jsonParsing(filename: string, snapshot: boolean) {
-    const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
-        jsonOutput(filename);
-    if (snapshot) {
-        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
-    } else {
-        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, filename);
-    }
-}
-
 function matchSnapshot(
     jsonPrefLabel: headings[],
     subdivisions: headings[],
@@ -91,19 +81,43 @@ test('History URI is correct', () => {
  */
 
 test('Snapshot of JSON parsing logic History.json', () => {
-    jsonParsing('History.json', true);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('History.json');
+    if (true) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History.json');
+    }
 });
 
 test('Snapshot of JSON parsing logic History-subdiv.json', () => {
-    jsonParsing('History-subdiv.json', true);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('History-subdiv.json');
+    if (true) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History-subdiv.json');
+    }
 });
 
 test('Snapshot of JSON parsing logic Archaeology.json', () => {
-    jsonParsing('Archaeology.json', true);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('Archaeology.json');
+    if (true) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Archaeology.json');
+    }
 });
 
 test('Snapshot of JSON parsing logic Obsidian.json', () => {
-    jsonParsing('Obsidian.json', true);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('Obsidian.json');
+    if (true) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Obsidian.json');
+    }
 });
 
 /**
@@ -130,9 +144,21 @@ test('multiple Archaeology properties of JSON objects', () => {
 });
 
 test('multiple History-subdiv properties of JSON objects', () => {
-    jsonParsing('History-subdiv.json', false);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('History-subdiv.json');
+    if (false) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'History-subdiv.json');
+    }
 });
 
 test('broader term Obsidian to not be the ID but the real name', () => {
-    jsonParsing('Obsidian.json', false);
+    const {jsonPrefLabel, subdivisions, jsonUriToPrefLabel} =
+        jsonOutput('Obsidian.json');
+    if (false) {
+        matchSnapshot(jsonPrefLabel, subdivisions, jsonUriToPrefLabel);
+    } else {
+        testValues(jsonPrefLabel, subdivisions, jsonUriToPrefLabel, 'Obsidian.json');
+    }
 });
