@@ -1,0 +1,25 @@
+name: Build obsidian plugin
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: '14.16.0' # You might need to adjust this value to your own version
+      - name: Test
+        id: test
+        run: |
+          npm install
+          npm run test
