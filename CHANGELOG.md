@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/kometenstaub/linked-data-helper/compare/0.1.1...0.1.2) (2021-12-20)
+
+
+### Bug Fixes
+
+* better error handling ([94a7837](https://github.com/kometenstaub/linked-data-helper/commit/94a78379e5a066f0dc61a21fca27f24d18c2f52a)), closes [#4](https://github.com/kometenstaub/linked-data-helper/issues/4)
+* correct Archaeology heading in JSON file ([92081d8](https://github.com/kometenstaub/linked-data-helper/commit/92081d81573b33c194c43e993b2a336691b49f80))
+
 ### [0.1.1](https://github.com/kometenstaub/linked-data-helper/compare/0.1.0...0.1.1) (2021-11-27)
 
 ## [0.1.0](https://github.com/kometenstaub/linked-data-helper/compare/0.0.2...0.1.0) (2021-11-09)
