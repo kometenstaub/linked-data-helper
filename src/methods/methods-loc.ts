@@ -4,6 +4,7 @@ import type { headings, LcshInterface } from '../interfaces';
 import { createReadStream } from 'fs';
 import split2 from 'split2';
 import { parseJsonHeading } from './parseJson';
+import * as fs from 'fs';
 
 export class SkosMethods {
     app: App;
@@ -19,13 +20,13 @@ export class SkosMethods {
         const subdivisions: headings[] = [];
         const jsonUriToPrefLabel = {};
         let inputPath = '';
-        if (this.plugin.settings.lcshInputPath) {
+        if (fs.existsSync(this.plugin.settings.lcshInputPath)) {
             inputPath = this.plugin.settings.lcshInputPath;
         } else {
-            const text =
-                'Please specify an input path for LCSH in the settings.';
-            new Notice(text);
-            throw Error(text);
+            const message =
+                'The file could not be read. Please check the path you provided.';
+            new Notice(message);
+            throw Error(message);
         }
         let newOutputPath = '';
         if (outputPath) {
@@ -34,6 +35,9 @@ export class SkosMethods {
 
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
+            .on('error', () => {
+                new Notice('Something went wrong while parsing the file.');
+            })
             .on('data', (obj: LcshInterface) => {
                 parseJsonHeading(
                     obj,
