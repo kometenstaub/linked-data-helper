@@ -1,4 +1,4 @@
-# Linked Data Helper
+# ~~Linked Data Helper~~ Discontinued: [more information](https://github.com/kometenstaub/linked-data-helper/issues/10) 
 
 [![Test Linked Data Helper](https://github.com/kometenstaub/linked-data-helper/actions/workflows/test.yml/badge.svg)](https://github.com/kometenstaub/linked-data-helper/actions/workflows/test.yml)
 [![Build obsidian plugin](https://github.com/kometenstaub/linked-data-helper/actions/workflows/releases.yml/badge.svg)](https://github.com/kometenstaub/linked-data-helper/actions/workflows/releases.yml)
