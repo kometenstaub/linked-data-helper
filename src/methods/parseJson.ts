@@ -21,7 +21,7 @@ export function parseJsonHeading(
         let narrowerURLs: string[] = [];
         let relatedURLs: string[] = [];
         let prefLabel = '';
-        let altLabel = '';
+        let altLabels: string[] = [];
         let lcc = '';
 
         let uri = '';
@@ -51,9 +51,7 @@ export function parseJsonHeading(
             [endUri]: prefLabel,
         });
         // there can be multiple altLabels
-        if (element['madsrdf:hasVariant']?.['@language'] === 'en') {
-            altLabel = element['madsrdf:hasVariant']['@value'];
-        }
+        altLabels = makeArrayAndResolveSkolemIrisAltLabel(element, graph)
         const graph = obj['@graph'];
         broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'broader');
         // prettier-ignore
@@ -61,15 +59,15 @@ export function parseJsonHeading(
         relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'related');
         currentObj = onlyReturnFull(
             prefLabel,
-            altLabel,
+            altLabels,
             uri,
             broaderURLs,
             narrowerURLs,
             relatedURLs,
             lcc
         );
-        if (element['skos:note']) {
-            let note = element['skos:note'];
+        if (element['madsrdf:note']) {
+            let note = element['madsrdf:note'];
             if (Array.isArray(note)) {
                 let newNote = '';
                 for (const el of note) {
@@ -146,7 +144,7 @@ function reduceUrls(
  */
 function onlyReturnFull(
     prefLabel: string,
-    altLabel: string,
+    altLabel: string[],
     uri: string,
     broaderURLs: string[],
     narrowerURLs: string[],
@@ -161,7 +159,7 @@ function onlyReturnFull(
 
     currentObj.pL = prefLabel;
     currentObj.uri = splitUri(uri);
-    if (altLabel !== '') {
+    if (altLabel.length > 0) {
         currentObj.aL = altLabel;
     }
     if (broaderURLs.length > 0) {
@@ -226,6 +224,50 @@ function makeArrayAndResolveSkolemIris(
     return urls;
 }
 
+/**
+ * Gets the URIs (or name, in case of Skolem IRIs) of the altLabels
+ * @param element - The current node
+ * @param graph - The full graph with all the nodes
+ * @returns The full (unreduced) URIs of the relation headings
+ *
+ * @remarks - It turns individual headings into an Array and resolves Skolem IRIs.
+ *
+ */
+function makeArrayAndResolveSkolemIrisAltLabel(
+    element: Graph,
+    graph: Graph[],
+): string[] {
+    const urls = [];
+    const labels = element['madsrdf:hasVariant'];
+    if (labels !== undefined) {
+        if (Array.isArray(labels)) {
+            for (const subElement of labels) {
+                if (subElement['@language'] === 'en') {
+                    const value = subElement['@value'];
+                    // TODO: check if they can have skolemIRIs
+                    if (value.startsWith('_:')) {
+                        const term = getHeadingForSkolemIri(graph, value);
+                        urls.push(term);
+                    } else {
+                        urls.push(value);
+                    }
+                }
+            }
+        } else {
+            if (labels['@language'] === 'en') {
+                const value: string = labels['@value'];
+                if (value.startsWith('_:')) {
+                    const term = getHeadingForSkolemIri(graph, value);
+                    urls.push(term);
+                } else {
+                    urls.push(value);
+                }
+            }
+        }
+    }
+
+    return urls;
+}
 /**
  * Resolves the heading to the given Skolem IRI
  * @param graph - All nodes of the graph

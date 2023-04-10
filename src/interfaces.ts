@@ -6,7 +6,7 @@ export interface LiDaHeSettings {
 export interface headings {
     pL: string; // prefLabel
     uri: string;
-    aL?: string; // altLabel
+    aL?: string[]; // altLabel
     bt?: string[]; // broader
     nt?: string[]; // narrower
     rt?: string[]; // related
@@ -64,7 +64,6 @@ export interface SkolemGraphNode extends Graph {
     "@id":                                                         string;
     "madsrdf:code":                                                string;
 }
-
 
 // prettier-ignore
 interface Id {
