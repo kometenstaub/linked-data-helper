@@ -17,7 +17,7 @@ export function parseJsonHeading(
     //@ts-expect-error, it needs to be initialised
     // and will be populated later on
     let currentObj: headings = {};
-    const id = obj['@context'].about;
+    const id = "http://id.loc.gov" + obj['@id']
     for (const element of obj['@graph']) {
         let broaderURLs: string[] = [];
         let narrowerURLs: string[] = [];
@@ -29,9 +29,8 @@ export function parseJsonHeading(
         let uri = '';
         if (element['madsrdf:authoritativeLabel']?.['@language'] === 'en') {
             uri = element['@id'];
-            const currentPrefLabel = element['madsrdf:authoritativeLabel']['@value'];
             if (uri === id) {
-                prefLabel = currentPrefLabel;
+                prefLabel = element['madsrdf:authoritativeLabel']['@value'];
             } else {
                 continue;
             }
