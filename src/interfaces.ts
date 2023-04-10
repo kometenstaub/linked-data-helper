@@ -51,7 +51,8 @@ export interface Graph {
     // "http://id.loc.gov/authorities/subjects/sh00000023"
     "@id":                                                          string;
     "madsrdf:authoritativeLabel":                                   LanguageAndValue;
-    "madsrdf:hasVariant"?:                                          LanguageAndValue | LanguageAndValue[];
+    "madsrdf:variantLabel":                                         LanguageAndValue;
+    "madsrdf:hasVariant"?:                                          Id[] | Id;
     "madsrdf:hasBroaderAuthority"?:                                 Id[] | Id;
     "madsrdf:hasReciprocalAuthority"?:                              Id[] | Id;
     "madsrdf:hasNarrowerAuthority"?:                                Id[] | Id;

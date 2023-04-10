@@ -1,12 +1,6 @@
-import type {
-    Graph,
-    headings,
-    LcshInterface,
-    SkolemGraphNode,
-    uriToHeading,
-} from '../interfaces';
+import type {Graph, headings, LcshInterface, SkolemGraphNode, uriToHeading,} from '../interfaces';
 
-import type {BROADER, NARROWER, RELATED} from "../constants";
+import {BROADER, HAS_VARIANT, NARROWER, PREF_LABEL, RELATED, VARIANT_LABEL} from "../constants";
 
 export function parseJsonHeading(
     obj: LcshInterface,
@@ -53,7 +47,7 @@ export function parseJsonHeading(
         });
         const graph = obj['@graph'];
         // there can be multiple altLabels
-        altLabels = makeArrayAndResolveSkolemIrisAltLabel(element, graph)
+        altLabels = makeArrayAndResolveSkolemIris(element, graph, 'hasVariant')
         broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasBroaderAuthority');
         // prettier-ignore
         narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasNarrowerAuthority');
@@ -192,20 +186,25 @@ function onlyReturnFull(
 function makeArrayAndResolveSkolemIris(
     element: Graph,
     graph: Graph[],
-    type: 'hasBroaderAuthority' | 'hasNarrowerAuthority' | 'hasReciprocalAuthority'
+    type: 'hasBroaderAuthority' | 'hasNarrowerAuthority' | 'hasReciprocalAuthority' | 'hasVariant'
 ): string[] {
     const urls = [];
     const headingType:
-        | BROADER
-        | NARROWER
-        | RELATED = `madsrdf:${type}`;
+        | typeof BROADER
+        | typeof NARROWER
+        | typeof RELATED
+        | typeof HAS_VARIANT = `madsrdf:${type}`;
     const relation = element[headingType];
     if (relation !== undefined) {
+        let variant: typeof PREF_LABEL | typeof VARIANT_LABEL = 'madsrdf:authoritativeLabel'
+        if (headingType === 'madsrdf:hasVariant') {
+            variant = VARIANT_LABEL
+        }
         if (Array.isArray(relation)) {
             for (const subElement of relation) {
                 const id = subElement['@id'];
                 if (id.startsWith('_:')) {
-                    const term = getHeadingForSkolemIri(graph, id);
+                    const term = getHeadingForSkolemIri(graph, id, variant);
                     urls.push(term);
                 } else {
                     urls.push(id);
@@ -214,7 +213,7 @@ function makeArrayAndResolveSkolemIris(
         } else {
             const id: string = relation['@id'];
             if (id.startsWith('_:')) {
-                const term = getHeadingForSkolemIri(graph, id);
+                const term = getHeadingForSkolemIri(graph, id, variant);
                 urls.push(term);
             } else {
                 urls.push(id);
@@ -226,63 +225,28 @@ function makeArrayAndResolveSkolemIris(
 }
 
 /**
- * Gets the URIs (or name, in case of Skolem IRIs) of the altLabels
- * @param element - The current node
- * @param graph - The full graph with all the nodes
- * @returns The full (unreduced) URIs of the relation headings
- *
- * @remarks - It turns individual headings into an Array and resolves Skolem IRIs.
- *
- */
-function makeArrayAndResolveSkolemIrisAltLabel(
-    element: Graph,
-    graph: Graph[],
-): string[] {
-    const urls = [];
-    const labels = element['madsrdf:hasVariant'];
-    if (labels !== undefined) {
-        if (Array.isArray(labels)) {
-            for (const subElement of labels) {
-                if (subElement['@language'] === 'en') {
-                    const value = subElement['@value'];
-                    // TODO: check if they can have skolemIRIs
-                    if (value.startsWith('_:')) {
-                        const term = getHeadingForSkolemIri(graph, value);
-                        urls.push(term);
-                    } else {
-                        urls.push(value);
-                    }
-                }
-            }
-        } else {
-            if (labels['@language'] === 'en') {
-                const value: string = labels['@value'];
-                if (value.startsWith('_:')) {
-                    const term = getHeadingForSkolemIri(graph, value);
-                    urls.push(term);
-                } else {
-                    urls.push(value);
-                }
-            }
-        }
-    }
-
-    return urls;
-}
-/**
  * Resolves the heading to the given Skolem IRI
  * @param graph - All nodes of the graph
  * @param id - The Skolem IRI that maps to an ID on a node on {@param graph}
+ * @param type
  * @returns - It always returns a non-empty string, because this function is only called if there is a matching result
  */
-function getHeadingForSkolemIri(graph: Graph[], id: string): string {
+function getHeadingForSkolemIri(graph: Graph[], id: string, type: typeof PREF_LABEL | typeof VARIANT_LABEL): string {
     let term = '';
     for (const part of graph) {
         if (part['@id'] === id) {
-            const prefLabel = part['madsrdf:authoritativeLabel'];
-            if (prefLabel['@language'] === 'en') {
-                term = prefLabel['@value'];
-                break;
+            if (type === PREF_LABEL) {
+                const prefLabel = part[type];
+                if (prefLabel['@language'] === 'en') {
+                    term = prefLabel['@value'];
+                    break;
+                }
+            } else if (type === VARIANT_LABEL) {
+                const variantLabel = part[type];
+                if (variantLabel['@language'] === 'en') {
+                    term = variantLabel['@value'];
+                    break;
+                }
             }
         }
     }

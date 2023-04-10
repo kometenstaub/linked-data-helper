@@ -44,8 +44,8 @@ function getProperties(jsonPrefLabel: headings[], subdivisions: headings[]) {
  */
 test('History URI is correct', () => {
     const obj = readJson('History.json');
-    expect(obj['@context'].about).toBe(
-        'http://id.loc.gov/authorities/subjects/sh85061227'
+    expect(obj['@id']).toBe(
+        '/authorities/subjects/sh85061227'
     );
 });
 
