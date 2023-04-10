@@ -235,18 +235,10 @@ function getHeadingForSkolemIri(graph: Graph[], id: string, type: typeof PREF_LA
     let term = '';
     for (const part of graph) {
         if (part['@id'] === id) {
-            if (type === PREF_LABEL) {
-                const prefLabel = part[type];
-                if (prefLabel['@language'] === 'en') {
-                    term = prefLabel['@value'];
-                    break;
-                }
-            } else if (type === VARIANT_LABEL) {
-                const variantLabel = part[type];
-                if (variantLabel['@language'] === 'en') {
-                    term = variantLabel['@value'];
-                    break;
-                }
+            const label = part[type];
+            if (label['@language'] === 'en') {
+                term = label['@value'];
+                break;
             }
         }
     }
