@@ -47,11 +47,11 @@ export function parseJsonHeading(
         });
         const graph = obj['@graph'];
         // there can be multiple altLabels
-        altLabels = makeArrayAndResolveSkolemIris(element, graph, 'hasVariant')
-        broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasBroaderAuthority');
+        altLabels = makeArrayAndResolveSkolemIris(element, graph, HAS_VARIANT)
+        broaderURLs = makeArrayAndResolveSkolemIris(element, graph, BROADER);
         // prettier-ignore
-        narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasNarrowerAuthority');
-        relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasReciprocalAuthority');
+        narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, NARROWER);
+        relatedURLs = makeArrayAndResolveSkolemIris(element, graph, RELATED);
         currentObj = onlyReturnFull(
             prefLabel,
             altLabels,
@@ -186,18 +186,13 @@ function onlyReturnFull(
 function makeArrayAndResolveSkolemIris(
     element: Graph,
     graph: Graph[],
-    type: 'hasBroaderAuthority' | 'hasNarrowerAuthority' | 'hasReciprocalAuthority' | 'hasVariant'
+    type: typeof NARROWER | typeof RELATED | typeof BROADER | typeof HAS_VARIANT
 ): string[] {
     const urls = [];
-    const headingType:
-        | typeof BROADER
-        | typeof NARROWER
-        | typeof RELATED
-        | typeof HAS_VARIANT = `madsrdf:${type}`;
-    const relation = element[headingType];
+    const relation = element[type];
     if (relation !== undefined) {
-        let variant: typeof PREF_LABEL | typeof VARIANT_LABEL = 'madsrdf:authoritativeLabel'
-        if (headingType === 'madsrdf:hasVariant') {
+        let variant: typeof PREF_LABEL | typeof VARIANT_LABEL = PREF_LABEL;
+        if (type === HAS_VARIANT) {
             variant = VARIANT_LABEL
         }
         if (Array.isArray(relation)) {
