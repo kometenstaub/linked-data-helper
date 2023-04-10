@@ -1,0 +1,7 @@
+export type PREF_LABEL = "madsrdf:authoritativeLabel"
+export type ALT_LABEL = "madsrdf:hasVariant"
+export type BROADER = "madsrdf:hasBroaderAuthority"
+export type RELATED = "madsrdf:hasReciprocalAuthority"
+export type NARROWER = "madsrdf:hasNarrowerAuthority"
+export type NOTE = "madsrdf:note"
+export type CLASSIFICATION = "madsrdf:classification"

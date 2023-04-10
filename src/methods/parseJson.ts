@@ -6,6 +6,8 @@ import type {
     uriToHeading,
 } from '../interfaces';
 
+import type {BROADER, NARROWER, RELATED} from "../constants";
+
 export function parseJsonHeading(
     obj: LcshInterface,
     jsonPrefLabel: headings[],
@@ -50,13 +52,13 @@ export function parseJsonHeading(
         Object.assign(jsonUriToPrefLabel, {
             [endUri]: prefLabel,
         });
+        const graph = obj['@graph'];
         // there can be multiple altLabels
         altLabels = makeArrayAndResolveSkolemIrisAltLabel(element, graph)
-        const graph = obj['@graph'];
-        broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'broader');
+        broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasBroaderAuthority');
         // prettier-ignore
-        narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'narrower');
-        relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'related');
+        narrowerURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasNarrowerAuthority');
+        relatedURLs = makeArrayAndResolveSkolemIris(element, graph, 'hasReciprocalAuthority');
         currentObj = onlyReturnFull(
             prefLabel,
             altLabels,
@@ -191,13 +193,13 @@ function onlyReturnFull(
 function makeArrayAndResolveSkolemIris(
     element: Graph,
     graph: Graph[],
-    type: 'broader' | 'narrower' | 'related'
+    type: 'hasBroaderAuthority' | 'hasNarrowerAuthority' | 'hasReciprocalAuthority'
 ): string[] {
     const urls = [];
     const headingType:
-        | 'skos:broader'
-        | 'skos:narrower'
-        | 'skos:related' = `skos:${type}`;
+        | BROADER
+        | NARROWER
+        | RELATED = `madsrdf:${type}`;
     const relation = element[headingType];
     if (relation !== undefined) {
         if (Array.isArray(relation)) {
