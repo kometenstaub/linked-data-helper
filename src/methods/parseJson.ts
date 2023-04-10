@@ -25,9 +25,9 @@ export function parseJsonHeading(
         let lcc = '';
 
         let uri = '';
-        if (element['skos:prefLabel']?.['@language'] === 'en') {
+        if (element['madsrdf:authoritativeLabel']?.['@language'] === 'en') {
             uri = element['@id'];
-            const currentPrefLabel = element['skos:prefLabel']['@value'];
+            const currentPrefLabel = element['madsrdf:authoritativeLabel']['@value'];
             if (uri === id) {
                 prefLabel = currentPrefLabel;
             } else {
@@ -50,8 +50,9 @@ export function parseJsonHeading(
         Object.assign(jsonUriToPrefLabel, {
             [endUri]: prefLabel,
         });
-        if (element['skos:altLabel']?.['@language'] === 'en') {
-            altLabel = element['skos:altLabel']['@value'];
+        // there can be multiple altLabels
+        if (element['madsrdf:hasVariant']?.['@language'] === 'en') {
+            altLabel = element['madsrdf:hasVariant']['@value'];
         }
         const graph = obj['@graph'];
         broaderURLs = makeArrayAndResolveSkolemIris(element, graph, 'broader');
@@ -235,7 +236,7 @@ function getHeadingForSkolemIri(graph: Graph[], id: string): string {
     let term = '';
     for (const part of graph) {
         if (part['@id'] === id) {
-            const prefLabel = part['skos:prefLabel'];
+            const prefLabel = part['madsrdf:authoritativeLabel'];
             if (prefLabel['@language'] === 'en') {
                 term = prefLabel['@value'];
                 break;

@@ -40,45 +40,22 @@ export interface uriToHeading {
 
 // prettier-ignore
 export interface LcshInterface {
-    "@context": Context;
+    "@context": "http://v3/authorities/subjects/context.json";
     "@graph":   Graph[];
-}
-
-// prettier-ignore
-export interface Context {
-    cs:     string;
-    rdf:    string;
-    rdfs:   string;
-    rdfs1:  string;
-    skos:   string;
-    skosxl: string;
-    xsd:    string;
-    about:  string;
+    // "/authorities/subjects/sh00000023"
+    "@id":   string;
 }
 
 // prettier-ignore
 export interface Graph {
+    // "http://id.loc.gov/authorities/subjects/sh00000023"
     "@id":                                                          string;
-    "http://www.loc.gov/mads/rdf/v1#authoritativeLabel"?:           string;
-    "@type":                                                        string;
-    "skos:prefLabel":                                               LanguageAndValue;
-    "http://www.loc.gov/mads/rdf/v1#hasCloseExternalAuthority"?:    Id[];
-    "http://www.loc.gov/mads/rdf/v1#hasNarrowerExternalAuthority"?: Id[];
-    "skos:altLabel"?:                                               LanguageAndValue;
-    "skos:broader"?:                                                Id[] | Id;
-    "skos:changeNote"?:                                             Id[];
-    "skos:editorial"?:                                              string;
-    "skos:inScheme"?:                                               Id;
-    "skos:narrower"?:                                               Id[] | Id;
-    "skos:note"?:                                                   string | string[];
-    "skos:related"?:                                                Id[] | Id;
-    "skosxl:altLabel"?:                                             Id;
-    "cs:changeReason"?:                                             string;
-    "cs:createdDate"?:                                              CSCreatedDate;
-    "cs:creatorName"?:                                              Id;
-    "cs:subjectOfChange"?:                                          Id;
-    "skosxl:literalForm"?:                                          LanguageAndValue;
-
+    "madsrdf:authoritativeLabel":                                   LanguageAndValue;
+    "madsrdf:hasVariant"?:                                          LanguageAndValue | LanguageAndValue[];
+    "madsrdf:hasBroaderAuthority"?:                                 Id[] | Id;
+    "madsrdf:hasReciprocalAuthority"?:                              Id[] | Id;
+    "madsrdf:hasNarrowerAuthority"?:                                Id[] | Id;
+    "madsrdf:note"?:                                                string | string[];
     "madsrdf:classification"?:                                      Id;
 }
 
@@ -88,11 +65,6 @@ export interface SkolemGraphNode extends Graph {
     "madsrdf:code":                                                string;
 }
 
-// prettier-ignore
-interface CSCreatedDate {
-    "@type":  string;
-    "@value": Date;
-}
 
 // prettier-ignore
 interface Id {
