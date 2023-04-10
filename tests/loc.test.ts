@@ -91,14 +91,14 @@ test('multiple Archaeology properties of JSON objects', () => {
     );
     const expectedPL = 'Archaeology';
     expect(pL).toBe(expectedPL);
-    expect(aL).toBe('Archeology');
+    expect(aL).toStrictEqual(['Archeology']);
     expect(lcc).toBe('CC');
     expect(note).toBe(
         'Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]'
     );
     expect(uri).toBe('sh85006507');
     expect((bt as string[]).length).toEqual(3);
-    expect((nt as string[]).length).toEqual(67);
+    expect((nt as string[]).length).toEqual(64);
     expect(rt).toStrictEqual(['sh85005757']);
     expect(subdivisions).toStrictEqual([]);
     expect(jsonUriToPrefLabel).toStrictEqual({ sh85006507: expectedPL });
@@ -114,7 +114,7 @@ test('multiple History-subdiv properties of JSON objects', () => {
     );
     const expectedPL = 'History';
     expect(pL).toBe(expectedPL);
-    expect(aL).toBe('Frontier troubles');
+    expect(aL).toStrictEqual(['Frontier troubles']);
     expect(lcc).toStrictEqual(undefined);
     expect(note).toBe(
         'Use as a topical subdivision under names of countries, cities, etc., and individual corporate bodies, uniform titles of sacred works, and under classes of persons, ethnic groups, and topical headings.'
@@ -123,7 +123,7 @@ test('multiple History-subdiv properties of JSON objects', () => {
     expect(jsonUriToPrefLabel).toStrictEqual({ sh99005024: expectedPL });
 });
 
-test('broader term Obsidian to not be the ID but the real name', () => {
+test('broader term is the ID', () => {
     const { jsonPrefLabel, subdivisions, jsonUriToPrefLabel } =
         jsonOutput('Obsidian.json');
     const { pL, aL, bt, nt, rt, note, lcc, uri } = getProperties(
@@ -131,5 +131,5 @@ test('broader term Obsidian to not be the ID but the real name', () => {
         subdivisions
     );
     //@ts-expect-error, the object will not be undefined
-    expect(bt[0]).toBe('Volcanic ash, tuff, etc.');
+    expect(bt[0]).toBe('sh85144250');
 });
