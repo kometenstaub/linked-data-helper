@@ -15,7 +15,7 @@ export class SkosMethods {
         this.plugin = plugin;
     }
 
-    public convertLcshSkosNdjson(outputPath?: string) {
+    public convertMadsRdfJsonld(outputPath?: string) {
         const jsonPrefLabel: headings[] = [];
         const subdivisions: headings[] = [];
         const jsonUriToPrefLabel = {};

@@ -33,11 +33,11 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
             createFragment((frag) => {
                 frag.appendText('Please download the ');
                 frag.createEl('em', {
-                    text: 'LC Subject Headings (LCSH) (MADS/RDF and SKOS/RDF)',
+                    text: 'LC Subject Headings (LCSH) (MADS/RDF)',
                 });
                 frag.appendText(' file (in ');
                 frag.createEl('em', {
-                    text: 'ndjson',
+                    text: 'jsonld',
                 });
                 frag.appendText(' format) from ');
                 frag.createEl(
@@ -52,7 +52,7 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                 );
                 frag.appendText(
                     ' and unzip it. (The file name may be a bit different, since the file also gets updated from time to time.) \
-                    The unzipped file will be ~2.5GB, therefore it is a good idea to save and unzip it outside of the vault.'
+                    The unzipped file will be ~1.9GB, therefore it is a good idea to save and unzip it outside of the vault.'
                 );
             })
         );
@@ -60,11 +60,11 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
         containerEl.createEl('br');
 
         new Setting(containerEl)
-            .setName('Path of the extracted zip file')
+            .setName('Path of the extracted gzip (.gz) file')
             .setDesc('Please input the absolute path to the extracted file.')
             .addText((text) =>
                 text
-                    .setPlaceholder('/home/user/Downloads/lcsh.skos.ndjson')
+                    .setPlaceholder('/home/user/Downloads/subjects.madsrdf.jsonld')
                     .setValue(this.plugin.settings.lcshInputPath)
                     .onChange(async (value) => {
                         this.plugin.settings.lcshInputPath = value.trim();
@@ -147,11 +147,11 @@ export default class LiDaHeSettingsTab extends PluginSettingTab {
                                 'The conversion will start now. This may take some time. You will be notified when it is done.'
                             );
                             if (this.plugin.settings.lcshOutputPath !== '') {
-                                this.plugin.methods_loc.convertLcshSkosNdjson(
+                                this.plugin.methods_loc.convertMadsRdfJsonld(
                                     this.plugin.settings.lcshOutputPath
                                 );
                             } else {
-                                this.plugin.methods_loc.convertLcshSkosNdjson();
+                                this.plugin.methods_loc.convertMadsRdfJsonld();
                             }
                         }
                     });
