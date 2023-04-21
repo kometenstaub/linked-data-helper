@@ -4,8 +4,8 @@
 	"description": "Add SKOS heading classification to YAML.",
 	"main": "src/main.ts",
 	"scripts": {
-		"dev": "cross-env BUILD=dev node esbuild.js",
-		"build": "cross-env BUILD=production node esbuild.js",
+		"dev": "cross-env BUILD=dev node esbuild.mjs",
+		"build": "cross-env BUILD=production node esbuild.mjs",
 		"release": "standard-version",
 		"lint": "npx eslint src/",
 		"test": "jest",
