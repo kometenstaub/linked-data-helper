@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshot of JSON parsing logic Archaeology.json 1`] = `
-Array [
-  Object {
-    "aL": Array [
+[
+  {
+    "aL": [
       "Archeology",
     ],
-    "bt": Array [
+    "bt": [
       "sh85005581",
       "sh85010480",
       "sh85061212",
     ],
     "lcc": "CC",
     "note": "Here are entered works on archaeology as a branch of learning. This heading may be divided geographically for works on this branch of learning in a specific place. Works on the antiquities of particular regions, countries, cities, etc. are entered under the name of the place subdivided by [Antiquities.]",
-    "nt": Array [
+    "nt": [
       "sh00007440",
       "sh2003003476",
       "sh2003004186",
@@ -80,7 +80,7 @@ Array [
       "sh95000887",
     ],
     "pL": "Archaeology",
-    "rt": Array [
+    "rt": [
       "sh85005757",
     ],
     "uri": "sh85006507",
@@ -88,18 +88,18 @@ Array [
 ]
 `;
 
-exports[`Snapshot of JSON parsing logic Archaeology.json 2`] = `Array []`;
+exports[`Snapshot of JSON parsing logic Archaeology.json 2`] = `[]`;
 
 exports[`Snapshot of JSON parsing logic Archaeology.json 3`] = `
-Object {
+{
   "sh85006507": "Archaeology",
 }
 `;
 
 exports[`Snapshot of JSON parsing logic History.json 1`] = `
-Array [
-  Object {
-    "aL": Array [
+[
+  {
+    "aL": [
       "Source material, Historical",
       "Primary sources (Historical sources)",
       "Historical sources",
@@ -108,7 +108,7 @@ Array [
     ],
     "lcc": "D5-D5.5",
     "note": "Here are entered collections of documents, records, etc. upon which narrative history is based.",
-    "nt": Array [
+    "nt": [
       "sh2003003039",
       "sh85006913",
       "sh85022719",
@@ -121,24 +121,24 @@ Array [
 ]
 `;
 
-exports[`Snapshot of JSON parsing logic History.json 2`] = `Array []`;
+exports[`Snapshot of JSON parsing logic History.json 2`] = `[]`;
 
 exports[`Snapshot of JSON parsing logic History.json 3`] = `
-Object {
+{
   "sh85061227": "History--Sources",
 }
 `;
 
-exports[`Snapshot of JSON parsing logic History-subdiv.json 1`] = `Array []`;
+exports[`Snapshot of JSON parsing logic History-subdiv.json 1`] = `[]`;
 
 exports[`Snapshot of JSON parsing logic History-subdiv.json 2`] = `
-Array [
-  Object {
-    "aL": Array [
+[
+  {
+    "aL": [
       "Frontier troubles",
     ],
     "note": "Use as a topical subdivision under names of countries, cities, etc., and individual corporate bodies, uniform titles of sacred works, and under classes of persons, ethnic groups, and topical headings.",
-    "nt": Array [
+    "nt": [
       "sh00004047",
       "sh00005861",
       "sh00005863",
@@ -211,19 +211,19 @@ Array [
 `;
 
 exports[`Snapshot of JSON parsing logic History-subdiv.json 3`] = `
-Object {
+{
   "sh99005024": "History",
 }
 `;
 
 exports[`Snapshot of JSON parsing logic Obsidian.json 1`] = `
-Array [
-  Object {
-    "aL": Array [
+[
+  {
+    "aL": [
       "Hyalopsite",
       "Iceland agate",
     ],
-    "bt": Array [
+    "bt": [
       "sh85144250",
     ],
     "lcc": "QE462.O28",
@@ -233,10 +233,10 @@ Array [
 ]
 `;
 
-exports[`Snapshot of JSON parsing logic Obsidian.json 2`] = `Array []`;
+exports[`Snapshot of JSON parsing logic Obsidian.json 2`] = `[]`;
 
 exports[`Snapshot of JSON parsing logic Obsidian.json 3`] = `
-Object {
+{
   "sh85093752": "Obsidian",
 }
 `;
