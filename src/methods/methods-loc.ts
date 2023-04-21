@@ -1,10 +1,10 @@
-import { App, normalizePath, Notice } from 'obsidian';
-import type LinkedDataHelperPlugin from '../main';
-import type { headings, LcshInterface } from '../interfaces';
-import { createReadStream } from 'fs';
-import split2 from 'split2';
-import { parseJsonHeading } from './parseJson';
-import * as fs from 'fs';
+import { App, normalizePath, Notice } from "obsidian";
+import type LinkedDataHelperPlugin from "../main";
+import type { headings, LcshInterface } from "../interfaces";
+import { createReadStream } from "fs";
+import split2 from "split2";
+import { parseJsonHeading } from "./parseJson";
+import * as fs from "fs";
 
 export class SkosMethods {
     app: App;
@@ -19,26 +19,26 @@ export class SkosMethods {
         const jsonPrefLabel: headings[] = [];
         const subdivisions: headings[] = [];
         const jsonUriToPrefLabel = {};
-        let inputPath = '';
+        let inputPath = "";
         if (fs.existsSync(this.plugin.settings.lcshInputPath)) {
             inputPath = this.plugin.settings.lcshInputPath;
         } else {
             const message =
-                'The file could not be read. Please check the path you provided.';
+                "The file could not be read. Please check the path you provided.";
             new Notice(message);
             throw Error(message);
         }
-        let newOutputPath = '';
+        let newOutputPath = "";
         if (outputPath) {
             newOutputPath = outputPath;
         }
 
         createReadStream(inputPath)
             .pipe(split2(JSON.parse))
-            .on('error', () => {
-                new Notice('Something went wrong while parsing the file.');
+            .on("error", () => {
+                new Notice("Something went wrong while parsing the file.");
             })
-            .on('data', (obj: LcshInterface) => {
+            .on("data", (obj: LcshInterface) => {
                 parseJsonHeading(
                     obj,
                     jsonPrefLabel,
@@ -46,16 +46,16 @@ export class SkosMethods {
                     jsonUriToPrefLabel
                 );
             })
-            .on('end', () => {
-                let jsonPrefPath = '';
-                let jsonUriPath = '';
-                let jsonSubdivPath = '';
+            .on("end", () => {
+                let jsonPrefPath = "";
+                let jsonUriPath = "";
+                let jsonSubdivPath = "";
                 const { adapter } = this.app.vault;
-                if (newOutputPath === '') {
+                if (newOutputPath === "") {
                     const attachmentFolder = normalizePath(
                         this.app.vault.config.attachmentFolderPath +
-                            '/' +
-                            'linked-data-vocabularies/'
+                            "/" +
+                            "linked-data-vocabularies/"
                     );
                     (async () => {
                         const isDir = await adapter.exists(attachmentFolder);
@@ -74,13 +74,13 @@ export class SkosMethods {
                     })();
                 } else {
                     jsonPrefPath = normalizePath(
-                        newOutputPath + '/' + 'lcshSuggester.json'
+                        newOutputPath + "/" + "lcshSuggester.json"
                     );
                     jsonUriPath = normalizePath(
-                        newOutputPath + '/' + 'lcshUriToPrefLabel.json'
+                        newOutputPath + "/" + "lcshUriToPrefLabel.json"
                     );
                     jsonSubdivPath = normalizePath(
-                        newOutputPath + '/' + 'lcshSubdivSuggester.json'
+                        newOutputPath + "/" + "lcshSubdivSuggester.json"
                     );
                     adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
                     // prettier-ignore
@@ -88,7 +88,7 @@ export class SkosMethods {
                     adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
                 }
 
-                new Notice('The three JSON files have been written.');
+                new Notice("The three JSON files have been written.");
             });
     }
 }

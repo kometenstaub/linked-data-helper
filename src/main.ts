@@ -1,11 +1,11 @@
-import { Plugin } from 'obsidian';
-import LiDaHeSettingsTab from './settings';
-import { SkosMethods } from './methods/methods-loc';
-import type { LiDaHeSettings } from './interfaces';
+import { Plugin } from "obsidian";
+import LiDaHeSettingsTab from "./settings";
+import { SkosMethods } from "./methods/methods-loc";
+import type { LiDaHeSettings } from "./interfaces";
 
 const DEFAULT_SETTINGS: LiDaHeSettings = {
-    lcshInputPath: '',
-    lcshOutputPath: '',
+    lcshInputPath: "",
+    lcshOutputPath: "",
 };
 
 export default class LinkedDataHelperPlugin extends Plugin {
@@ -13,7 +13,7 @@ export default class LinkedDataHelperPlugin extends Plugin {
     settings!: LiDaHeSettings;
 
     async onload() {
-        console.log('loading Linked Data Helper plugin');
+        console.log("loading Linked Data Helper plugin");
 
         await this.loadSettings();
 
@@ -21,7 +21,7 @@ export default class LinkedDataHelperPlugin extends Plugin {
     }
 
     onunload() {
-        console.log('unloading Linked Data Helper plugin');
+        console.log("unloading Linked Data Helper plugin");
     }
 
     async loadSettings() {

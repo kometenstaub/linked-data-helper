@@ -14,7 +14,7 @@ export interface headings {
     lcc?: string;
 }
 
-declare module 'obsidian' {
+declare module "obsidian" {
     interface App {
         commands: {
             addCommand: any;
