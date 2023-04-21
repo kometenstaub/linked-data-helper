@@ -60,7 +60,7 @@ export class SkosMethods {
                     (async () => {
                         const isDir = await adapter.exists(attachmentFolder);
                         if (!isDir) {
-                            adapter.mkdir(attachmentFolder);
+                            await adapter.mkdir(attachmentFolder);
                         }
                     })();
                     // prettier-ignore
@@ -68,9 +68,9 @@ export class SkosMethods {
                         jsonPrefPath = normalizePath(attachmentFolder + '/' + 'lcshSuggester.json');
                         jsonUriPath = normalizePath(attachmentFolder + '/' + 'lcshUriToPrefLabel.json');
                         jsonSubdivPath = normalizePath(attachmentFolder + '/' + 'lcshSubdivSuggester.json');
-                        adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-                        adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                        adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
+                        await adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
+                        await adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                        await adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
                     })();
                 } else {
                     jsonPrefPath = normalizePath(
@@ -82,10 +82,16 @@ export class SkosMethods {
                     jsonSubdivPath = normalizePath(
                         newOutputPath + "/" + "lcshSubdivSuggester.json"
                     );
-                    adapter.write(jsonPrefPath, JSON.stringify(jsonPrefLabel));
-                    // prettier-ignore
-                    adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
-                    adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
+                    (async () => {
+                        await adapter.write(
+                            jsonPrefPath,
+                            JSON.stringify(jsonPrefLabel)
+                        );
+                        // prettier-ignore
+                        await adapter.write(jsonUriPath, JSON.stringify(jsonUriToPrefLabel));
+                        // prettier-ignore
+                        await adapter.write(jsonSubdivPath, JSON.stringify(subdivisions));
+                    })();
                 }
 
                 new Notice("The three JSON files have been written.");
