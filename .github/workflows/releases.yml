@@ -36,4 +36,4 @@ jobs:
           gh release create "$tag"  \
             --title="$tag" \
             -F CHANGELOG-LATEST.md \
-            main.js manifest.json styles.css
+            build/main.js build/manifest.json
