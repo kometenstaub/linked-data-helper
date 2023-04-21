@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/kometenstaub/linked-data-helper/compare/0.1.5...0.1.6) (2023-04-21)
+
 ### [0.1.5](https://github.com/kometenstaub/linked-data-helper/compare/0.1.4...0.1.5) (2023-04-21)
 
 ### [0.1.4](https://github.com/kometenstaub/linked-data-helper/compare/0.1.3...0.1.4) (2023-04-21)
