@@ -62,9 +62,6 @@ export class SkosMethods {
                         if (!isDir) {
                             await adapter.mkdir(attachmentFolder);
                         }
-                    })();
-                    // prettier-ignore
-                    (async () => {
                         jsonPrefPath = normalizePath(attachmentFolder + '/' + 'lcshSuggester.json');
                         jsonUriPath = normalizePath(attachmentFolder + '/' + 'lcshUriToPrefLabel.json');
                         jsonSubdivPath = normalizePath(attachmentFolder + '/' + 'lcshSubdivSuggester.json');
