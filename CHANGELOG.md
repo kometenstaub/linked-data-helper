@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/kometenstaub/linked-data-helper/compare/0.1.8...1.0.0) (2023-04-23)
+
+
+### Bug Fixes
+
+* file writing when folder does not exist ([76836a5](https://github.com/kometenstaub/linked-data-helper/commit/76836a59fe60f85c7b51adeee03ab691541a6e46))
+
 ### [0.1.8](https://github.com/kometenstaub/linked-data-helper/compare/0.1.7...0.1.8) (2023-04-21)
 
 ### [0.1.7](https://github.com/kometenstaub/linked-data-helper/compare/0.1.6...0.1.7) (2023-04-21)
